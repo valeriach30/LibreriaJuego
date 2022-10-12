@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author fabri
  */
-public abstract class Personaje implements iPersonaje{
+public class Personaje implements iPersonaje{
     
     private String nombre;
     private int vida;
