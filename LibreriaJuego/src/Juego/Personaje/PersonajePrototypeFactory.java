@@ -13,12 +13,17 @@ import java.util.HashMap;
  */
 public class PersonajePrototypeFactory {
     
-    HashMap<Personaje, iPrototype> prototypes;
-
-    public PersonajePrototypeFactory(HashMap<Personaje, iPrototype> prototypes) {
-        this.prototypes = prototypes;
-    }
+    HashMap<Personaje, iPrototype> prototypes = new HashMap<>();
     
-    public iPrototype getPrototype(Personaje pj){return null;}
-    public void addPrototype(Personaje pj, iPrototype prototype){};
+    public iPrototype getPrototype(Personaje pj){
+        if (pj != null){
+            return prototypes.get(pj).deepclone();
+        }
+        return null;
+    }
+    public void addPrototype(Personaje pj, iPrototype prototype){
+        if (pj != null && prototypes != null){
+            prototypes.put(pj, prototype);
+        }
+    }
 }
