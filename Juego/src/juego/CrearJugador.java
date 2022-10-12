@@ -44,6 +44,10 @@ public class CrearJugador extends javax.swing.JDialog {
         edad = new javax.swing.JSpinner();
         lblTitulo1 = new javax.swing.JLabel();
         btnCrear = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblTitulo7 = new javax.swing.JLabel();
+        armas = new javax.swing.JComboBox<>();
+        btnAgregarPersonaje = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -93,14 +97,43 @@ public class CrearJugador extends javax.swing.JDialog {
         edad.setBounds(90, 320, 64, 30);
 
         lblTitulo1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 72)); // NOI18N
+        lblTitulo1.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo1.setText("Crear Jugador");
         jPanel1.add(lblTitulo1);
-        lblTitulo1.setBounds(180, 10, 300, 84);
+        lblTitulo1.setBounds(20, 10, 300, 84);
 
+        btnCrear.setBackground(new java.awt.Color(255, 72, 0));
         btnCrear.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnCrear.setForeground(new java.awt.Color(255, 255, 255));
         btnCrear.setText("Crear");
         jPanel1.add(btnCrear);
-        btnCrear.setBounds(20, 380, 140, 40);
+        btnCrear.setBounds(20, 480, 140, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/jugador_1.png"))); // NOI18N
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(430, 10, 180, 180);
+
+        lblTitulo7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo7.setText("Agregar Personaje");
+        jPanel1.add(lblTitulo7);
+        lblTitulo7.setBounds(20, 360, 270, 40);
+
+        armas.setBackground(new java.awt.Color(30, 30, 30));
+        armas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        armas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(armas);
+        armas.setBounds(20, 410, 150, 40);
+
+        btnAgregarPersonaje.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnAgregarPersonaje.setText("Agregar Personaje");
+        btnAgregarPersonaje.setActionCommand("AgregarPersonaje");
+        btnAgregarPersonaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarPersonajeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregarPersonaje);
+        btnAgregarPersonaje.setBounds(190, 410, 160, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,7 +143,7 @@ public class CrearJugador extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
         );
 
         pack();
@@ -127,6 +160,10 @@ public class CrearJugador extends javax.swing.JDialog {
     private void usuariotxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariotxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usuariotxtActionPerformed
+
+    private void btnAgregarPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPersonajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarPersonajeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,12 +208,16 @@ public class CrearJugador extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> armas;
+    private javax.swing.JButton btnAgregarPersonaje;
     private javax.swing.JButton btnCrear;
     private javax.swing.JTextField contratxt;
     private javax.swing.JSpinner edad;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
+    private javax.swing.JLabel lblTitulo7;
     private javax.swing.JTextField nombretxt1;
     private javax.swing.JTextField usuariotxt;
     // End of variables declaration//GEN-END:variables
