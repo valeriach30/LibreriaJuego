@@ -6,6 +6,7 @@
 package Libreria.Juego;
 
 import Juego.Armas.Arma;
+import Juego.Personaje.Personaje;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +19,7 @@ public class Jugador {
     String contra;
     int edad;
     ArrayList<Personaje> personajes;
-    ArrayList<Arma> personajes;
+    ArrayList<Arma> armas;
 
     public Jugador(String nombre, String usuario, String contra, int edad, ArrayList<Personaje> personajes) {
         this.nombre = nombre;
