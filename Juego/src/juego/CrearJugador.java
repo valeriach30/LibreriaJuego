@@ -41,8 +41,9 @@ public class CrearJugador extends javax.swing.JDialog {
         lblTitulo = new javax.swing.JLabel();
         nombretxt1 = new javax.swing.JTextField();
         usuariotxt = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
+        edad = new javax.swing.JSpinner();
         lblTitulo1 = new javax.swing.JLabel();
+        btnCrear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,7 +64,7 @@ public class CrearJugador extends javax.swing.JDialog {
         lblTitulo.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo.setText("Edad");
         jPanel1.add(lblTitulo);
-        lblTitulo.setBounds(20, 310, 50, 40);
+        lblTitulo.setBounds(20, 310, 70, 40);
 
         nombretxt1.setBackground(new java.awt.Color(255, 255, 255));
         nombretxt1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -86,13 +87,20 @@ public class CrearJugador extends javax.swing.JDialog {
         });
         jPanel1.add(usuariotxt);
         usuariotxt.setBounds(20, 190, 260, 50);
-        jPanel1.add(jSpinner1);
-        jSpinner1.setBounds(70, 320, 64, 22);
+
+        edad.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
+        jPanel1.add(edad);
+        edad.setBounds(90, 320, 64, 30);
 
         lblTitulo1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 72)); // NOI18N
         lblTitulo1.setText("Crear Jugador");
         jPanel1.add(lblTitulo1);
         lblTitulo1.setBounds(180, 10, 300, 84);
+
+        btnCrear.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnCrear.setText("Crear");
+        jPanel1.add(btnCrear);
+        btnCrear.setBounds(20, 380, 140, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,9 +171,10 @@ public class CrearJugador extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCrear;
     private javax.swing.JTextField contratxt;
+    private javax.swing.JSpinner edad;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
     private javax.swing.JTextField nombretxt1;
