@@ -36,21 +36,89 @@ public class CrearJugador extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        contratxt = new javax.swing.JTextField();
+        lblTitulo = new javax.swing.JLabel();
+        nombretxt1 = new javax.swing.JTextField();
+        usuariotxt = new javax.swing.JTextField();
+        jSpinner1 = new javax.swing.JSpinner();
+        lblTitulo1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
+
+        contratxt.setBackground(new java.awt.Color(255, 255, 255));
+        contratxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        contratxt.setText("Contraseña");
+        contratxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contratxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(contratxt);
+        contratxt.setBounds(20, 250, 260, 50);
+
+        lblTitulo.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo.setText("Edad");
+        jPanel1.add(lblTitulo);
+        lblTitulo.setBounds(20, 310, 50, 40);
+
+        nombretxt1.setBackground(new java.awt.Color(255, 255, 255));
+        nombretxt1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        nombretxt1.setText("Nombre");
+        nombretxt1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombretxt1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nombretxt1);
+        nombretxt1.setBounds(20, 130, 260, 50);
+
+        usuariotxt.setBackground(new java.awt.Color(255, 255, 255));
+        usuariotxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        usuariotxt.setText("Usuario");
+        usuariotxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuariotxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(usuariotxt);
+        usuariotxt.setBounds(20, 190, 260, 50);
+        jPanel1.add(jSpinner1);
+        jSpinner1.setBounds(70, 320, 64, 22);
+
+        lblTitulo1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 72)); // NOI18N
+        lblTitulo1.setText("Crear Jugador");
+        jPanel1.add(lblTitulo1);
+        lblTitulo1.setBounds(180, 10, 300, 84);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void contratxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contratxtActionPerformed
+
+    private void nombretxt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxt1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombretxt1ActionPerformed
+
+    private void usuariotxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariotxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usuariotxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,5 +163,12 @@ public class CrearJugador extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField contratxt;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTitulo1;
+    private javax.swing.JTextField nombretxt1;
+    private javax.swing.JTextField usuariotxt;
     // End of variables declaration//GEN-END:variables
 }
