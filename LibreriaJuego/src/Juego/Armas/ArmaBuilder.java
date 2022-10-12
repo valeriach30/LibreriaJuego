@@ -19,7 +19,7 @@ public class ArmaBuilder {
     
     }
     ArmaBuilder AgregarImagen(){
-        return new ArmaBuilder;
+        return new ArmaBuilder();
     }
     void build(){
     
