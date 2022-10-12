@@ -4,17 +4,21 @@
  */
 package juego;
 
+import control.Controlador;
+
 /**
  *
  * @author vchin
  */
 public class Juego extends javax.swing.JFrame {
 
+    private Controlador elControlador = new Controlador();
     /**
      * Creates new form PantallaPrincipal
      */
     public Juego() {
         initComponents();
+        this.elControlador.crear();
     }
 
     /**
@@ -28,13 +32,13 @@ public class Juego extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
-        btnCrearCounter = new javax.swing.JButton();
-        btnRegistrarClient = new javax.swing.JButton();
+        btnJugador = new javax.swing.JButton();
+        btnCrearPersonaje = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnRecepcion = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        btnModificarClient = new javax.swing.JButton();
+        btnCrearArma = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         btnConsultarClient = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -55,25 +59,25 @@ public class Juego extends javax.swing.JFrame {
         jPanel1.add(lblTitulo);
         lblTitulo.setBounds(280, 20, 430, 84);
 
-        btnCrearCounter.setBackground(new java.awt.Color(255, 255, 255));
-        btnCrearCounter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/jugador.png"))); // NOI18N
-        btnCrearCounter.addActionListener(new java.awt.event.ActionListener() {
+        btnJugador.setBackground(new java.awt.Color(255, 255, 255));
+        btnJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/jugador_1.png"))); // NOI18N
+        btnJugador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearCounterActionPerformed(evt);
+                btnJugadorActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCrearCounter);
-        btnCrearCounter.setBounds(40, 150, 190, 180);
+        jPanel1.add(btnJugador);
+        btnJugador.setBounds(40, 150, 190, 180);
 
-        btnRegistrarClient.setBackground(new java.awt.Color(255, 255, 255));
-        btnRegistrarClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/personaje.jpg"))); // NOI18N
-        btnRegistrarClient.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearPersonaje.setBackground(new java.awt.Color(255, 255, 255));
+        btnCrearPersonaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/personaje.jpg"))); // NOI18N
+        btnCrearPersonaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarClientActionPerformed(evt);
+                btnCrearPersonajeActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrarClient);
-        btnRegistrarClient.setBounds(270, 150, 190, 180);
+        jPanel1.add(btnCrearPersonaje);
+        btnCrearPersonaje.setBounds(270, 150, 190, 180);
 
         jLabel4.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 36)); // NOI18N
         jLabel4.setText("Consultar Armas");
@@ -86,7 +90,7 @@ public class Juego extends javax.swing.JFrame {
         jLabel5.setBounds(650, 630, 220, 50);
 
         btnRecepcion.setBackground(new java.awt.Color(255, 255, 255));
-        btnRecepcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/habilidad2.jpg"))); // NOI18N
+        btnRecepcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/habilidad.jpg"))); // NOI18N
         btnRecepcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRecepcionActionPerformed(evt);
@@ -100,15 +104,15 @@ public class Juego extends javax.swing.JFrame {
         jPanel1.add(jLabel10);
         jLabel10.setBounds(40, 340, 160, 40);
 
-        btnModificarClient.setBackground(new java.awt.Color(255, 255, 255));
-        btnModificarClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arm.png"))); // NOI18N
-        btnModificarClient.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearArma.setBackground(new java.awt.Color(255, 255, 255));
+        btnCrearArma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arm.png"))); // NOI18N
+        btnCrearArma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarClientActionPerformed(evt);
+                btnCrearArmaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificarClient);
-        btnModificarClient.setBounds(510, 150, 190, 180);
+        jPanel1.add(btnCrearArma);
+        btnCrearArma.setBounds(510, 150, 190, 180);
 
         jLabel18.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 36)); // NOI18N
         jLabel18.setText("Crear Personaje");
@@ -116,7 +120,7 @@ public class Juego extends javax.swing.JFrame {
         jLabel18.setBounds(270, 340, 190, 50);
 
         btnConsultarClient.setBackground(new java.awt.Color(255, 255, 255));
-        btnConsultarClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/habilidad.jpg"))); // NOI18N
+        btnConsultarClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/HABILIDAD_1.jpg"))); // NOI18N
         btnConsultarClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarClientActionPerformed(evt);
@@ -176,32 +180,39 @@ public class Juego extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCrearCounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCounterActionPerformed
-        
-    }//GEN-LAST:event_btnCrearCounterActionPerformed
+    private void btnJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugadorActionPerformed
+        CrearJugador pant1 = new CrearJugador(this, true,elControlador);
+        pant1.setVisible(true);  
+    }//GEN-LAST:event_btnJugadorActionPerformed
 
-    private void btnRegistrarClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarClientActionPerformed
-        
-    }//GEN-LAST:event_btnRegistrarClientActionPerformed
+    private void btnCrearPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPersonajeActionPerformed
+        CrearPersonaje pant1 = new CrearPersonaje(this, true,elControlador);
+        pant1.setVisible(true);       
+    }//GEN-LAST:event_btnCrearPersonajeActionPerformed
 
-    private void btnModificarClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClientActionPerformed
-        
-    }//GEN-LAST:event_btnModificarClientActionPerformed
+    private void btnCrearArmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearArmaActionPerformed
+        CrearArma pant1 = new CrearArma(this, true,elControlador);
+        pant1.setVisible(true);   
+    }//GEN-LAST:event_btnCrearArmaActionPerformed
 
     private void btnConsultarClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarClientActionPerformed
-        
+        CrearHabilidad pant1 = new CrearHabilidad(this, true,elControlador);
+        pant1.setVisible(true);   
     }//GEN-LAST:event_btnConsultarClientActionPerformed
 
     private void btnReporteClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteClientsActionPerformed
-        
+        ConsultarArmas pant1 = new ConsultarArmas(this, true,elControlador);
+        pant1.setVisible(true);   
     }//GEN-LAST:event_btnReporteClientsActionPerformed
 
     private void btnEliminarClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClientActionPerformed
-        
+        ConsultarPersonajes pant1 = new ConsultarPersonajes(this, true,elControlador);
+        pant1.setVisible(true);   
     }//GEN-LAST:event_btnEliminarClientActionPerformed
 
     private void btnRecepcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecepcionActionPerformed
-        
+        ConsultarHabilidades pant1 = new ConsultarHabilidades(this, true,elControlador);
+        pant1.setVisible(true);   
     }//GEN-LAST:event_btnRecepcionActionPerformed
 
     /**
@@ -242,11 +253,11 @@ public class Juego extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultarClient;
-    private javax.swing.JButton btnCrearCounter;
+    private javax.swing.JButton btnCrearArma;
+    private javax.swing.JButton btnCrearPersonaje;
     private javax.swing.JButton btnEliminarClient;
-    private javax.swing.JButton btnModificarClient;
+    private javax.swing.JButton btnJugador;
     private javax.swing.JButton btnRecepcion;
-    private javax.swing.JButton btnRegistrarClient;
     private javax.swing.JButton btnReporteClients;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel18;
