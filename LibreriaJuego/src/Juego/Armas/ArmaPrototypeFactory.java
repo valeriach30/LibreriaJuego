@@ -5,10 +5,22 @@
  */
 package Juego.Armas;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  *
  * @author Ray
  */
 public class ArmaPrototypeFactory {
+    HashMap<Arma, Iprotoype> prototypes;
     
+    Iprototype getProtype(Arma arm){
+        
+        return new Iprototype();
+    }
+    
+    void addProtype(Arma arm, iPrototype prototype){
+        
+    }
 }

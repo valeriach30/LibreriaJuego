@@ -5,10 +5,23 @@
  */
 package Juego.Armas;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Ray
  */
 public class ArmaBuilder {
     
+    ArrayList<String> images; 
+    
+    void ArmasBuilder(){
+    
+    }
+    ArmaBuilder AgregarImagen(){
+        return new ArmaBuilder;
+    }
+    void build(){
+    
+    }
 }

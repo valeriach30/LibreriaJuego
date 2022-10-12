@@ -5,10 +5,18 @@
  */
 package Libreria.Juego;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Ray
  */
 public class Juego {
+    ArrayList<Jugador> jugadores;
+
+    public Juego(ArrayList<Jugador> jugadores) {
+        this.jugadores = jugadores;
+    }
+    
     
 }
