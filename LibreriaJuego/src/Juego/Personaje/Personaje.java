@@ -21,11 +21,15 @@ public class Personaje implements iPersonaje{
     private int campos;
     private int nivelAparicion;
     private int costo;
-    private ArrayList <String> apariencias = new ArrayList<>();
-    private ArrayList <Arma> armas = new ArrayList<>();
-    private ArrayList <Arma> hechizos = new ArrayList<>();
+    private ArrayList <String> apariencias;
+    private ArrayList <Arma> armas;
+    private ArrayList <Arma> hechizos;
 
-    public Personaje(String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo) {
+    public Personaje(String nombre, int vida, int golpesxtiempo, 
+            int nivel, int campos, int nivelAparicion, int costo, 
+            ArrayList<String> apariencias, ArrayList<Arma> armas, 
+            ArrayList<Arma> hechizos) {
+        
         this.nombre = nombre;
         this.vida = vida;
         this.golpesxtiempo = golpesxtiempo;
@@ -33,6 +37,9 @@ public class Personaje implements iPersonaje{
         this.campos = campos;
         this.nivelAparicion = nivelAparicion;
         this.costo = costo;
+        this.apariencias = apariencias;
+        this.armas = armas;
+        this.hechizos = hechizos;
     }
 
     @Override
@@ -101,8 +108,54 @@ public class Personaje implements iPersonaje{
     public void setCosto(int costo) {
         this.costo = costo;
     }
+
+    public ArrayList<String> getApariencias() {
+        return apariencias;
+    }
+
+    public void setApariencias(ArrayList<String> apariencias) {
+        this.apariencias = apariencias;
+    }
+
+    public ArrayList<Arma> getArmas() {
+        return armas;
+    }
+
+    public void setArmas(ArrayList<Arma> armas) {
+        this.armas = armas;
+    }
+
+    public ArrayList<Arma> getHechizos() {
+        return hechizos;
+    }
+
+    public void setHechizos(ArrayList<Arma> hechizos) {
+        this.hechizos = hechizos;
+    }
+    
+    
+    
     // </editor-fold>
     
-    
+    public static class PersonajeBuilder { //Builder de personaje
+        private String nombre;
+        private int vida;
+        private int golpesxtiempo;
+        private int nivel;
+        private int campos;
+        private int nivelAparicion;
+        private int costo;
+        private ArrayList <String> apariencias = new ArrayList<>();
+        private ArrayList <Arma> armas = new ArrayList<>();
+        private ArrayList <Arma> hechizos = new ArrayList<>();
+
+        public void PersonajeBuilder(){}
+        public PersonajeBuilder agregarArma(){return null;} //No se como se deberia hacer esto aca    
+        public PersonajeBuilder agregarHabilidad(){return null;} //No se como se deberia hacer esto aca    
+        public PersonajeBuilder agregarApariencia(){return null;} //No creo que esto deba ir aca
+        public Personaje build(){
+            return new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, apariencias, armas, hechizos);
+        } // Creo que debe retornar PJ no?
+    }
     
 }
