@@ -3,7 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package control;
+
 // import de la libreria
+
+import Juego.Personaje.Personaje;
+
 /**
  *
  * @author vchin
