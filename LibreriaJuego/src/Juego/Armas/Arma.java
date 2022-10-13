@@ -22,7 +22,6 @@ public class Arma implements iPrototype<Arma> {
     private ArrayList<String> images;
 
     public Arma(){
-        
     }
     
     public Arma(String name, int reach, int damage, int range, int level, ArrayList<String> images) {

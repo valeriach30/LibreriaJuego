@@ -28,9 +28,12 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     private ArrayList <String> apariencias;
     private ArrayList <Arma> armas;
     private ArrayList <Arma> hechizos;
-    private String apariencia = apariencias.get(0);
+    private String apariencia;
 
     public Personaje(){
+        if(apariencias != null){
+            apariencia = apariencias.get(0);
+        }
     }
     
     public Personaje(String nombre, int vida, int golpesxtiempo, int campos, int nivelAparicion, int costo, int damage, ArrayList<String> apariencias, ArrayList<Arma> armas, ArrayList<Arma> hechizos) {
@@ -257,9 +260,16 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         private ArrayList <String> apariencias;
         private ArrayList <Arma> armas;
         private ArrayList <Arma> hechizos;
-        private String apariencia = apariencias.get(0);
+        private String apariencia;
 
-        public void PersonajeBuilder(){}
+        public void PersonajeBuilder(){
+            if(apariencias != null){
+                apariencia = apariencias.get(0);
+            }
+            this.armas = new ArrayList<Arma>();
+            this.hechizos = new ArrayList<Arma>();
+            this.apariencias = new ArrayList<String>();
+        }
         
         public PersonajeBuilder agregarAtributos(String nombre, int vida, int gxt, int nivel, 
         int campos, int nivelAparicion, int costo, int reach, int damage, int range){
@@ -279,6 +289,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         
         public PersonajeBuilder agregarArma(Arma arma){
             if(arma != null){
+               this.armas = new ArrayList<Arma>();
                armas.add(arma);
                return this;
             }
@@ -286,6 +297,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         }   
         public PersonajeBuilder agregarHabilidad(Arma hechizo){
             if(hechizo != null){
+               this.hechizos = new ArrayList<Arma>();
                hechizos.add(hechizo);
                return this;
             }
@@ -294,6 +306,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         }   
         public PersonajeBuilder agregarApariencia(String imagen){
             if(imagen != null){
+               this.apariencias = new ArrayList<String>();
                apariencias.add(imagen);
                return this;
             }

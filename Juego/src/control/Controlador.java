@@ -34,24 +34,8 @@ public class Controlador {
     
     // ------------------------> Agregaciones Juego <------------------------
     
-    // Retorna el Personaje Agregado
-    public void agregarPersonaje(String nombre, int vida, int golpesxtiempo, 
-    int nivel, int campos, int nivelAparicion, int costo, String categoria){
-        
-        if(categoria != "Ninguna"){
-            
-        }else{
-            Personaje nuevoP = new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo);
-            
-            ArrayList<Personaje> array = new ArrayList<Personaje>();
-            if(juegoV.getPersonajes() != null){
-                for(int i = 0; i < juegoV.getPersonajes().size(); i++){
-                    array.add(juegoV.getPersonajes().get(i));
-                }
-            }
-            array.add(nuevoP);
-            juegoV.setPersonajes(array);
-        }
+    // Agrega caracteristicas a un personaje
+    public void agregarPersonaje(String armaNombre, String habilidadNombre, String imagen, String nombrePersonaje){
     }
     
     // Agrega un arma al juego
@@ -140,7 +124,7 @@ public class Controlador {
     // ------------------------> Clonar <------------------------
     
     // Retorna los Personajes Agregados, se usa el clone del factory
-    public void clonarPersonaje(String nombrePersonaje, int vidaPer, int GxT, int camposV, int nivelV, int costoV, int cantidadV, String categoriaV, int cantidadV1) {
+    public void clonarPersonaje(String nombrePersonaje, int vidaPer, int GxT, int camposV, int nivelV, int costoV, int cantidadV, String categoriaV, int cantidadV1, String armaNombre, String habilidadNombre, int alcanceV, int danhoV, int rangoV) {
 
     }
     
@@ -150,11 +134,62 @@ public class Controlador {
 
     // ------------------------> Build Personaje <------------------------
     
-    public void buildPersonaje(String armasV, String habilidadesV, String imagen, String nombrePersonaje) {
+    public void buildPersonaje(String nombreArma, int vidaPer, int GxT,
+           int nivelAparicion, int camposV, int nivelV, int costoV, String categoriaV,
+           int cantidadV, String habilidadNombre, String nombrePersonaje, int alcance, int danho, int rango) {
         
         // Buscar el arma y la habilidad
-        // Usar builder, falta agregar aarma y habilidad
-        Personaje.PersonajeBuilder p = new Personaje.PersonajeBuilder().agregarApariencia(imagen);
+        
+        Arma habilidad = null;
+        for(int i = 0; i < juegoV.getHabilidades().size(); i++){
+            System.out.println(juegoV.getHabilidades().get(i).getName());
+            System.out.println(nombreArma);
+            if(juegoV.getHabilidades().get(i).getName() == habilidadNombre){
+                habilidad = juegoV.getHabilidades().get(i);
+            }
+        }
+        
+        Arma arma = null;
+        for(int i = 0; i < juegoV.getArmas().size(); i++){
+            System.out.println(juegoV.getArmas().get(i).getName());
+            System.out.println(nombreArma);
+            if(juegoV.getArmas().get(i).getName() == nombreArma){
+                arma = juegoV.getArmas().get(i);
+            }
+        }
+        System.out.println(arma);
+        System.out.println(habilidad);
+        // Usar builder
+        if(arma != null && habilidad != null){
+            System.out.println("entre");
+            Personaje nuevoPer = new Personaje.PersonajeBuilder()
+            .agregarArma(arma)
+            .agregarHabilidad(habilidad)
+            .build();
+
+            nuevoPer.setNombre(nombrePersonaje);
+            nuevoPer.setVida(vidaPer);
+            nuevoPer.setGolpesxtiempo(GxT);
+            nuevoPer.setNivel(nivelAparicion);
+            nuevoPer.setCampos(camposV);
+            nuevoPer.setNivelAparicion(nivelV);
+            nuevoPer.setCosto(costoV);
+            nuevoPer.setReach(alcance);
+            nuevoPer.setDamage(danho);
+            nuevoPer.setRange(rango);
+            
+            // Agregar el personaje al juego
+            ArrayList<Personaje> array = new ArrayList<Personaje>();
+            if(juegoV.getPersonajes() != null){
+                for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+                    array.add(juegoV.getPersonajes().get(i));
+                }
+            }
+            array.add(nuevoPer);
+            juegoV.setPersonajes(array);
+            
+            System.out.println(consultarPersonajes());
+        }
     }
     
     // ------------------------> Agregaciones Jugador <------------------------
