@@ -75,9 +75,19 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     public Personaje clone() {
         return new Personaje(this.nombre, this.vida, this.golpesxtiempo, this.campos, this.nivelAparicion, this.costo, this.damage, this.apariencias, this.armas, this.hechizos); 
     }
+    
     @Override
     public Personaje deepClone() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Personaje cloneDeep = clone();
+        cloneDeep.nombre = new String(this.nombre);
+        cloneDeep.vida = this.vida;
+        cloneDeep.golpesxtiempo = this.golpesxtiempo;
+        cloneDeep.campos = this.campos;
+        cloneDeep.nivelAparicion = this.nivelAparicion;
+        cloneDeep.costo = this.costo;
+        cloneDeep.damage = this.damage;
+        
+        
     }
 
     @Override
@@ -233,6 +243,22 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         private String apariencia = apariencias.get(0);
 
         public void PersonajeBuilder(){}
+        
+        public PersonajeBuilder agregarAtributos(String nombre, int vida, int gxt, int nivel, 
+        int campos, int nivelAparicion, int costo, int reach, int damage, int range){
+            this.nombre = nombre;
+            this.vida = vida;
+            this.golpesxtiempo = gxt;
+            this.nivel = nivel;
+            this.campos = campos;
+            this.nivelAparicion = nivelAparicion;
+            this.costo = costo;
+            this.reach = reach;
+            this.damage = damage;
+            this.range = range;
+            return this;
+
+        }
         
         public PersonajeBuilder agregarArma(Arma arma){
             if(arma != null){
