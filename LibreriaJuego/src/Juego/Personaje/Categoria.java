@@ -17,8 +17,8 @@ public class Categoria extends Personaje{
     private String nombreCategoria;
     private ArrayList <SubCategoria> subCategorias = new ArrayList<>(); 
 
-    public Categoria(String nombreCategoria, String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo, ArrayList<String> apariencias, ArrayList<Arma> armas, ArrayList<Arma> hechizos) {
-        super(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, apariencias, armas, hechizos);
+    public Categoria(String nombreCategoria, String nombre, String apariencia, int vida, int golpesxtiempo, int campos, int nivelAparicion, int costo, int damage, ArrayList<String> apariencias, ArrayList<Arma> armas, ArrayList<Arma> hechizos) {
+        super(nombre, vida, golpesxtiempo, campos, nivelAparicion, costo, damage, apariencias, armas, hechizos);
         this.nombreCategoria = nombreCategoria;
     }
 
