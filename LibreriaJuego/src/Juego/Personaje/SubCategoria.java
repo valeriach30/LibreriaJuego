@@ -21,6 +21,9 @@ public class SubCategoria extends Categoria {
         this.nombreSubCategoria = nombreSubCategoria;
     }
 
+    public SubCategoria() {
+    }
+
     @Override
     public void atacar(String ataque) {
         super.atacar(ataque); //To change body of generated methods, choose Tools | Templates.

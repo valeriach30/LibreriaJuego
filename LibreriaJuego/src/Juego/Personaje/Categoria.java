@@ -22,6 +22,9 @@ public class Categoria extends Personaje{
         this.nombreCategoria = nombreCategoria;
     }
 
+    public Categoria() {
+    }
+
     public String getNombreCategoria() {
         return nombreCategoria;
     }

@@ -30,6 +30,9 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     private ArrayList <Arma> hechizos;
     private String apariencia = apariencias.get(0);
 
+    public Personaje(){
+    }
+    
     public Personaje(String nombre, int vida, int golpesxtiempo, int campos, int nivelAparicion, int costo, int damage, ArrayList<String> apariencias, ArrayList<Arma> armas, ArrayList<Arma> hechizos) {
         this.nombre = nombre;
         this.vida = vida;
@@ -41,6 +44,16 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         this.apariencias = apariencias;
         this.armas = armas;
         this.hechizos = hechizos;
+    }
+
+    public Personaje(String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo) {
+        this.nombre = nombre;
+        this.vida = vida;
+        this.golpesxtiempo = golpesxtiempo;
+        this.campos = campos;
+        this.nivelAparicion = nivelAparicion;
+        this.costo = costo;
+        this.damage = damage;
     }
 
     @Override
