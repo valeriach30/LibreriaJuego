@@ -5,6 +5,7 @@
 package juego;
 
 import control.Controlador;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,6 +27,26 @@ public class CrearJugador extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         controlJugador = elControl;
+        
+        // Cargar Nombres de Jugadores
+        ArrayList<String> nombresJugadores = controlJugador.getNombresJugadores();
+        if(nombresJugadores != null){
+            for(int i = 0; i < nombresJugadores.size(); i++){
+                jugadores.addItem(nombresJugadores.get(i));
+            }   
+        }
+        else{
+        }
+        
+        // Cargar Nombres de Personajes
+        ArrayList<String> nombresPersonajes = controlJugador.getNombresPersonajes();
+        if(nombresPersonajes != null){
+            for(int i = 0; i < nombresPersonajes.size(); i++){
+                personajes.addItem(nombresPersonajes.get(i));
+            }   
+        }
+        else{
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,7 +154,6 @@ public class CrearJugador extends javax.swing.JDialog {
         jugadores.setBackground(new java.awt.Color(30, 30, 30));
         jugadores.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jugadores.setForeground(new java.awt.Color(185, 185, 185));
-        jugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(jugadores);
         jugadores.setBounds(190, 430, 150, 40);
 
@@ -159,7 +179,6 @@ public class CrearJugador extends javax.swing.JDialog {
         personajes.setBackground(new java.awt.Color(30, 30, 30));
         personajes.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         personajes.setForeground(new java.awt.Color(185, 185, 185));
-        personajes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(personajes);
         personajes.setBounds(190, 490, 150, 40);
 
@@ -194,6 +213,8 @@ public class CrearJugador extends javax.swing.JDialog {
         String nombrePersonaje = personajes.getSelectedItem().toString();
         
         controlJugador.agregarPerJugador(nombreJugador, nombrePersonaje);
+        
+        this.setVisible(false);
     }//GEN-LAST:event_btnAgregarPersonajeActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
@@ -204,7 +225,7 @@ public class CrearJugador extends javax.swing.JDialog {
         
         controlJugador.agregarJugador(nombreJ, usuarioJ, contraJ, edadJ);
         
-        //this.repaint();
+        this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
 
     /**
