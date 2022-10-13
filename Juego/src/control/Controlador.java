@@ -7,13 +7,16 @@ package control;
 // import de la libreria
 
 import Juego.Personaje.Personaje;
+import Libreria.Juego.Jugador;
+import java.util.ArrayList;
+import Libreria.Juego.Juego;
 
 /**
  *
  * @author vchin
  */
 public class Controlador {
-    // private Juego juego = new Juego()
+    private Juego juegoV = new Juego();
     
     public Controlador() {                                      //AGREGAR AL UML
         
@@ -31,7 +34,12 @@ public class Controlador {
     public void agregarPersonaje(String nombre, int vida, int golpesxtiempo, 
     int nivel, int campos, int nivelAparicion, int costo, String categoria){
         
-        Personaje nuevoP = new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo);
+        if(categoria != "Ninguna"){
+            
+        }else{
+            Personaje nuevoP = new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo);
+            juegoV.getPersonajes().add(nuevoP);
+        }
     }
     
     // Agrega un arma al juego

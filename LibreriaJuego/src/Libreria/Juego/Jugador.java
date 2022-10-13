@@ -20,6 +20,10 @@ public class Jugador {
     int edad;
     ArrayList<Personaje> personajes;
 
+    public Jugador(){
+        
+    }
+    
     public Jugador(String nombre, String usuario, String contra, int edad, ArrayList<Personaje> personajes) {
         this.nombre = nombre;
         this.usuario = usuario;
@@ -28,6 +32,13 @@ public class Jugador {
         this.personajes = personajes;
     }
 
+    public Jugador(String nombre, String usuario, String contra, int edad) {
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.contra = contra;
+        this.edad = edad;
+    }
+    
     public String getNombre() {
         return nombre;
     }

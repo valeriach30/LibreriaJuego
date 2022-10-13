@@ -198,7 +198,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
         categorias.setBackground(new java.awt.Color(71, 0, 71));
         categorias.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         categorias.setForeground(new java.awt.Color(185, 185, 185));
-        categorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        categorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
         jPanel1.add(categorias);
         categorias.setBounds(20, 560, 150, 40);
 
