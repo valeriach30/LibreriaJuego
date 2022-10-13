@@ -56,6 +56,7 @@ public class CrearJugador extends javax.swing.JDialog {
 
         contratxt.setBackground(new java.awt.Color(255, 255, 255));
         contratxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        contratxt.setForeground(new java.awt.Color(185, 185, 185));
         contratxt.setText("Contraseña");
         contratxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,12 +67,14 @@ public class CrearJugador extends javax.swing.JDialog {
         contratxt.setBounds(20, 250, 260, 50);
 
         lblTitulo.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo.setText("Edad");
         jPanel1.add(lblTitulo);
         lblTitulo.setBounds(20, 310, 70, 40);
 
         nombretxt1.setBackground(new java.awt.Color(255, 255, 255));
         nombretxt1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        nombretxt1.setForeground(new java.awt.Color(185, 185, 185));
         nombretxt1.setText("Nombre");
         nombretxt1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +86,7 @@ public class CrearJugador extends javax.swing.JDialog {
 
         usuariotxt.setBackground(new java.awt.Color(255, 255, 255));
         usuariotxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        usuariotxt.setForeground(new java.awt.Color(185, 185, 185));
         usuariotxt.setText("Usuario");
         usuariotxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,29 +106,33 @@ public class CrearJugador extends javax.swing.JDialog {
         jPanel1.add(lblTitulo1);
         lblTitulo1.setBounds(20, 10, 300, 84);
 
-        btnCrear.setBackground(new java.awt.Color(255, 72, 0));
+        btnCrear.setBackground(new java.awt.Color(0, 102, 0));
         btnCrear.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnCrear.setForeground(new java.awt.Color(255, 255, 255));
         btnCrear.setText("Crear");
         jPanel1.add(btnCrear);
         btnCrear.setBounds(20, 480, 140, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/jugador_1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/personaje.gif"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(430, 10, 180, 180);
+        jLabel1.setBounds(450, 0, 180, 160);
 
         lblTitulo7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo7.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo7.setText("Agregar Personaje");
         jPanel1.add(lblTitulo7);
         lblTitulo7.setBounds(20, 360, 270, 40);
 
         armas.setBackground(new java.awt.Color(30, 30, 30));
         armas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        armas.setForeground(new java.awt.Color(185, 185, 185));
         armas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(armas);
         armas.setBounds(20, 410, 150, 40);
 
+        btnAgregarPersonaje.setBackground(new java.awt.Color(34, 33, 33));
         btnAgregarPersonaje.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnAgregarPersonaje.setForeground(new java.awt.Color(185, 185, 185));
         btnAgregarPersonaje.setText("Agregar Personaje");
         btnAgregarPersonaje.setActionCommand("AgregarPersonaje");
         btnAgregarPersonaje.addActionListener(new java.awt.event.ActionListener() {

@@ -36,21 +36,168 @@ public class CrearArma extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        nombretxt1 = new javax.swing.JTextField();
+        lblTitulo1 = new javax.swing.JLabel();
+        btnCrear = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblTitulo6 = new javax.swing.JLabel();
+        alcance = new javax.swing.JSpinner();
+        lblTitulo = new javax.swing.JLabel();
+        danho = new javax.swing.JSpinner();
+        lblTitulo2 = new javax.swing.JLabel();
+        nivel = new javax.swing.JSpinner();
+        lblTitulo4 = new javax.swing.JLabel();
+        rango = new javax.swing.JSpinner();
+        lblTitulo8 = new javax.swing.JLabel();
+        categorias = new javax.swing.JComboBox<>();
+        lblTitulo9 = new javax.swing.JLabel();
+        urltxt = new javax.swing.JTextField();
+        btnAgregarImagen = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
+
+        nombretxt1.setBackground(new java.awt.Color(255, 255, 255));
+        nombretxt1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        nombretxt1.setForeground(new java.awt.Color(185, 185, 185));
+        nombretxt1.setText("Nombre");
+        nombretxt1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombretxt1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nombretxt1);
+        nombretxt1.setBounds(20, 130, 200, 50);
+
+        lblTitulo1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 72)); // NOI18N
+        lblTitulo1.setForeground(new java.awt.Color(0, 0, 0));
+        lblTitulo1.setText("Crear Arma");
+        jPanel1.add(lblTitulo1);
+        lblTitulo1.setBounds(20, 10, 300, 84);
+
+        btnCrear.setBackground(new java.awt.Color(58, 0, 58));
+        btnCrear.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnCrear.setForeground(new java.awt.Color(185, 185, 185));
+        btnCrear.setText("Crear");
+        jPanel1.add(btnCrear);
+        btnCrear.setBounds(20, 510, 150, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arm.png"))); // NOI18N
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(420, 0, 200, 170);
+
+        lblTitulo6.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo6.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo6.setText("Alcance");
+        jPanel1.add(lblTitulo6);
+        lblTitulo6.setBounds(20, 190, 70, 40);
+
+        alcance.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
+        jPanel1.add(alcance);
+        alcance.setBounds(150, 200, 64, 30);
+
+        lblTitulo.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo.setText("Daño");
+        jPanel1.add(lblTitulo);
+        lblTitulo.setBounds(20, 240, 130, 40);
+
+        danho.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
+        jPanel1.add(danho);
+        danho.setBounds(150, 250, 64, 30);
+
+        lblTitulo2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo2.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo2.setText("Nivel");
+        jPanel1.add(lblTitulo2);
+        lblTitulo2.setBounds(20, 300, 70, 40);
+
+        nivel.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
+        jPanel1.add(nivel);
+        nivel.setBounds(150, 300, 64, 30);
+
+        lblTitulo4.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo4.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo4.setText("Rango");
+        jPanel1.add(lblTitulo4);
+        lblTitulo4.setBounds(20, 350, 130, 40);
+
+        rango.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
+        jPanel1.add(rango);
+        rango.setBounds(150, 350, 64, 30);
+
+        lblTitulo8.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo8.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo8.setText("Seleccione la categoria del arma");
+        jPanel1.add(lblTitulo8);
+        lblTitulo8.setBounds(20, 400, 290, 40);
+
+        categorias.setBackground(new java.awt.Color(153, 0, 153));
+        categorias.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        categorias.setForeground(new java.awt.Color(185, 185, 185));
+        categorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(categorias);
+        categorias.setBounds(20, 450, 150, 40);
+
+        lblTitulo9.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo9.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo9.setText("Ingrese el url de la imagen que desea agregar");
+        jPanel1.add(lblTitulo9);
+        lblTitulo9.setBounds(280, 200, 320, 40);
+
+        urltxt.setBackground(new java.awt.Color(255, 255, 255));
+        urltxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        urltxt.setText("Url");
+        urltxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                urltxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(urltxt);
+        urltxt.setBounds(280, 250, 150, 35);
+
+        btnAgregarImagen.setBackground(new java.awt.Color(58, 0, 58));
+        btnAgregarImagen.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnAgregarImagen.setForeground(new java.awt.Color(185, 185, 185));
+        btnAgregarImagen.setText("Agregar Imagen");
+        btnAgregarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarImagenActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregarImagen);
+        btnAgregarImagen.setBounds(450, 250, 140, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nombretxt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxt1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombretxt1ActionPerformed
+
+    private void urltxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urltxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_urltxtActionPerformed
+
+    private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarImagenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,5 +242,23 @@ public class CrearArma extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner alcance;
+    private javax.swing.JButton btnAgregarImagen;
+    private javax.swing.JButton btnCrear;
+    private javax.swing.JComboBox<String> categorias;
+    private javax.swing.JSpinner danho;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTitulo1;
+    private javax.swing.JLabel lblTitulo2;
+    private javax.swing.JLabel lblTitulo4;
+    private javax.swing.JLabel lblTitulo6;
+    private javax.swing.JLabel lblTitulo8;
+    private javax.swing.JLabel lblTitulo9;
+    private javax.swing.JSpinner nivel;
+    private javax.swing.JTextField nombretxt1;
+    private javax.swing.JSpinner rango;
+    private javax.swing.JTextField urltxt;
     // End of variables declaration//GEN-END:variables
 }
