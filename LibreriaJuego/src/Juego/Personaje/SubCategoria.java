@@ -5,6 +5,9 @@
  */
 package Juego.Personaje;
 
+import Juego.Armas.Arma;
+import java.util.ArrayList;
+
 /**
  *
  * @author fabri
@@ -13,8 +16,8 @@ public class SubCategoria extends Categoria {
     
     // No se si debe agregar 2 veces el array
 
-    public SubCategoria(String nombreCategoria, String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo) {
-        super(nombreCategoria, nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo);
+    public SubCategoria(String nombreCategoria, String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo, ArrayList<String> apariencias, ArrayList<Arma> armas, ArrayList<Arma> hechizos) {
+        super(nombreCategoria, nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, apariencias, armas, hechizos); 
     }
 
     @Override
