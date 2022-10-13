@@ -25,6 +25,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         controlPersonajes = elControl;
+        //habilidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "xd", "xd 2", "xd 3", "xd 4" }));
     }
 
     /**
