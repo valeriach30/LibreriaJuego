@@ -257,7 +257,8 @@ public class Juego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJugarActionPerformed
 
     private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed
-        // TODO add your handling code here:
+        CrearCategorias pant1 = new CrearCategorias(this, true,elControlador);
+        pant1.setVisible(true); 
     }//GEN-LAST:event_btnCategoriasActionPerformed
 
     /**

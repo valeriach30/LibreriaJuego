@@ -6,7 +6,9 @@
 package Libreria.Juego;
 
 import Juego.Armas.Arma;
+import Juego.Personaje.Categoria;
 import Juego.Personaje.Personaje;
+import Juego.Personaje.SubCategoria;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +20,8 @@ public class Juego {
     ArrayList<Arma> habilidades;
     ArrayList<Arma> armas;
     ArrayList<Personaje> personajes;
+    ArrayList<Categoria> categorias;
+    ArrayList<SubCategoria> subcategorias;
     
     public Juego(){
         this.habilidades  = new ArrayList<Arma>();
@@ -60,5 +64,22 @@ public class Juego {
     public void setPersonajes(ArrayList<Personaje> personajes) {
         this.personajes = personajes;
     }
+
+    public ArrayList<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(ArrayList<Categoria> categorias) {
+        this.categorias = categorias;
+    }
+
+    public ArrayList<SubCategoria> getSubcategorias() {
+        return subcategorias;
+    }
+
+    public void setSubcategorias(ArrayList<SubCategoria> subcategorias) {
+        this.subcategorias = subcategorias;
+    }
+
     
 }

@@ -57,6 +57,26 @@ public class CrearPersonaje extends javax.swing.JDialog {
         else{
         }
         
+        // Cargar nombres de categorias
+        ArrayList<String> nombresCategorias = controlPersonajes.getNombresCategorias();
+        if(nombresCategorias != null){
+            for(int i = 0; i < nombresCategorias.size(); i++){
+                categorias.addItem(nombresCategorias.get(i));
+            }   
+        }
+        else{
+        }
+        
+        // Cargar nombres de habilidades
+        ArrayList<String> nombresSubcategorias = controlPersonajes.getNombresSubCategorias();
+        if(nombresSubcategorias != null){
+            for(int i = 0; i < nombresSubcategorias.size(); i++){
+                subcategoria.addItem(nombresSubcategorias.get(i));
+            }   
+        }
+        else{
+        }
+        
     }
 
     

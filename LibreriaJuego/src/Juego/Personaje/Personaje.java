@@ -26,6 +26,10 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     private ArrayList <Arma> armas;
     private ArrayList <Arma> hechizos;
 
+    public Personaje(){
+            
+    }
+    
     public Personaje(String nombre, int vida, int golpesxtiempo, 
             int nivel, int campos, int nivelAparicion, int costo, 
             ArrayList<String> apariencias, ArrayList<Arma> armas, 

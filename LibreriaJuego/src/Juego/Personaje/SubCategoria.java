@@ -14,6 +14,11 @@ import java.util.ArrayList;
  */
 public class SubCategoria extends Categoria {
     
+    private String nombreSubCategoria;
+    
+    public SubCategoria(){
+        
+    }
     public SubCategoria(String nombreCategoria, String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo, ArrayList<String> apariencias, ArrayList<Arma> armas, ArrayList<Arma> hechizos) {
         super(nombreCategoria, nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, apariencias, armas, hechizos); 
     }
@@ -29,5 +34,13 @@ public class SubCategoria extends Categoria {
     }
     
     // Setters and getters?
+
+    public String getNombreSubCategoria() {
+        return nombreSubCategoria;
+    }
+
+    public void setNombreSubCategoria(String nombreSubCategoria) {
+        this.nombreSubCategoria = nombreSubCategoria;
+    }
     
 }

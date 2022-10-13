@@ -4,12 +4,16 @@
  */
 package juego;
 
+import control.Controlador;
+import java.util.ArrayList;
+
 /**
  *
  * @author vchin
  */
 public class CrearCategorias extends javax.swing.JDialog {
-
+    
+    private Controlador controlCategorias;
     /**
      * Creates new form CrearCategorias
      */
@@ -18,6 +22,31 @@ public class CrearCategorias extends javax.swing.JDialog {
         initComponents();
     }
 
+    public CrearCategorias(java.awt.Frame parent, boolean modal, Controlador elControl) {
+        super(parent, modal);
+        initComponents();
+        controlCategorias = elControl;
+        
+        // Cargar nombres de categorias
+        ArrayList<String> nombresCategorias = controlCategorias.getNombresCategorias();
+        if(nombresCategorias != null){
+            for(int i = 0; i < nombresCategorias.size(); i++){
+                categoria.addItem(nombresCategorias.get(i));
+            }   
+        }
+        else{
+        }
+        
+        // Cargar nombres de habilidades
+        ArrayList<String> nombresSubcategorias = controlCategorias.getNombresSubCategorias();
+        if(nombresSubcategorias != null){
+            for(int i = 0; i < nombresSubcategorias.size(); i++){
+                subcategoria.addItem(nombresSubcategorias.get(i));
+            }   
+        }
+        else{
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,14 +62,14 @@ public class CrearCategorias extends javax.swing.JDialog {
         btnCrear = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblTitulo2 = new javax.swing.JLabel();
-        armas = new javax.swing.JComboBox<>();
+        subcategoria = new javax.swing.JComboBox<>();
         lblTitulo7 = new javax.swing.JLabel();
         lblTitulo8 = new javax.swing.JLabel();
         nombretxt1 = new javax.swing.JTextField();
-        btnCrear1 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         lblTitulo10 = new javax.swing.JLabel();
         lblTitulo12 = new javax.swing.JLabel();
-        armas1 = new javax.swing.JComboBox<>();
+        categoria = new javax.swing.JComboBox<>();
         btnCrear2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -88,12 +117,12 @@ public class CrearCategorias extends javax.swing.JDialog {
         jPanel1.add(lblTitulo2);
         lblTitulo2.setBounds(20, 10, 410, 84);
 
-        armas.setBackground(new java.awt.Color(0, 102, 51));
-        armas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        armas.setForeground(new java.awt.Color(185, 185, 185));
-        armas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
-        jPanel1.add(armas);
-        armas.setBounds(300, 410, 150, 40);
+        subcategoria.setBackground(new java.awt.Color(0, 102, 51));
+        subcategoria.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        subcategoria.setForeground(new java.awt.Color(185, 185, 185));
+        subcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
+        jPanel1.add(subcategoria);
+        subcategoria.setBounds(300, 410, 150, 40);
 
         lblTitulo7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo7.setForeground(new java.awt.Color(185, 185, 185));
@@ -119,16 +148,16 @@ public class CrearCategorias extends javax.swing.JDialog {
         jPanel1.add(nombretxt1);
         nombretxt1.setBounds(20, 410, 200, 50);
 
-        btnCrear1.setBackground(new java.awt.Color(153, 0, 204));
-        btnCrear1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        btnCrear1.setText("Agregar");
-        btnCrear1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setBackground(new java.awt.Color(153, 0, 204));
+        btnAgregar.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrear1ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCrear1);
-        btnCrear1.setBounds(300, 480, 150, 40);
+        jPanel1.add(btnAgregar);
+        btnAgregar.setBounds(300, 480, 150, 40);
 
         lblTitulo10.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo10.setForeground(new java.awt.Color(185, 185, 185));
@@ -142,12 +171,12 @@ public class CrearCategorias extends javax.swing.JDialog {
         jPanel1.add(lblTitulo12);
         lblTitulo12.setBounds(300, 360, 420, 40);
 
-        armas1.setBackground(new java.awt.Color(0, 102, 51));
-        armas1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        armas1.setForeground(new java.awt.Color(185, 185, 185));
-        armas1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
-        jPanel1.add(armas1);
-        armas1.setBounds(300, 290, 150, 40);
+        categoria.setBackground(new java.awt.Color(0, 102, 51));
+        categoria.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        categoria.setForeground(new java.awt.Color(185, 185, 185));
+        categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
+        jPanel1.add(categoria);
+        categoria.setBounds(300, 290, 150, 40);
 
         btnCrear2.setBackground(new java.awt.Color(255, 102, 0));
         btnCrear2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -175,7 +204,8 @@ public class CrearCategorias extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        
+        String nombre = nombretxt.getText();
+        controlCategorias.agregarCategoria(nombre);
         this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
 
@@ -187,12 +217,16 @@ public class CrearCategorias extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombretxt1ActionPerformed
 
-    private void btnCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrear1ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String categoriaV = categoria.getSelectedItem().toString();
+        String subcategoriaV = subcategoria.getSelectedItem().toString();
+        controlCategorias.agregarRelacionCatSubCat(categoriaV, subcategoriaV);
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnCrear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear2ActionPerformed
-        // TODO add your handling code here:
+        String nombre = nombretxt1.getText();
+        controlCategorias.agregarSubCategoria(nombre);
+        this.setVisible(false);
     }//GEN-LAST:event_btnCrear2ActionPerformed
 
     /**
@@ -238,11 +272,10 @@ public class CrearCategorias extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> armas;
-    private javax.swing.JComboBox<String> armas1;
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCrear;
-    private javax.swing.JButton btnCrear1;
     private javax.swing.JButton btnCrear2;
+    private javax.swing.JComboBox<String> categoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTitulo1;
@@ -253,5 +286,6 @@ public class CrearCategorias extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitulo8;
     private javax.swing.JTextField nombretxt;
     private javax.swing.JTextField nombretxt1;
+    private javax.swing.JComboBox<String> subcategoria;
     // End of variables declaration//GEN-END:variables
 }
