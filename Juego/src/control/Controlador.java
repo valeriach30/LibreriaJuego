@@ -11,6 +11,7 @@ import Libreria.Juego.Juego;
 import Juego.Personaje.Categoria;
 import Juego.Personaje.Personaje;
 import Juego.Personaje.SubCategoria;
+import Libreria.Juego.Jugador;
 import java.util.ArrayList;
 
 
@@ -83,6 +84,15 @@ public class Controlador {
     
     public void agregarJugador(String nombreJ, String usuarioJ, String contraJ, int edadJ) {
         // Agregar jugador a la lista del  juego
+        Jugador player = new Jugador(nombreJ, usuarioJ, contraJ, edadJ);
+        ArrayList<Jugador> array = new ArrayList<Jugador>();
+        if(juegoV.getJugadores() != null){
+            for(int i = 0; i < juegoV.getJugadores().size(); i++){
+                array.add(juegoV.getJugadores().get(i));
+            }
+        }
+        array.add(player);
+        juegoV.setJugadores(array);
     }
     
     public void agregarCategoria(String nombre) {
@@ -150,8 +160,28 @@ public class Controlador {
     // ------------------------> Agregaciones Jugador <------------------------
     
     // Agrega un personaje a la lista del jugador
-    public void agregarPerJugador(String nombrePersonaje, String nombrePersonaje1) {
+    public void agregarPerJugador(String nombreJugador, String nombrePersonaje1) {
+        
+        if(nombreJugador != "" && nombrePersonaje1 != ""){
+            // Buscar el personaje
+            Personaje p = new Personaje();
+            for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+                if(juegoV.getPersonajes().get(i).getNombre() == nombrePersonaje1){
+                    p = juegoV.getPersonajes().get(i);
+                }
+            }
 
+
+            // Buscar el jugador y agregarle el personaje
+            for(int i = 0; i < juegoV.getJugadores().size(); i++){
+                if(juegoV.getJugadores().get(i).getNombre() == nombreJugador){
+                    
+                    ArrayList<Personaje> array = new ArrayList<Personaje>();
+                    array.add(p);
+                    juegoV.getJugadores().get(i).setPersonajes(array);
+                }
+            }
+        }
     }
     
      // ------------------------------------------------ CONSULTAR ------------------------------------------------
@@ -273,6 +303,18 @@ public class Controlador {
         } 
     }
     
+    public ArrayList<String> getNombresJugadores(){
+        ArrayList<String> nombres = new ArrayList<String>();
+        if(juegoV.getJugadores()!= null){
+            for(int i = 0; i < juegoV.getJugadores().size(); i++){
+                nombres.add(juegoV.getJugadores().get(i).getNombre());
+            }
+            return nombres;
+        }
+        else{
+            return nombres;
+        } 
+    }
     
     // Obtiene la imagen actual de un personaje
     public String getImagenPersonaje(String nombrePersonaje){
