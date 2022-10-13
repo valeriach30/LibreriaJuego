@@ -6,13 +6,14 @@
 package Juego.Personaje;
 
 import Juego.Armas.Arma;
+import Juego.Prototype.iPrototype;
 import java.util.ArrayList;
 
 /**
  *
  * @author fabri
  */
-public class Personaje implements iPersonaje{
+public class Personaje implements iPersonaje, iPrototype<Personaje>{
     
     private String nombre;
     private int vida;
@@ -49,6 +50,16 @@ public class Personaje implements iPersonaje{
 
     @Override
     public int aumentarNivel(int nivel) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public Personaje clone() {
+        return new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, apariencias, armas, hechizos);
+    }
+
+    @Override
+    public Personaje deepClone() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -131,10 +142,7 @@ public class Personaje implements iPersonaje{
 
     public void setHechizos(ArrayList<Arma> hechizos) {
         this.hechizos = hechizos;
-    }
-    
-    
-    
+    } 
     // </editor-fold>
     
     public static class PersonajeBuilder { //Builder de personaje
