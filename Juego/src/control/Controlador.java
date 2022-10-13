@@ -5,14 +5,14 @@
 package control;
 
 // import de la libreria
-
 import Juego.Armas.Arma;
+import Libreria.Juego.Juego;
+
 import Juego.Personaje.Categoria;
 import Juego.Personaje.Personaje;
 import Juego.Personaje.SubCategoria;
-import Libreria.Juego.Jugador;
 import java.util.ArrayList;
-import Libreria.Juego.Juego;
+
 
 /**
  *
