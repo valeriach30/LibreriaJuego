@@ -14,12 +14,12 @@ import java.util.ArrayList;
  */
 public class Arma implements iPrototype<Arma> {
 
-    String name;
-    int reach;
-    int damage;
-    int range;
-    int level;
-    ArrayList<String> images;
+    private String name;
+    private int reach; // Alcance del ataque
+    private int damage;
+    private int range; // Area de influencia
+    private int level;
+    private ArrayList<String> images;
 
     public Arma(String name, int reach, int damage, int range, int level, ArrayList<String> images) {
         this.name = name;
@@ -101,12 +101,12 @@ public class Arma implements iPrototype<Arma> {
     
     public static class ArmaBuilder {
 
-        String name;
-        int reach;
-        int damage;
-        int range;
-        int level;
-        ArrayList<String> imagenes;
+        private String name;
+        private int reach;
+        private int damage;
+        private int range;
+        private int level;
+        private ArrayList<String> imagenes;
 
         public ArmaBuilder() {
 
@@ -145,7 +145,7 @@ public class Arma implements iPrototype<Arma> {
             return this;
         }
 
-        Arma build() {
+        public Arma build() {
             return new Arma(name, reach, damage, level, range, imagenes);
         }
 
