@@ -14,25 +14,25 @@ import java.util.HashMap;
  */
 public class PersonajePrototypeFactory {
     
-    private static HashMap<Personaje, iPrototype> prototypes = new HashMap<>();
+    private static HashMap<String, iPrototype> prototypes = new HashMap<>();
     
-    public static iPrototype getPrototypeDeep(Personaje pj){ // Crea copias identicas pero con atributos individuales
-        if (pj != null){
-            return prototypes.get(pj).deepClone();
+    public static iPrototype getPrototypeDeep(String nombrePj){ // Crea copias identicas pero con atributos individuales
+        if (nombrePj != null){
+            return prototypes.get(nombrePj).deepClone();
         }
         return null;
     }
     
-    public static iPrototype getPrototypeClone(Personaje pj){ // Crea copias identicas
-        if (pj != null){
-            return prototypes.get(pj).clone();
+    public static iPrototype getPrototypeClone(String nombrePj){ // Crea copias identicas
+        if (nombrePj != null){
+            return prototypes.get(nombrePj).clone();
         }
         return null;
     }
     
-    public static void addPrototype(Personaje pj, iPrototype prototype){
-        if (pj != null && prototypes != null){
-            prototypes.put(pj, prototype);
+    public static void addPrototype(String nombrePj, iPrototype prototype){
+        if (nombrePj != null && prototypes != null){
+            prototypes.put(nombrePj, prototype);
         }
     }
 }
