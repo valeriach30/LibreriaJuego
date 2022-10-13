@@ -16,12 +16,20 @@ public class PersonajePrototypeFactory {
     
     private static HashMap<Personaje, iPrototype> prototypes = new HashMap<>();
     
-    public static iPrototype getPrototype(Personaje pj){
+    public static iPrototype getPrototypeDeep(Personaje pj){ // Crea copias identicas pero con atributos individuales
         if (pj != null){
             return prototypes.get(pj).deepClone();
         }
         return null;
     }
+    
+    public static iPrototype getPrototypeClone(Personaje pj){ // Crea copias identicas
+        if (pj != null){
+            return prototypes.get(pj).clone();
+        }
+        return null;
+    }
+    
     public static void addPrototype(Personaje pj, iPrototype prototype){
         if (pj != null && prototypes != null){
             prototypes.put(pj, prototype);
