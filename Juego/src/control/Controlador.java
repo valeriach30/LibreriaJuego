@@ -38,7 +38,15 @@ public class Controlador {
             
         }else{
             Personaje nuevoP = new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo);
-            juegoV.getPersonajes().add(nuevoP);
+            
+            ArrayList<Personaje> array = new ArrayList<Personaje>();
+            if(juegoV.getPersonajes() != null){
+                for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+                    array.add(juegoV.getPersonajes().get(i));
+                }
+            }
+            array.add(nuevoP);
+            juegoV.setPersonajes(array);
         }
     }
     
@@ -101,18 +109,24 @@ public class Controlador {
     
     
     public String consultarPersonajes(){
-        // return juego.getPersonajes()
-        return "";
+        if(juegoV.getPersonajes() != null){
+            String texto = "";
+            for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+                texto += "/n" +juegoV.getPersonajes().get(i).toString();
+            }
+            return texto;
+        }
+        else{
+            return "No hay personajes";
+        }
     }
     
     public String consultarArma(){
-        // return juego.getArmas()
-        return "";
+        return juegoV.getArmas().toString();
     }
     
     public String consultarHabilidad(){
-        // return juego.getHabilidades()
-        return "";
+        return juegoV.getHabilidades().toString();
     }
     
     /* esta comentado solo paara que no salga error

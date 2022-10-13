@@ -84,6 +84,13 @@ public class Arma implements iPrototype<Arma> {
         return clone();
     }
 
+    @Override
+    public String toString() {
+        return "Nombre: " + name + "{ Alcance:" + reach + ", Daño: " + damage +
+        ", Rango: " + range + "\n, Apariencias: " + images.toString() + "}";
+    }
+
+    
     public static class ArmaBuilder {
 
         String name;

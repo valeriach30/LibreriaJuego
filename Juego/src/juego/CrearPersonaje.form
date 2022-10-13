@@ -466,7 +466,6 @@
               <Color blue="b9" green="b9" red="b9" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar Caracteristicas"/>
-            <Property name="actionCommand" type="java.lang.String" value="Agregar Caracteristicas"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarCaractActionPerformed"/>

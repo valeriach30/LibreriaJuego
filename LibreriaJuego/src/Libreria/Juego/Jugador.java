@@ -21,7 +21,7 @@ public class Jugador {
     ArrayList<Personaje> personajes;
 
     public Jugador(){
-        
+        this.personajes  = new ArrayList<Personaje>();
     }
     
     public Jugador(String nombre, String usuario, String contra, int edad, ArrayList<Personaje> personajes) {

@@ -20,7 +20,9 @@ public class Juego {
     ArrayList<Personaje> personajes;
     
     public Juego(){
-        
+        this.habilidades  = new ArrayList<Arma>();
+        this.armas  = new ArrayList<Arma>();
+        this.personajes  = new ArrayList<Personaje>();
     }
     
     public Juego(ArrayList<Jugador> jugadores) {
@@ -58,6 +60,5 @@ public class Juego {
     public void setPersonajes(ArrayList<Personaje> personajes) {
         this.personajes = personajes;
     }
-    
     
 }

@@ -75,6 +75,26 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public String toString() {
+        String texto =  "Nombre: " + nombre + "{ Vida:" + vida + ", Golpes por tiempo: " + golpesxtiempo +
+        ", Nivel: " + nivel + ", Campos: " + campos + ", Nivel de Aparicion: " + nivelAparicion + 
+        ", Costo: " + costo;
+        if(apariencias != null){
+            texto += "\n, Apariencias: " + apariencias.toString();
+        }
+        if(armas != null){
+            texto += "\n, Armas: " + armas.toString().toString();
+        }
+        if(hechizos != null){
+            texto += "\n, Habilidades: "+ hechizos.toString();
+        }
+        texto += "}";
+        
+        return texto;
+    }
+    
+    
     // <editor-fold defaultstate="collapsed" desc=" Getters and Setters ">    
     public String getNombre() {
         return nombre;
