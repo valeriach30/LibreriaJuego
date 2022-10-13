@@ -18,26 +18,26 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     private String nombre;
     private int vida;
     private int golpesxtiempo;
-    private int nivel;
+    private int nivel = 0;
     private int campos;
     private int nivelAparicion;
     private int costo;
+    private int reach = 1; // Alcance del ataque
+    private int damage;
+    private int range = 1; // Area de influecia
     private ArrayList <String> apariencias;
     private ArrayList <Arma> armas;
     private ArrayList <Arma> hechizos;
+    private String apariencia = apariencias.get(0);
 
-    public Personaje(String nombre, int vida, int golpesxtiempo, 
-            int nivel, int campos, int nivelAparicion, int costo, 
-            ArrayList<String> apariencias, ArrayList<Arma> armas, 
-            ArrayList<Arma> hechizos) {
-        
+    public Personaje(String nombre, int vida, int golpesxtiempo, int campos, int nivelAparicion, int costo, int damage, ArrayList<String> apariencias, ArrayList<Arma> armas, ArrayList<Arma> hechizos) {
         this.nombre = nombre;
         this.vida = vida;
         this.golpesxtiempo = golpesxtiempo;
-        this.nivel = nivel;
         this.campos = campos;
         this.nivelAparicion = nivelAparicion;
         this.costo = costo;
+        this.damage = damage;
         this.apariencias = apariencias;
         this.armas = armas;
         this.hechizos = hechizos;
@@ -56,23 +56,28 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     }
     
     @Override
-    public void atacar(String ataque) {
+    public void atacar(String ataque) { // Revisar jugabilidad
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int aumentarNivel(int nivel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int aumentarNivel(int nivel) { 
+        if ((nivel + 1) <= apariencias.size()){
+            nivel += 1; // Solo sube de nivel si le queda apariencias disponibles
+            apariencia = apariencias.get(nivel);
+            setApariencia(apariencia);
+        }
+        return nivel; // Si llega aca sin el if no sube de nivel
     }
     
     @Override
     public Personaje clone() {
-        return new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, apariencias, armas, hechizos);
+        return new Personaje(this.nombre, this.vida, this.golpesxtiempo, this.campos, this.nivelAparicion, this.costo, this.damage, this.apariencias, this.armas, this.hechizos);
     }
 
     @Override
     public Personaje deepClone() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
@@ -152,6 +157,39 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         this.costo = costo;
     }
 
+    public String getApariencia() {
+        return apariencia;
+    }
+
+    public void setApariencia(String apariencia) {
+        
+        this.apariencia = apariencia;
+    }
+
+    public int getReach() {
+        return reach;
+    }
+
+    public void setReach(int reach) {
+        this.reach = reach;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
+    }
+
     public ArrayList<String> getApariencias() {
         return apariencias;
     }
@@ -181,14 +219,18 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         private String nombre;
         private int vida;
         private int golpesxtiempo;
-        private int nivel;
+        private int nivel = 0;
         private int campos;
         private int nivelAparicion;
         private int costo;
+        private int reach = 1; // Alcance del ataque
+        private int damage;
+        private int range = 1; // Area de influecia
         private ArrayList <String> apariencias = new ArrayList<>();
         private ArrayList <Arma> armas = new ArrayList<>();
         private ArrayList <Arma> hechizos = new ArrayList<>();
-
+        private String apariencia = apariencias.get(0);
+        
         public void PersonajeBuilder(){}
         
         public PersonajeBuilder agregarArma(Arma arma){
@@ -208,13 +250,13 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         }   
         public PersonajeBuilder agregarApariencia(String imagen){
             if(imagen != null){
-               apariencias.add(imagen);
+               apariencias.add(imagen); 
                return this;
             }
             return null;
         } 
         public Personaje build(){
-            return new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, apariencias, armas, hechizos);
+            return new Personaje(nombre, vida, golpesxtiempo, campos, nivelAparicion, costo, damage, apariencias, armas, hechizos);
         } 
     }
     
