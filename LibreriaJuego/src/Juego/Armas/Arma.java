@@ -5,18 +5,20 @@
  */
 package Juego.Armas;
 
+import Juego.Prototype.iPrototype;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ray
  */
-public class Arma {
+public class Arma implements iPrototype<Arma> {
+
     String name;
     int reach;
     int damage;
     int range;
-    ArrayList<String> images; 
+    ArrayList<String> images;
 
     public Arma(String name, int reach, int damage, int range, ArrayList<String> images) {
         this.name = name;
@@ -65,6 +67,59 @@ public class Arma {
     public void setImages(ArrayList<String> images) {
         this.images = images;
     }
-    
-    
+
+    @Override
+    public Arma clone() {
+        return new Arma(name, reach, damage, range, images);
+    }
+
+    @Override
+    public Arma deepClone() {
+        return clone();
+    }
+
+    public static class ArmaBuilder {
+
+        String name;
+        int reach;
+        int damage;
+        int range;
+        ArrayList<String> imagenes;
+
+        public ArmaBuilder() {
+
+        }
+
+        public ArmaBuilder AgregarImagen(String imagen) {
+            if (imagen != null) {
+                imagenes.add(imagen);//quizas se tenga que cambiar esto
+            }
+            return this;
+        }
+
+        public ArmaBuilder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public ArmaBuilder setReach(int reach) {
+            this.reach = reach;
+            return this;
+        }
+
+        public ArmaBuilder setDamage(int damage) {
+            this.damage = damage;
+            return this;
+        }
+
+        public ArmaBuilder setRange(int range) {
+            this.range = range;
+            return this;
+        }
+
+        Arma build() {
+            return new Arma(name, reach, damage, range, imagenes);
+        }
+
+    }
 }

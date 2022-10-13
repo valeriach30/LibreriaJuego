@@ -5,6 +5,7 @@
  */
 package Juego.Personaje;
 
+import Juego.Prototype.iPrototype;
 import java.util.HashMap;
 
 /**
@@ -17,7 +18,7 @@ public class PersonajePrototypeFactory {
     
     public static iPrototype getPrototype(Personaje pj){
         if (pj != null){
-            return prototypes.get(pj).deepclone();
+            return prototypes.get(pj).deepClone();
         }
         return null;
     }

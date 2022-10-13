@@ -6,13 +6,14 @@
 package Juego.Personaje;
 
 import Juego.Armas.Arma;
+import Juego.Prototype.iPrototype;
 import java.util.ArrayList;
 
 /**
  *
  * @author fabri
  */
-public class Personaje implements iPersonaje{
+public class Personaje implements iPersonaje, iPrototype<Personaje>{
     
     private String nombre;
     private int vida;
@@ -21,11 +22,15 @@ public class Personaje implements iPersonaje{
     private int campos;
     private int nivelAparicion;
     private int costo;
-    private ArrayList <String> apariencias = new ArrayList<>();
-    private ArrayList <Arma> armas = new ArrayList<>();
-    private ArrayList <Arma> hechizos = new ArrayList<>();
+    private ArrayList <String> apariencias;
+    private ArrayList <Arma> armas;
+    private ArrayList <Arma> hechizos;
 
-    public Personaje(String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo) {
+    public Personaje(String nombre, int vida, int golpesxtiempo, 
+            int nivel, int campos, int nivelAparicion, int costo, 
+            ArrayList<String> apariencias, ArrayList<Arma> armas, 
+            ArrayList<Arma> hechizos) {
+        
         this.nombre = nombre;
         this.vida = vida;
         this.golpesxtiempo = golpesxtiempo;
@@ -33,6 +38,9 @@ public class Personaje implements iPersonaje{
         this.campos = campos;
         this.nivelAparicion = nivelAparicion;
         this.costo = costo;
+        this.apariencias = apariencias;
+        this.armas = armas;
+        this.hechizos = hechizos;
     }
 
     @Override
@@ -42,6 +50,16 @@ public class Personaje implements iPersonaje{
 
     @Override
     public int aumentarNivel(int nivel) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public Personaje clone() {
+        return new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, apariencias, armas, hechizos);
+    }
+
+    @Override
+    public Personaje deepClone() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -101,8 +119,71 @@ public class Personaje implements iPersonaje{
     public void setCosto(int costo) {
         this.costo = costo;
     }
+
+    public ArrayList<String> getApariencias() {
+        return apariencias;
+    }
+
+    public void setApariencias(ArrayList<String> apariencias) {
+        this.apariencias = apariencias;
+    }
+
+    public ArrayList<Arma> getArmas() {
+        return armas;
+    }
+
+    public void setArmas(ArrayList<Arma> armas) {
+        this.armas = armas;
+    }
+
+    public ArrayList<Arma> getHechizos() {
+        return hechizos;
+    }
+
+    public void setHechizos(ArrayList<Arma> hechizos) {
+        this.hechizos = hechizos;
+    } 
     // </editor-fold>
     
-    
+    public static class PersonajeBuilder { //Builder de personaje
+        private String nombre;
+        private int vida;
+        private int golpesxtiempo;
+        private int nivel;
+        private int campos;
+        private int nivelAparicion;
+        private int costo;
+        private ArrayList <String> apariencias = new ArrayList<>();
+        private ArrayList <Arma> armas = new ArrayList<>();
+        private ArrayList <Arma> hechizos = new ArrayList<>();
+
+        public void PersonajeBuilder(){}
+        
+        public PersonajeBuilder agregarArma(Arma arma){
+            if(arma != null){
+               armas.add(arma);
+               return this;
+            }
+            return null;
+        }   
+        public PersonajeBuilder agregarHabilidad(Arma hechizo){
+            if(hechizo != null){
+               hechizos.add(hechizo);
+               return this;
+            }
+            return null;
+
+        }   
+        public PersonajeBuilder agregarApariencia(String imagen){
+            if(imagen != null){
+               apariencias.add(imagen);
+               return this;
+            }
+            return null;
+        } 
+        public Personaje build(){
+            return new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, apariencias, armas, hechizos);
+        } 
+    }
     
 }

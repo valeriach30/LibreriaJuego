@@ -19,7 +19,6 @@ public class Jugador {
     String contra;
     int edad;
     ArrayList<Personaje> personajes;
-    ArrayList<Arma> armas;
 
     public Jugador(String nombre, String usuario, String contra, int edad, ArrayList<Personaje> personajes) {
         this.nombre = nombre;
