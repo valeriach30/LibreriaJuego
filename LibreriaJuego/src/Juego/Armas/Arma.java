@@ -12,12 +12,13 @@ import java.util.ArrayList;
  *
  * @author Ray
  */
-public class Arma implements iPrototype<Arma>{
+public class Arma implements iPrototype<Arma> {
+
     String name;
     int reach;
     int damage;
     int range;
-    ArrayList<String> images; 
+    ArrayList<String> images;
 
     public Arma(String name, int reach, int damage, int range, ArrayList<String> images) {
         this.name = name;
@@ -69,27 +70,28 @@ public class Arma implements iPrototype<Arma>{
 
     @Override
     public Arma clone() {
-        return new Arma(name,reach,damage,range,images);
+        return new Arma(name, reach, damage, range, images);
     }
 
     @Override
     public Arma deepClone() {
         return clone();
     }
-    
+
     public static class ArmaBuilder {
+
         String name;
         int reach;
         int damage;
         int range;
-        ArrayList<String> imagenes; 
+        ArrayList<String> imagenes;
 
-        public ArmaBuilder(){
+        public ArmaBuilder() {
 
         }
 
-        public ArmaBuilder AgregarImagen(String imagen){
-            if(imagen != null){
+        public ArmaBuilder AgregarImagen(String imagen) {
+            if (imagen != null) {
                 imagenes.add(imagen);//quizas se tenga que cambiar esto
             }
             return this;
@@ -115,7 +117,7 @@ public class Arma implements iPrototype<Arma>{
             return this;
         }
 
-        Arma build(){
+        Arma build() {
             return new Arma(name, reach, damage, range, imagenes);
         }
 

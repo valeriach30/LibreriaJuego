@@ -158,12 +158,32 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         private ArrayList <Arma> hechizos = new ArrayList<>();
 
         public void PersonajeBuilder(){}
-        public PersonajeBuilder agregarArma(){return null;} //No se como se deberia hacer esto aca    
-        public PersonajeBuilder agregarHabilidad(){return null;} //No se como se deberia hacer esto aca    
-        public PersonajeBuilder agregarApariencia(){return null;} //No creo que esto deba ir aca
+        
+        public PersonajeBuilder agregarArma(Arma arma){
+            if(arma != null){
+               armas.add(arma);
+               return this;
+            }
+            return null;
+        }   
+        public PersonajeBuilder agregarHabilidad(Arma hechizo){
+            if(hechizo != null){
+               hechizos.add(hechizo);
+               return this;
+            }
+            return null;
+
+        }   
+        public PersonajeBuilder agregarApariencia(String imagen){
+            if(imagen != null){
+               apariencias.add(imagen);
+               return this;
+            }
+            return null;
+        } 
         public Personaje build(){
             return new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, apariencias, armas, hechizos);
-        } // Creo que debe retornar PJ no?
+        } 
     }
     
 }
