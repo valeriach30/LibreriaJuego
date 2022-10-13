@@ -42,7 +42,19 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         this.armas = armas;
         this.hechizos = hechizos;
     }
-
+    
+    public Personaje(String nombre, int vida, int golpesxtiempo, 
+            int nivel, int campos, int nivelAparicion, int costo) {
+        
+        this.nombre = nombre;
+        this.vida = vida;
+        this.golpesxtiempo = golpesxtiempo;
+        this.nivel = nivel;
+        this.campos = campos;
+        this.nivelAparicion = nivelAparicion;
+        this.costo = costo;
+    }
+    
     @Override
     public void atacar(String ataque) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

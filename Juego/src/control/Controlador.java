@@ -28,8 +28,10 @@ public class Controlador {
     // ------------------------> Agregaciones Juego <------------------------
     
     // Retorna el Personaje Agregado
-    public void agregarPersonaje(String nombrePersonaje, int vidaPer, int GxT, int camposV, int nivelV, int costoV, String categoriaV){
+    public void agregarPersonaje(String nombre, int vida, int golpesxtiempo, 
+    int nivel, int campos, int nivelAparicion, int costo, String categoria){
         
+        Personaje nuevoP = new Personaje(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo);
     }
     
     // Agrega un arma al juego
@@ -48,11 +50,7 @@ public class Controlador {
     
     // ------------------------> Imagenes <------------------------
     
-    // Agrega una image a un personaje
-    public void agregarImagen(String imagen, String nombrePersonaje) {
-        
-    }
-    
+   
     // Agrega imagen a un arma
     public void agregarImagenArma(String arma, String imagenUrl) {
 
@@ -67,7 +65,7 @@ public class Controlador {
     // ------------------------> Clonar <------------------------
     
     // Retorna los Personajes Agregados, se usa el clone del factory
-    public void clonarPersonaje(String nombrePersonaje, int vidaPer, int GxT, int camposV, int nivelV, int costoV, String categoriaV, int cantidadV) {
+    public void clonarPersonaje(String nombrePersonaje, int vidaPer, int GxT, int camposV, int nivelV, int costoV, int cantidadV, String categoriaV, int cantidadV1) {
 
     }
     
@@ -75,16 +73,13 @@ public class Controlador {
     public void clonarArma(String nombreArma, int alcanceV, int danhoV, int nivelV, int rangoV, int cantidadV) {
     }
 
-    // ------------------------> Agregaciones Personaje <------------------------
+    // ------------------------> Build Personaje <------------------------
     
-    // Agrega un arma a un personaje 
-    public void agregarArmaPersonaje(String arma, String nombrePersonaje) {
-
-    }
-    
-    // Agrega una habilidad a un personaje
-    public void agregarHabilidadPersonaje(String habilidad, String nombrePersonaje){
+    public void buildPersonaje(String armasV, String habilidadesV, String imagen, String nombrePersonaje) {
         
+        // Buscar el arma y la habilidad
+        // Usar builder, falta agregar aarma y habilidad
+        Personaje.PersonajeBuilder p = new Personaje.PersonajeBuilder().agregarApariencia(imagen);
     }
     
     // ------------------------> Agregaciones Jugador <------------------------
@@ -163,6 +158,8 @@ public class Controlador {
     public String Jugar(){
         return "";
     }
+
+    
 
    
     

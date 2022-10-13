@@ -27,7 +27,13 @@ public class Arma implements iPrototype<Arma> {
         this.range = range;
         this.images = images;
     }
-
+    public Arma(String name, int reach, int damage, int range) {
+        this.name = name;
+        this.reach = reach;
+        this.damage = damage;
+        this.range = range;
+    }
+    
     public String getName() {
         return name;
     }
