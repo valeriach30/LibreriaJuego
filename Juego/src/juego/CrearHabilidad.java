@@ -5,6 +5,7 @@
 package juego;
 
 import control.Controlador;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,6 +26,16 @@ public class CrearHabilidad extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         controlHabilidad = elControl;
+        
+        // Cargar nombres de habilidades
+        ArrayList<String> nombresHabilidades = controlHabilidad.getNombresHabilidades();
+        if(nombresHabilidades != null){
+            for(int i = 0; i < nombresHabilidades.size(); i++){
+                habilidades.addItem(nombresHabilidades.get(i));
+            }   
+        }
+        else{
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -197,7 +208,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
         habilidades.setBackground(new java.awt.Color(0, 102, 102));
         habilidades.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         habilidades.setForeground(new java.awt.Color(185, 185, 185));
-        habilidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        habilidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
         jPanel1.add(habilidades);
         habilidades.setBounds(280, 260, 150, 40);
 

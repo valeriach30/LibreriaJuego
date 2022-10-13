@@ -48,6 +48,8 @@ public class Juego extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         btnJugar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        btnCategorias = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +61,7 @@ public class Juego extends javax.swing.JFrame {
         lblTitulo.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 72)); // NOI18N
         lblTitulo.setText("Implentacion Juego");
         jPanel1.add(lblTitulo);
-        lblTitulo.setBounds(280, 20, 430, 84);
+        lblTitulo.setBounds(360, 40, 430, 84);
 
         btnJugador.setBackground(new java.awt.Color(255, 255, 255));
         btnJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/personaje.gif"))); // NOI18N
@@ -69,7 +71,7 @@ public class Juego extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnJugador);
-        btnJugador.setBounds(40, 150, 190, 180);
+        btnJugador.setBounds(30, 160, 190, 180);
 
         btnCrearPersonaje.setBackground(new java.awt.Color(255, 255, 255));
         btnCrearPersonaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/personaje.jpg"))); // NOI18N
@@ -79,17 +81,17 @@ public class Juego extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCrearPersonaje);
-        btnCrearPersonaje.setBounds(270, 150, 190, 180);
+        btnCrearPersonaje.setBounds(250, 160, 190, 180);
 
         jLabel4.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 36)); // NOI18N
         jLabel4.setText("Consultar Armas");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(280, 630, 190, 50);
+        jLabel4.setBounds(380, 620, 190, 50);
 
         jLabel5.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 36)); // NOI18N
-        jLabel5.setText("Comenzar a Jugar");
+        jLabel5.setText("Crear Categorias");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(740, 630, 190, 50);
+        jLabel5.setBounds(910, 350, 190, 50);
 
         btnConsultarHab.setBackground(new java.awt.Color(255, 255, 255));
         btnConsultarHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/habilidad.gif"))); // NOI18N
@@ -99,12 +101,12 @@ public class Juego extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnConsultarHab);
-        btnConsultarHab.setBounds(510, 440, 190, 180);
+        btnConsultarHab.setBounds(600, 430, 190, 180);
 
         jLabel10.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 36)); // NOI18N
         jLabel10.setText("Crear Jugador");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(40, 340, 160, 40);
+        jLabel10.setBounds(30, 350, 160, 40);
 
         btnCrearArma.setBackground(new java.awt.Color(255, 255, 255));
         btnCrearArma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arm.png"))); // NOI18N
@@ -114,12 +116,12 @@ public class Juego extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCrearArma);
-        btnCrearArma.setBounds(510, 150, 190, 180);
+        btnCrearArma.setBounds(470, 160, 190, 180);
 
         jLabel18.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 36)); // NOI18N
         jLabel18.setText("Crear Personaje");
         jPanel1.add(jLabel18);
-        jLabel18.setBounds(270, 340, 190, 50);
+        jLabel18.setBounds(250, 350, 190, 50);
 
         btnCrearHab.setBackground(new java.awt.Color(255, 255, 255));
         btnCrearHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/spell_1.gif"))); // NOI18N
@@ -129,12 +131,12 @@ public class Juego extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCrearHab);
-        btnCrearHab.setBounds(730, 150, 190, 180);
+        btnCrearHab.setBounds(690, 160, 190, 180);
 
         jLabel19.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 36)); // NOI18N
         jLabel19.setText("Crear Armas");
         jPanel1.add(jLabel19);
-        jLabel19.setBounds(510, 340, 190, 50);
+        jLabel19.setBounds(470, 350, 190, 50);
 
         btnConsultarPer.setBackground(new java.awt.Color(255, 255, 255));
         btnConsultarPer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kirby.gif"))); // NOI18N
@@ -144,12 +146,12 @@ public class Juego extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnConsultarPer);
-        btnConsultarPer.setBounds(40, 440, 190, 180);
+        btnConsultarPer.setBounds(140, 430, 190, 180);
 
         jLabel20.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 36)); // NOI18N
         jLabel20.setText("Crear Habilidades");
         jPanel1.add(jLabel20);
-        jLabel20.setBounds(730, 340, 190, 50);
+        jLabel20.setBounds(690, 350, 190, 50);
 
         btnConsultarArmas.setBackground(new java.awt.Color(255, 255, 255));
         btnConsultarArmas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arm.gif"))); // NOI18N
@@ -159,12 +161,12 @@ public class Juego extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnConsultarArmas);
-        btnConsultarArmas.setBounds(270, 440, 200, 180);
+        btnConsultarArmas.setBounds(370, 430, 200, 180);
 
         jLabel21.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 36)); // NOI18N
         jLabel21.setText("Consultar Personajes");
         jPanel1.add(jLabel21);
-        jLabel21.setBounds(30, 630, 240, 50);
+        jLabel21.setBounds(130, 620, 240, 50);
 
         btnJugar.setBackground(new java.awt.Color(255, 255, 255));
         btnJugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fight.gif"))); // NOI18N
@@ -174,24 +176,41 @@ public class Juego extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnJugar);
-        btnJugar.setBounds(740, 440, 190, 180);
+        btnJugar.setBounds(830, 430, 190, 180);
 
         jLabel6.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 36)); // NOI18N
         jLabel6.setText("Consultar Habilidades");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(490, 630, 240, 50);
+        jLabel6.setBounds(580, 620, 240, 50);
+
+        btnCategorias.setBackground(new java.awt.Color(255, 255, 255));
+        btnCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/categorias.gif"))); // NOI18N
+        btnCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCategoriasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCategorias);
+        btnCategorias.setBounds(910, 160, 190, 180);
+
+        jLabel7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 36)); // NOI18N
+        jLabel7.setText("Comenzar a Jugar");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(830, 620, 190, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 940, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,6 +256,10 @@ public class Juego extends javax.swing.JFrame {
         pant1.setVisible(true);   
     }//GEN-LAST:event_btnJugarActionPerformed
 
+    private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCategoriasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,6 +297,7 @@ public class Juego extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCategorias;
     private javax.swing.JButton btnConsultarArmas;
     private javax.swing.JButton btnConsultarHab;
     private javax.swing.JButton btnConsultarPer;
@@ -290,6 +314,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables

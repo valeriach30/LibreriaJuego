@@ -89,13 +89,14 @@ public class CrearPersonaje extends javax.swing.JDialog {
         lblTitulo10 = new javax.swing.JLabel();
         nombretxt = new javax.swing.JTextField();
         btnAgregarCaract = new javax.swing.JButton();
-        lblTitulo11 = new javax.swing.JLabel();
         vida = new javax.swing.JSpinner();
         lblTitulo12 = new javax.swing.JLabel();
         lblTitulo13 = new javax.swing.JLabel();
         armas = new javax.swing.JComboBox<>();
         lblTitulo14 = new javax.swing.JLabel();
         nivel2 = new javax.swing.JSpinner();
+        lblTitulo15 = new javax.swing.JLabel();
+        subcategoria = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -118,7 +119,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
             }
         });
         jPanel1.add(urltxt);
-        urltxt.setBounds(370, 550, 150, 35);
+        urltxt.setBounds(790, 380, 150, 35);
 
         gxp.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(gxp);
@@ -155,7 +156,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
         cantidad.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         cantidad.setValue(1);
         jPanel1.add(cantidad);
-        cantidad.setBounds(190, 630, 64, 30);
+        cantidad.setBounds(310, 630, 64, 30);
 
         nivel.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(nivel);
@@ -199,13 +200,14 @@ public class CrearPersonaje extends javax.swing.JDialog {
         lblTitulo7.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo7.setText("Seleccione el personaje al que desea agregarle algo");
         jPanel1.add(lblTitulo7);
-        lblTitulo7.setBounds(370, 180, 350, 40);
+        lblTitulo7.setBounds(470, 180, 350, 40);
 
         habilidades.setBackground(new java.awt.Color(71, 0, 71));
         habilidades.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         habilidades.setForeground(new java.awt.Color(185, 185, 185));
+        habilidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
         jPanel1.add(habilidades);
-        habilidades.setBounds(370, 440, 150, 40);
+        habilidades.setBounds(790, 330, 150, 40);
 
         lblTitulo8.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo8.setForeground(new java.awt.Color(185, 185, 185));
@@ -216,21 +218,22 @@ public class CrearPersonaje extends javax.swing.JDialog {
         personajes.setBackground(new java.awt.Color(71, 0, 71));
         personajes.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         personajes.setForeground(new java.awt.Color(185, 185, 185));
+        personajes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno" }));
         jPanel1.add(personajes);
-        personajes.setBounds(370, 220, 150, 40);
+        personajes.setBounds(470, 220, 150, 40);
 
         lblTitulo9.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo9.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo9.setText("Ingrese el url de la imagen que desea agregar");
         jPanel1.add(lblTitulo9);
-        lblTitulo9.setBounds(370, 500, 320, 40);
+        lblTitulo9.setBounds(470, 380, 320, 40);
 
         categorias.setBackground(new java.awt.Color(71, 0, 71));
         categorias.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         categorias.setForeground(new java.awt.Color(185, 185, 185));
         categorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
         jPanel1.add(categorias);
-        categorias.setBounds(20, 560, 150, 40);
+        categorias.setBounds(310, 510, 150, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/personaje.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -240,7 +243,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
         lblTitulo10.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo10.setText("Seleccione la habilidad que desea agregar");
         jPanel1.add(lblTitulo10);
-        lblTitulo10.setBounds(370, 390, 290, 40);
+        lblTitulo10.setBounds(470, 330, 290, 40);
 
         nombretxt.setBackground(new java.awt.Color(255, 255, 255));
         nombretxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -264,13 +267,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnAgregarCaract);
-        btnAgregarCaract.setBounds(320, 690, 200, 40);
-
-        lblTitulo11.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        lblTitulo11.setForeground(new java.awt.Color(185, 185, 185));
-        lblTitulo11.setText("de este tipo");
-        jPanel1.add(lblTitulo11);
-        lblTitulo11.setBounds(20, 640, 160, 40);
+        btnAgregarCaract.setBounds(470, 430, 200, 40);
 
         vida.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(vida);
@@ -278,21 +275,22 @@ public class CrearPersonaje extends javax.swing.JDialog {
 
         lblTitulo12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo12.setForeground(new java.awt.Color(185, 185, 185));
-        lblTitulo12.setText("Cantidad de personajes");
+        lblTitulo12.setText("Cantidad de personajes de este tipo");
         jPanel1.add(lblTitulo12);
-        lblTitulo12.setBounds(20, 610, 160, 40);
+        lblTitulo12.setBounds(20, 630, 250, 40);
 
         lblTitulo13.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo13.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo13.setText("Seleccione el arma  que desea agregar");
         jPanel1.add(lblTitulo13);
-        lblTitulo13.setBounds(370, 270, 270, 40);
+        lblTitulo13.setBounds(470, 270, 270, 40);
 
         armas.setBackground(new java.awt.Color(71, 0, 71));
         armas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         armas.setForeground(new java.awt.Color(185, 185, 185));
+        armas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
         jPanel1.add(armas);
-        armas.setBounds(370, 330, 150, 40);
+        armas.setBounds(790, 280, 150, 40);
 
         lblTitulo14.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo14.setForeground(new java.awt.Color(185, 185, 185));
@@ -305,11 +303,24 @@ public class CrearPersonaje extends javax.swing.JDialog {
         jPanel1.add(nivel2);
         nivel2.setBounds(150, 470, 64, 30);
 
+        lblTitulo15.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo15.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo15.setText("Seleccione la subcategoria del personaje");
+        jPanel1.add(lblTitulo15);
+        lblTitulo15.setBounds(20, 570, 290, 40);
+
+        subcategoria.setBackground(new java.awt.Color(71, 0, 71));
+        subcategoria.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        subcategoria.setForeground(new java.awt.Color(185, 185, 185));
+        subcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
+        jPanel1.add(subcategoria);
+        subcategoria.setBounds(310, 570, 150, 40);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,10 +437,10 @@ public class CrearPersonaje extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
     private javax.swing.JLabel lblTitulo10;
-    private javax.swing.JLabel lblTitulo11;
     private javax.swing.JLabel lblTitulo12;
     private javax.swing.JLabel lblTitulo13;
     private javax.swing.JLabel lblTitulo14;
+    private javax.swing.JLabel lblTitulo15;
     private javax.swing.JLabel lblTitulo2;
     private javax.swing.JLabel lblTitulo4;
     private javax.swing.JLabel lblTitulo5;
@@ -441,6 +452,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
     private javax.swing.JSpinner nivel2;
     private javax.swing.JTextField nombretxt;
     private javax.swing.JComboBox<String> personajes;
+    private javax.swing.JComboBox<String> subcategoria;
     private javax.swing.JTextField urltxt;
     private javax.swing.JSpinner vida;
     // End of variables declaration//GEN-END:variables

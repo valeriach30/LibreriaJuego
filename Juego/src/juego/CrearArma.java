@@ -5,6 +5,7 @@
 package juego;
 
 import control.Controlador;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,6 +27,16 @@ public class CrearArma extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         controlArmas = elControl;
+        
+        // Cargar Nombres de Armas
+        ArrayList<String> nombresArmas = controlArmas.getNombresArmas();
+        if(nombresArmas != null){
+            for(int i = 0; i < nombresArmas.size(); i++){
+                armas.addItem(nombresArmas.get(i));
+            }   
+        }
+        else{
+        }
     }
     
     /**
@@ -194,7 +205,7 @@ public class CrearArma extends javax.swing.JDialog {
         armas.setBackground(new java.awt.Color(153, 0, 153));
         armas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         armas.setForeground(new java.awt.Color(185, 185, 185));
-        armas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        armas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
         jPanel1.add(armas);
         armas.setBounds(280, 240, 150, 40);
 
