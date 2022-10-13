@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Juego.Personaje;
+package Juego.Prototype;
 
 /**
  *
  * @author fabri
  */
-public interface iPrototype {
-    
-    public iPrototype clone();
-    public iPrototype deepclone();
+public interface iPrototype<T extends iPrototype> extends Cloneable{
+    public T clone();
+    public T deepClone();
 }

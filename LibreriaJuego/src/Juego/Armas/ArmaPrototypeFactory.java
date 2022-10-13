@@ -5,7 +5,7 @@
  */
 package Juego.Armas;
 
-import Juego.Personaje.iPrototype;
+import Juego.Prototype.iPrototype;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,14 +14,21 @@ import java.util.HashMap;
  * @author Ray
  */
 public class ArmaPrototypeFactory {
-    HashMap<Arma, iPrototype> prototypes;
+    private static HashMap<Arma, iPrototype> prototypes = new HashMap<>();
     
-    iPrototype getProtype(Arma arm){
-        
-        return new iPrototype();
+    public static iPrototype getProtype(Arma arm){
+        if(arm != null){
+            return prototypes.get(arm).deepClone();
+        }
+        return null;
     }
     
-    void addProtype(Arma arm, iPrototype prototype){
+    public static void addProtype(Arma arm, iPrototype prototype){
+        if(arm != null && prototype != null){
+            prototypes.put(arm, prototype);
+        }
         
     }
+    
+    
 }
