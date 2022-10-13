@@ -48,8 +48,6 @@ public class CrearHabilidad extends javax.swing.JDialog {
         nivel = new javax.swing.JSpinner();
         lblTitulo4 = new javax.swing.JLabel();
         rango = new javax.swing.JSpinner();
-        lblTitulo8 = new javax.swing.JLabel();
-        categorias = new javax.swing.JComboBox<>();
         lblTitulo9 = new javax.swing.JLabel();
         urltxt = new javax.swing.JTextField();
         btnAgregarImagen = new javax.swing.JButton();
@@ -81,7 +79,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
         btnCrear.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnCrear.setText("Crear");
         jPanel1.add(btnCrear);
-        btnCrear.setBounds(20, 510, 150, 40);
+        btnCrear.setBounds(10, 420, 150, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/spell_1.gif"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -127,18 +125,6 @@ public class CrearHabilidad extends javax.swing.JDialog {
         jPanel1.add(rango);
         rango.setBounds(150, 350, 64, 30);
 
-        lblTitulo8.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        lblTitulo8.setForeground(new java.awt.Color(185, 185, 185));
-        lblTitulo8.setText("Seleccione la categoria del arma");
-        jPanel1.add(lblTitulo8);
-        lblTitulo8.setBounds(20, 400, 290, 40);
-
-        categorias.setBackground(new java.awt.Color(0, 102, 102));
-        categorias.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        categorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(categorias);
-        categorias.setBounds(20, 450, 150, 40);
-
         lblTitulo9.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo9.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo9.setText("Ingrese el url de la imagen que desea agregar");
@@ -177,9 +163,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -243,7 +227,6 @@ public class CrearHabilidad extends javax.swing.JDialog {
     private javax.swing.JSpinner alcance;
     private javax.swing.JButton btnAgregarImagen;
     private javax.swing.JButton btnCrear;
-    private javax.swing.JComboBox<String> categorias;
     private javax.swing.JSpinner danho;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -252,7 +235,6 @@ public class CrearHabilidad extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitulo2;
     private javax.swing.JLabel lblTitulo4;
     private javax.swing.JLabel lblTitulo6;
-    private javax.swing.JLabel lblTitulo8;
     private javax.swing.JLabel lblTitulo9;
     private javax.swing.JSpinner nivel;
     private javax.swing.JTextField nombretxt1;
