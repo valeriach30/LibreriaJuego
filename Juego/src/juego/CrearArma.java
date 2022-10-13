@@ -11,7 +11,8 @@ import control.Controlador;
  * @author vchin
  */
 public class CrearArma extends javax.swing.JDialog {
-
+    
+    
     private Controlador controlArmas;
     /**
      * Creates new form CrearArma
@@ -56,6 +57,8 @@ public class CrearArma extends javax.swing.JDialog {
         lblTitulo11 = new javax.swing.JLabel();
         cantidad = new javax.swing.JSpinner();
         lblTitulo13 = new javax.swing.JLabel();
+        armas = new javax.swing.JComboBox<>();
+        lblTitulo7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -84,6 +87,11 @@ public class CrearArma extends javax.swing.JDialog {
         btnCrear.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnCrear.setForeground(new java.awt.Color(185, 185, 185));
         btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCrear);
         btnCrear.setBounds(10, 520, 150, 40);
 
@@ -135,7 +143,7 @@ public class CrearArma extends javax.swing.JDialog {
         lblTitulo9.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo9.setText("Ingrese el url de la imagen que desea agregar");
         jPanel1.add(lblTitulo9);
-        lblTitulo9.setBounds(280, 200, 320, 40);
+        lblTitulo9.setBounds(280, 290, 320, 40);
 
         urltxt.setBackground(new java.awt.Color(255, 255, 255));
         urltxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -147,7 +155,7 @@ public class CrearArma extends javax.swing.JDialog {
             }
         });
         jPanel1.add(urltxt);
-        urltxt.setBounds(280, 250, 150, 35);
+        urltxt.setBounds(280, 340, 150, 35);
 
         btnAgregarImagen.setBackground(new java.awt.Color(58, 0, 58));
         btnAgregarImagen.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -159,7 +167,7 @@ public class CrearArma extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnAgregarImagen);
-        btnAgregarImagen.setBounds(450, 250, 140, 40);
+        btnAgregarImagen.setBounds(450, 340, 140, 40);
 
         lblTitulo12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo12.setForeground(new java.awt.Color(185, 185, 185));
@@ -182,6 +190,19 @@ public class CrearArma extends javax.swing.JDialog {
         lblTitulo13.setText("armas de ");
         jPanel1.add(lblTitulo13);
         lblTitulo13.setBounds(10, 430, 160, 40);
+
+        armas.setBackground(new java.awt.Color(153, 0, 153));
+        armas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        armas.setForeground(new java.awt.Color(185, 185, 185));
+        armas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(armas);
+        armas.setBounds(280, 240, 150, 40);
+
+        lblTitulo7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo7.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo7.setText("Seleccione el arma al que desea agregarle imagen");
+        jPanel1.add(lblTitulo7);
+        lblTitulo7.setBounds(280, 200, 350, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,8 +227,28 @@ public class CrearArma extends javax.swing.JDialog {
     }//GEN-LAST:event_urltxtActionPerformed
 
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
-        // TODO add your handling code here:
+        String arma = armas.getSelectedItem().toString();
+        String imagenUrl = urltxt.getText();
+        controlArmas.agregarImagenArma(arma, imagenUrl);
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
+
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        String nombreArma = nombretxt1.getText();
+        int alcanceV = (int) alcance.getValue();
+        int danhoV = (int) danho.getValue();
+        int nivelV = (int) nivel.getValue();
+        int rangoV = (int) rango.getValue();
+        int cantidadV = (int) cantidad.getValue();
+        
+        if(cantidadV > 1){
+            controlArmas.clonarArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV);
+        }
+        else{
+            controlArmas.agregarArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV);
+        }
+        
+        //this.repaint();
+    }//GEN-LAST:event_btnCrearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,6 +294,7 @@ public class CrearArma extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner alcance;
+    private javax.swing.JComboBox<String> armas;
     private javax.swing.JButton btnAgregarImagen;
     private javax.swing.JButton btnCrear;
     private javax.swing.JSpinner cantidad;
@@ -267,6 +309,7 @@ public class CrearArma extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitulo2;
     private javax.swing.JLabel lblTitulo4;
     private javax.swing.JLabel lblTitulo6;
+    private javax.swing.JLabel lblTitulo7;
     private javax.swing.JLabel lblTitulo9;
     private javax.swing.JSpinner nivel;
     private javax.swing.JTextField nombretxt1;

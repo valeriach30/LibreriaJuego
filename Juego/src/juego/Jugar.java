@@ -48,7 +48,7 @@ public class Jugar extends javax.swing.JDialog {
         arma2 = new javax.swing.JComboBox<>();
         lblTitulo8 = new javax.swing.JLabel();
         lblTitulo9 = new javax.swing.JLabel();
-        btnAgregarImagen = new javax.swing.JButton();
+        btnAtacar2 = new javax.swing.JButton();
         personaje1 = new javax.swing.JComboBox<>();
         personaje2 = new javax.swing.JComboBox<>();
         lblTitulo10 = new javax.swing.JLabel();
@@ -57,6 +57,8 @@ public class Jugar extends javax.swing.JDialog {
         fotopersonaje1 = new javax.swing.JLabel();
         fotopersonaje2 = new javax.swing.JLabel();
         fotoarma2 = new javax.swing.JLabel();
+        btnAgregarImagen1 = new javax.swing.JButton();
+        btnAtacar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -116,17 +118,17 @@ public class Jugar extends javax.swing.JDialog {
         jPanel1.add(lblTitulo9);
         lblTitulo9.setBounds(540, 470, 180, 40);
 
-        btnAgregarImagen.setBackground(new java.awt.Color(204, 128, 6));
-        btnAgregarImagen.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        btnAgregarImagen.setForeground(new java.awt.Color(102, 102, 102));
-        btnAgregarImagen.setText("Seleccionar Personajes");
-        btnAgregarImagen.addActionListener(new java.awt.event.ActionListener() {
+        btnAtacar2.setBackground(new java.awt.Color(0, 83, 196));
+        btnAtacar2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnAtacar2.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtacar2.setText("Atacar");
+        btnAtacar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarImagenActionPerformed(evt);
+                btnAtacar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregarImagen);
-        btnAgregarImagen.setBounds(20, 240, 200, 40);
+        jPanel1.add(btnAtacar2);
+        btnAtacar2.setBounds(850, 560, 90, 40);
 
         personaje1.setBackground(new java.awt.Color(153, 0, 25));
         personaje1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -168,12 +170,36 @@ public class Jugar extends javax.swing.JDialog {
         jPanel1.add(fotoarma2);
         fotoarma2.setBounds(730, 530, 150, 110);
 
+        btnAgregarImagen1.setBackground(new java.awt.Color(204, 128, 6));
+        btnAgregarImagen1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnAgregarImagen1.setForeground(new java.awt.Color(102, 102, 102));
+        btnAgregarImagen1.setText("Seleccionar Personajes");
+        btnAgregarImagen1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarImagen1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregarImagen1);
+        btnAgregarImagen1.setBounds(20, 240, 200, 40);
+
+        btnAtacar1.setBackground(new java.awt.Color(153, 0, 25));
+        btnAtacar1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnAtacar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtacar1.setText("Atacar");
+        btnAtacar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtacar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAtacar1);
+        btnAtacar1.setBounds(850, 370, 90, 40);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 962, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -184,9 +210,24 @@ public class Jugar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
+    private void btnAtacar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacar2ActionPerformed
+        String nombrepersonaje1 = personaje1.getSelectedItem().toString();
+        String nombreArma1 = arma1.getSelectedItem().toString();
+        String nombrePersonaje2 = personaje2.getSelectedItem().toString();
+        String nombreArma2 = arma2.getSelectedItem().toString();
+        
+        // Mostrar las imagenes de los personajes
+        
+        
+    }//GEN-LAST:event_btnAtacar2ActionPerformed
+
+    private void btnAgregarImagen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagen1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarImagenActionPerformed
+    }//GEN-LAST:event_btnAgregarImagen1ActionPerformed
+
+    private void btnAtacar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtacar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,7 +274,9 @@ public class Jugar extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> arma1;
     private javax.swing.JComboBox<String> arma2;
-    private javax.swing.JButton btnAgregarImagen;
+    private javax.swing.JButton btnAgregarImagen1;
+    private javax.swing.JButton btnAtacar1;
+    private javax.swing.JButton btnAtacar2;
     private javax.swing.JLabel fotoarma1;
     private javax.swing.JLabel fotoarma2;
     private javax.swing.JLabel fotopersonaje1;

@@ -46,8 +46,10 @@ public class CrearJugador extends javax.swing.JDialog {
         btnCrear = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblTitulo7 = new javax.swing.JLabel();
-        personajes = new javax.swing.JComboBox<>();
+        jugadores = new javax.swing.JComboBox<>();
         btnAgregarPersonaje = new javax.swing.JButton();
+        lblTitulo8 = new javax.swing.JLabel();
+        personajes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -116,7 +118,7 @@ public class CrearJugador extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnCrear);
-        btnCrear.setBounds(20, 470, 140, 40);
+        btnCrear.setBounds(20, 370, 140, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/personaje.gif"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -124,30 +126,42 @@ public class CrearJugador extends javax.swing.JDialog {
 
         lblTitulo7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo7.setForeground(new java.awt.Color(185, 185, 185));
-        lblTitulo7.setText("Agregar Personaje");
+        lblTitulo7.setText("Seleccionar jugador");
         jPanel1.add(lblTitulo7);
-        lblTitulo7.setBounds(20, 360, 270, 40);
+        lblTitulo7.setBounds(20, 430, 150, 40);
 
-        personajes.setBackground(new java.awt.Color(30, 30, 30));
-        personajes.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        personajes.setForeground(new java.awt.Color(185, 185, 185));
-        personajes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(personajes);
-        personajes.setBounds(20, 410, 150, 40);
+        jugadores.setBackground(new java.awt.Color(30, 30, 30));
+        jugadores.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        jugadores.setForeground(new java.awt.Color(185, 185, 185));
+        jugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jugadores);
+        jugadores.setBounds(190, 430, 150, 40);
 
-        btnAgregarPersonaje.setBackground(new java.awt.Color(34, 33, 33));
+        btnAgregarPersonaje.setBackground(new java.awt.Color(153, 102, 0));
         btnAgregarPersonaje.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnAgregarPersonaje.setForeground(new java.awt.Color(185, 185, 185));
         btnAgregarPersonaje.setText("Agregar Personaje");
         btnAgregarPersonaje.setActionCommand("AgregarPersonaje");
-        btnAgregarPersonaje.setEnabled(false);
         btnAgregarPersonaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarPersonajeActionPerformed(evt);
             }
         });
         jPanel1.add(btnAgregarPersonaje);
-        btnAgregarPersonaje.setBounds(190, 410, 160, 40);
+        btnAgregarPersonaje.setBounds(20, 560, 160, 40);
+
+        lblTitulo8.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo8.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo8.setText("Agregar Personaje");
+        jPanel1.add(lblTitulo8);
+        lblTitulo8.setBounds(20, 490, 160, 40);
+
+        personajes.setBackground(new java.awt.Color(30, 30, 30));
+        personajes.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        personajes.setForeground(new java.awt.Color(185, 185, 185));
+        personajes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(personajes);
+        personajes.setBounds(190, 490, 150, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,7 +171,7 @@ public class CrearJugador extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
         );
 
         pack();
@@ -176,9 +190,10 @@ public class CrearJugador extends javax.swing.JDialog {
     }//GEN-LAST:event_usuariotxtActionPerformed
 
     private void btnAgregarPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPersonajeActionPerformed
+        String nombreJugador = jugadores.getSelectedItem().toString();
         String nombrePersonaje = personajes.getSelectedItem().toString();
         
-        controlJugador.agregarPerJugador(nombrePersonaje);
+        controlJugador.agregarPerJugador(nombreJugador, nombrePersonaje);
     }//GEN-LAST:event_btnAgregarPersonajeActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
@@ -188,7 +203,8 @@ public class CrearJugador extends javax.swing.JDialog {
         int edadJ = (int) edad.getValue();
         
         controlJugador.agregarJugador(nombreJ, usuarioJ, contraJ, edadJ);
-        btnAgregarPersonaje.setEnabled(true);
+        
+        //this.repaint();
     }//GEN-LAST:event_btnCrearActionPerformed
 
     /**
@@ -240,9 +256,11 @@ public class CrearJugador extends javax.swing.JDialog {
     private javax.swing.JSpinner edad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> jugadores;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
     private javax.swing.JLabel lblTitulo7;
+    private javax.swing.JLabel lblTitulo8;
     private javax.swing.JTextField nombretxt1;
     private javax.swing.JComboBox<String> personajes;
     private javax.swing.JTextField usuariotxt;

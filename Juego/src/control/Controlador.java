@@ -21,23 +21,20 @@ public class Controlador {
     
     // ------------------------------------------------ CREAR ------------------------------------------------
     
+    // ------------------------> Agregaciones Juego <------------------------
+    
     // Retorna el Personaje Agregado
     public void agregarPersonaje(String nombrePersonaje, int vidaPer, int GxT, int camposV, int nivelV, int costoV, String categoriaV){
         
     }
     
-    // Agrega un arma a un personaje
-    public void agregarArma(String arma){
+    // Agrega un arma al juego
+    public void agregarArma(String arma, int alcanceV, int danhoV, int nivelV, int rangoV, int cantidadV){
         
     }
     
-    // Agrega una habilidad a un personaje
-    public void agregarHabilidad(String habilidad){
-        
-    }
-    
-    // Agrega una image a un personaje
-    public void agregarImagen(String imagen) {
+    // Agrega una habilidad al juego
+    public void agregarHabilidad(){
         
     }
     
@@ -45,13 +42,51 @@ public class Controlador {
         // Agregar jugador a la lista del  juego
     }
     
-    // Retorna los Personajes Agregados
+    // ------------------------> Imagenes <------------------------
+    
+    // Agrega una image a un personaje
+    public void agregarImagen(String imagen, String nombrePersonaje) {
+        
+    }
+    
+    // Agrega imagen a un arma
+    public void agregarImagenArma(String arma, String imagenUrl) {
+
+    }
+    
+    // Agrega imagen a una habilidad
+    public void agregarImagenHabilidad(String habilidad, String imagenUrl) {
+    }
+
+     
+    
+    // ------------------------> Clonar <------------------------
+    
+    // Retorna los Personajes Agregados, se usa el clone del factory
     public void clonarPersonaje(String nombrePersonaje, int vidaPer, int GxT, int camposV, int nivelV, int costoV, String categoriaV, int cantidadV) {
 
     }
     
+    // Retorna las armas agregadas, se usa el clone del factory
+    public void clonarArma(String nombreArma, int alcanceV, int danhoV, int nivelV, int rangoV, int cantidadV) {
+    }
+
+    // ------------------------> Agregaciones Personaje <------------------------
+    
+    // Agrega un arma a un personaje 
+    public void agregarArmaPersonaje(String arma, String nombrePersonaje) {
+
+    }
+    
+    // Agrega una habilidad a un personaje
+    public void agregarHabilidadPersonaje(String habilidad, String nombrePersonaje){
+        
+    }
+    
+    // ------------------------> Agregaciones Jugador <------------------------
+    
     // Agrega un personaje a la lista del jugador
-    public void agregarPerJugador(String nombrePersonaje) {
+    public void agregarPerJugador(String nombrePersonaje, String nombrePersonaje1) {
 
     }
     
@@ -124,6 +159,13 @@ public class Controlador {
     public String Jugar(){
         return "";
     }
+
+   
+    
+
+   
+
+    
 
     
 }

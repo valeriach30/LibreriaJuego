@@ -55,6 +55,8 @@ public class CrearHabilidad extends javax.swing.JDialog {
         lblTitulo13 = new javax.swing.JLabel();
         lblTitulo11 = new javax.swing.JLabel();
         cantidad = new javax.swing.JSpinner();
+        lblTitulo7 = new javax.swing.JLabel();
+        habilidades = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -82,6 +84,11 @@ public class CrearHabilidad extends javax.swing.JDialog {
         btnCrear.setBackground(new java.awt.Color(0, 102, 102));
         btnCrear.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCrear);
         btnCrear.setBounds(10, 500, 150, 40);
 
@@ -133,7 +140,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
         lblTitulo9.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo9.setText("Ingrese el url de la imagen que desea agregar");
         jPanel1.add(lblTitulo9);
-        lblTitulo9.setBounds(280, 200, 320, 40);
+        lblTitulo9.setBounds(280, 310, 320, 40);
 
         urltxt.setBackground(new java.awt.Color(255, 255, 255));
         urltxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -145,7 +152,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
             }
         });
         jPanel1.add(urltxt);
-        urltxt.setBounds(280, 250, 150, 35);
+        urltxt.setBounds(280, 360, 150, 35);
 
         btnAgregarImagen.setBackground(new java.awt.Color(204, 153, 0));
         btnAgregarImagen.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -157,7 +164,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnAgregarImagen);
-        btnAgregarImagen.setBounds(450, 250, 140, 40);
+        btnAgregarImagen.setBounds(450, 360, 140, 40);
 
         lblTitulo12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo12.setForeground(new java.awt.Color(185, 185, 185));
@@ -181,11 +188,26 @@ public class CrearHabilidad extends javax.swing.JDialog {
         jPanel1.add(cantidad);
         cantidad.setBounds(150, 420, 64, 30);
 
+        lblTitulo7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo7.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo7.setText("Seleccionela habilidad a la que desea agregarle imagen");
+        jPanel1.add(lblTitulo7);
+        lblTitulo7.setBounds(280, 220, 370, 40);
+
+        habilidades.setBackground(new java.awt.Color(0, 102, 102));
+        habilidades.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        habilidades.setForeground(new java.awt.Color(185, 185, 185));
+        habilidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(habilidades);
+        habilidades.setBounds(280, 260, 150, 40);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,8 +226,28 @@ public class CrearHabilidad extends javax.swing.JDialog {
     }//GEN-LAST:event_urltxtActionPerformed
 
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
-        // TODO add your handling code here:
+        String habilidad = habilidades.getSelectedItem().toString();
+        String imagenUrl = urltxt.getText();
+        controlHabilidad.agregarImagenHabilidad(habilidad, imagenUrl);
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
+
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        String nombreArma = nombretxt1.getText();
+        int alcanceV = (int) alcance.getValue();
+        int danhoV = (int) danho.getValue();
+        int nivelV = (int) nivel.getValue();
+        int rangoV = (int) rango.getValue();
+        int cantidadV = (int) cantidad.getValue();
+        
+        if(cantidadV > 1){
+            controlHabilidad.clonarArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV);
+        }
+        else{
+            controlHabilidad.agregarArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV);
+        }
+        
+        //this.repaint();
+    }//GEN-LAST:event_btnCrearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,6 +297,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
     private javax.swing.JButton btnCrear;
     private javax.swing.JSpinner cantidad;
     private javax.swing.JSpinner danho;
+    private javax.swing.JComboBox<String> habilidades;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTitulo;
@@ -265,6 +308,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitulo2;
     private javax.swing.JLabel lblTitulo4;
     private javax.swing.JLabel lblTitulo6;
+    private javax.swing.JLabel lblTitulo7;
     private javax.swing.JLabel lblTitulo9;
     private javax.swing.JSpinner nivel;
     private javax.swing.JTextField nombretxt1;
