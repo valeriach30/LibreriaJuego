@@ -51,6 +51,10 @@ public class CrearHabilidad extends javax.swing.JDialog {
         lblTitulo9 = new javax.swing.JLabel();
         urltxt = new javax.swing.JTextField();
         btnAgregarImagen = new javax.swing.JButton();
+        lblTitulo12 = new javax.swing.JLabel();
+        lblTitulo13 = new javax.swing.JLabel();
+        lblTitulo11 = new javax.swing.JLabel();
+        cantidad = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,7 +83,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
         btnCrear.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnCrear.setText("Crear");
         jPanel1.add(btnCrear);
-        btnCrear.setBounds(10, 420, 150, 40);
+        btnCrear.setBounds(10, 500, 150, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/spell_1.gif"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -155,6 +159,28 @@ public class CrearHabilidad extends javax.swing.JDialog {
         jPanel1.add(btnAgregarImagen);
         btnAgregarImagen.setBounds(450, 250, 140, 40);
 
+        lblTitulo12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo12.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo12.setText("Cantidad de ");
+        jPanel1.add(lblTitulo12);
+        lblTitulo12.setBounds(20, 390, 160, 40);
+
+        lblTitulo13.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo13.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo13.setText("habilidades de ");
+        jPanel1.add(lblTitulo13);
+        lblTitulo13.setBounds(20, 420, 160, 40);
+
+        lblTitulo11.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo11.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo11.setText("este tipo");
+        jPanel1.add(lblTitulo11);
+        lblTitulo11.setBounds(20, 450, 160, 40);
+
+        cantidad.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
+        jPanel1.add(cantidad);
+        cantidad.setBounds(150, 420, 64, 30);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -163,7 +189,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
         );
 
         pack();
@@ -227,11 +253,15 @@ public class CrearHabilidad extends javax.swing.JDialog {
     private javax.swing.JSpinner alcance;
     private javax.swing.JButton btnAgregarImagen;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JSpinner cantidad;
     private javax.swing.JSpinner danho;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
+    private javax.swing.JLabel lblTitulo11;
+    private javax.swing.JLabel lblTitulo12;
+    private javax.swing.JLabel lblTitulo13;
     private javax.swing.JLabel lblTitulo2;
     private javax.swing.JLabel lblTitulo4;
     private javax.swing.JLabel lblTitulo6;

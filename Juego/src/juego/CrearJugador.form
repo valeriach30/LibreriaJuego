@@ -167,9 +167,12 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Crear"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="480" width="140" height="40"/>
+              <AbsoluteConstraints x="20" y="470" width="140" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -201,7 +204,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="armas">
+        <Component class="javax.swing.JComboBox" name="personajes">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="1e" green="1e" red="1e" type="rgb"/>
@@ -243,6 +246,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar Personaje"/>
             <Property name="actionCommand" type="java.lang.String" value="AgregarPersonaje"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarPersonajeActionPerformed"/>

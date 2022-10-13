@@ -46,7 +46,7 @@ public class CrearJugador extends javax.swing.JDialog {
         btnCrear = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblTitulo7 = new javax.swing.JLabel();
-        armas = new javax.swing.JComboBox<>();
+        personajes = new javax.swing.JComboBox<>();
         btnAgregarPersonaje = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -110,8 +110,13 @@ public class CrearJugador extends javax.swing.JDialog {
         btnCrear.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnCrear.setForeground(new java.awt.Color(255, 255, 255));
         btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCrear);
-        btnCrear.setBounds(20, 480, 140, 40);
+        btnCrear.setBounds(20, 470, 140, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/personaje.gif"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -123,18 +128,19 @@ public class CrearJugador extends javax.swing.JDialog {
         jPanel1.add(lblTitulo7);
         lblTitulo7.setBounds(20, 360, 270, 40);
 
-        armas.setBackground(new java.awt.Color(30, 30, 30));
-        armas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        armas.setForeground(new java.awt.Color(185, 185, 185));
-        armas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(armas);
-        armas.setBounds(20, 410, 150, 40);
+        personajes.setBackground(new java.awt.Color(30, 30, 30));
+        personajes.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        personajes.setForeground(new java.awt.Color(185, 185, 185));
+        personajes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(personajes);
+        personajes.setBounds(20, 410, 150, 40);
 
         btnAgregarPersonaje.setBackground(new java.awt.Color(34, 33, 33));
         btnAgregarPersonaje.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnAgregarPersonaje.setForeground(new java.awt.Color(185, 185, 185));
         btnAgregarPersonaje.setText("Agregar Personaje");
         btnAgregarPersonaje.setActionCommand("AgregarPersonaje");
+        btnAgregarPersonaje.setEnabled(false);
         btnAgregarPersonaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarPersonajeActionPerformed(evt);
@@ -170,8 +176,20 @@ public class CrearJugador extends javax.swing.JDialog {
     }//GEN-LAST:event_usuariotxtActionPerformed
 
     private void btnAgregarPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPersonajeActionPerformed
-        // TODO add your handling code here:
+        String nombrePersonaje = personajes.getSelectedItem().toString();
+        
+        controlJugador.agregarPerJugador(nombrePersonaje);
     }//GEN-LAST:event_btnAgregarPersonajeActionPerformed
+
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        String nombreJ = nombretxt1.getText();
+        String usuarioJ = usuariotxt.getText();
+        String contraJ = contratxt.getText();
+        int edadJ = (int) edad.getValue();
+        
+        controlJugador.agregarJugador(nombreJ, usuarioJ, contraJ, edadJ);
+        btnAgregarPersonaje.setEnabled(true);
+    }//GEN-LAST:event_btnCrearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,7 +234,6 @@ public class CrearJugador extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> armas;
     private javax.swing.JButton btnAgregarPersonaje;
     private javax.swing.JButton btnCrear;
     private javax.swing.JTextField contratxt;
@@ -227,6 +244,7 @@ public class CrearJugador extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitulo1;
     private javax.swing.JLabel lblTitulo7;
     private javax.swing.JTextField nombretxt1;
+    private javax.swing.JComboBox<String> personajes;
     private javax.swing.JTextField usuariotxt;
     // End of variables declaration//GEN-END:variables
 }

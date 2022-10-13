@@ -45,7 +45,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
         btnCrear = new javax.swing.JButton();
         lblTitulo2 = new javax.swing.JLabel();
         campos = new javax.swing.JSpinner();
-        vida = new javax.swing.JSpinner();
+        cantidad = new javax.swing.JSpinner();
         nivel = new javax.swing.JSpinner();
         lblTitulo4 = new javax.swing.JLabel();
         lblTitulo5 = new javax.swing.JLabel();
@@ -64,6 +64,9 @@ public class CrearPersonaje extends javax.swing.JDialog {
         lblTitulo10 = new javax.swing.JLabel();
         nombretxt = new javax.swing.JTextField();
         btnAgregarImagen = new javax.swing.JButton();
+        lblTitulo11 = new javax.swing.JLabel();
+        vida = new javax.swing.JSpinner();
+        lblTitulo12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -108,7 +111,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnCrear);
-        btnCrear.setBounds(20, 570, 140, 40);
+        btnCrear.setBounds(20, 630, 140, 40);
 
         lblTitulo2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo2.setForeground(new java.awt.Color(185, 185, 185));
@@ -120,9 +123,10 @@ public class CrearPersonaje extends javax.swing.JDialog {
         jPanel1.add(campos);
         campos.setBounds(150, 300, 64, 30);
 
-        vida.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
-        jPanel1.add(vida);
-        vida.setBounds(150, 200, 64, 30);
+        cantidad.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
+        cantidad.setValue(1);
+        jPanel1.add(cantidad);
+        cantidad.setBounds(190, 570, 64, 30);
 
         nivel.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(nivel);
@@ -154,12 +158,18 @@ public class CrearPersonaje extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnJson);
-        btnJson.setBounds(180, 570, 140, 40);
+        btnJson.setBounds(170, 630, 140, 40);
 
         btnAgregarHabilidad.setBackground(new java.awt.Color(34, 33, 33));
         btnAgregarHabilidad.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnAgregarHabilidad.setForeground(new java.awt.Color(185, 185, 185));
         btnAgregarHabilidad.setText("Agregar Habilidad");
+        btnAgregarHabilidad.setEnabled(false);
+        btnAgregarHabilidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarHabilidadActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAgregarHabilidad);
         btnAgregarHabilidad.setBounds(490, 350, 170, 40);
 
@@ -167,6 +177,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
         btnAgregarArma.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnAgregarArma.setForeground(new java.awt.Color(185, 185, 185));
         btnAgregarArma.setText("Agregar Arma");
+        btnAgregarArma.setEnabled(false);
         btnAgregarArma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarArmaActionPerformed(evt);
@@ -246,6 +257,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
         btnAgregarImagen.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnAgregarImagen.setForeground(new java.awt.Color(185, 185, 185));
         btnAgregarImagen.setText("Agregar Imagen");
+        btnAgregarImagen.setEnabled(false);
         btnAgregarImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarImagenActionPerformed(evt);
@@ -253,6 +265,22 @@ public class CrearPersonaje extends javax.swing.JDialog {
         });
         jPanel1.add(btnAgregarImagen);
         btnAgregarImagen.setBounds(490, 460, 140, 40);
+
+        lblTitulo11.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo11.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo11.setText("de este tipo");
+        jPanel1.add(lblTitulo11);
+        lblTitulo11.setBounds(20, 580, 160, 40);
+
+        vida.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
+        jPanel1.add(vida);
+        vida.setBounds(150, 200, 64, 30);
+
+        lblTitulo12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo12.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo12.setText("Cantidad de personajes");
+        jPanel1.add(lblTitulo12);
+        lblTitulo12.setBounds(20, 550, 160, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -265,7 +293,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -277,15 +305,41 @@ public class CrearPersonaje extends javax.swing.JDialog {
     }//GEN-LAST:event_urltxtActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        // TODO add your handling code here:
+        String nombrePersonaje = nombretxt.getText();
+        int vidaPer = (int) vida.getValue();
+        int GxT = (int) gxp.getValue();
+        int camposV = (int) campos.getValue();
+        int nivelV = (int) nivel.getValue();
+        int costoV = (int) costo.getValue();
+        String categoriaV = categorias.getSelectedItem().toString();
+        
+        
+        int cantidadV = (int) cantidad.getValue();
+        
+        if(cantidadV > 1){
+            // Clonar
+            controlPersonajes.clonarPersonaje(nombrePersonaje, vidaPer, GxT, camposV, nivelV, costoV, categoriaV, cantidadV);
+        }
+        else{
+            // Crear solo 1
+            controlPersonajes.agregarPersonaje(nombrePersonaje, vidaPer, GxT, camposV, nivelV, costoV, categoriaV);
+        }
+        
+        // Permitir hacer agregaciones al personaje
+        btnAgregarArma.setEnabled(true);
+        btnAgregarHabilidad.setEnabled(true);
+        btnAgregarImagen.setEnabled(true);
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnJsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJsonActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnJsonActionPerformed
 
     private void btnAgregarArmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarArmaActionPerformed
-        // TODO add your handling code here:
+        
+        String arma = armas.getSelectedItem().toString();
+        
+        controlPersonajes.agregarArma(arma);
     }//GEN-LAST:event_btnAgregarArmaActionPerformed
 
     private void nombretxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxtActionPerformed
@@ -293,8 +347,16 @@ public class CrearPersonaje extends javax.swing.JDialog {
     }//GEN-LAST:event_nombretxtActionPerformed
 
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
-        // TODO add your handling code here:
+        String imagen = urltxt.getText();
+        
+        controlPersonajes.agregarImagen(imagen);
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
+
+    private void btnAgregarHabilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarHabilidadActionPerformed
+        String habilidad = habilidades.getSelectedItem().toString();
+        
+        controlPersonajes.agregarHabilidad(habilidad);
+    }//GEN-LAST:event_btnAgregarHabilidadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,6 +408,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnJson;
     private javax.swing.JSpinner campos;
+    private javax.swing.JSpinner cantidad;
     private javax.swing.JComboBox<String> categorias;
     private javax.swing.JSpinner costo;
     private javax.swing.JSpinner gxp;
@@ -355,6 +418,8 @@ public class CrearPersonaje extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
     private javax.swing.JLabel lblTitulo10;
+    private javax.swing.JLabel lblTitulo11;
+    private javax.swing.JLabel lblTitulo12;
     private javax.swing.JLabel lblTitulo2;
     private javax.swing.JLabel lblTitulo4;
     private javax.swing.JLabel lblTitulo5;
