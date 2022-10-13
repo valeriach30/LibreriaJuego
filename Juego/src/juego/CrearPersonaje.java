@@ -5,6 +5,7 @@
 package juego;
 
 import control.Controlador;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,10 +22,41 @@ public class CrearPersonaje extends javax.swing.JDialog {
     }
     
     public CrearPersonaje(java.awt.Frame parent, boolean modal, Controlador elControl) {
+        
         super(parent, modal);
         initComponents();
         controlPersonajes = elControl;
-        //habilidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "xd", "xd 2", "xd 3", "xd 4" }));
+        
+        // Cargar Nombres de Personajes
+        ArrayList<String> nombresPersonajes = controlPersonajes.getNombresPersonajes();
+        if(nombresPersonajes != null){
+            for(int i = 0; i < nombresPersonajes.size(); i++){
+                personajes.addItem(nombresPersonajes.get(i));
+            }   
+        }
+        else{
+        }
+        
+        // Cargar Nombres de Armas
+        ArrayList<String> nombresArmas = controlPersonajes.getNombresArmas();
+        if(nombresArmas != null){
+            for(int i = 0; i < nombresArmas.size(); i++){
+                armas.addItem(nombresArmas.get(i));
+            }   
+        }
+        else{
+        }
+        
+        // Cargar nombres de habilidades
+        ArrayList<String> nombresHabilidades = controlPersonajes.getNombresHabilidades();
+        if(nombresHabilidades != null){
+            for(int i = 0; i < nombresHabilidades.size(); i++){
+                habilidades.addItem(nombresHabilidades.get(i));
+            }   
+        }
+        else{
+        }
+        
     }
 
     
@@ -172,7 +204,6 @@ public class CrearPersonaje extends javax.swing.JDialog {
         habilidades.setBackground(new java.awt.Color(71, 0, 71));
         habilidades.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         habilidades.setForeground(new java.awt.Color(185, 185, 185));
-        habilidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(habilidades);
         habilidades.setBounds(370, 440, 150, 40);
 
@@ -185,7 +216,6 @@ public class CrearPersonaje extends javax.swing.JDialog {
         personajes.setBackground(new java.awt.Color(71, 0, 71));
         personajes.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         personajes.setForeground(new java.awt.Color(185, 185, 185));
-        personajes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(personajes);
         personajes.setBounds(370, 220, 150, 40);
 
@@ -228,7 +258,6 @@ public class CrearPersonaje extends javax.swing.JDialog {
         btnAgregarCaract.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnAgregarCaract.setForeground(new java.awt.Color(185, 185, 185));
         btnAgregarCaract.setText("Agregar Caracteristicas");
-        btnAgregarCaract.setActionCommand("Agregar Caracteristicas");
         btnAgregarCaract.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarCaractActionPerformed(evt);
@@ -262,7 +291,6 @@ public class CrearPersonaje extends javax.swing.JDialog {
         armas.setBackground(new java.awt.Color(71, 0, 71));
         armas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         armas.setForeground(new java.awt.Color(185, 185, 185));
-        armas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(armas);
         armas.setBounds(370, 330, 150, 40);
 
@@ -319,7 +347,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
             controlPersonajes.agregarPersonaje(nombrePersonaje, vidaPer, GxT, nivel2V, camposV, nivelV, costoV, categoriaV);
         }
         
-        //this.repaint();
+        this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnJsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJsonActionPerformed

@@ -247,7 +247,7 @@ public class CrearArma extends javax.swing.JDialog {
             controlArmas.agregarArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV);
         }
         
-        //this.repaint();
+        this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
 
     /**

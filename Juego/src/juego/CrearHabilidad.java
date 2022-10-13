@@ -243,10 +243,10 @@ public class CrearHabilidad extends javax.swing.JDialog {
             controlHabilidad.clonarArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV);
         }
         else{
-            controlHabilidad.agregarArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV);
+            controlHabilidad.agregarHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV);
         }
         
-        //this.repaint();
+        this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
 
     /**

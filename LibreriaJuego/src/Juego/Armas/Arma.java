@@ -18,20 +18,23 @@ public class Arma implements iPrototype<Arma> {
     int reach;
     int damage;
     int range;
+    int level;
     ArrayList<String> images;
 
-    public Arma(String name, int reach, int damage, int range, ArrayList<String> images) {
+    public Arma(String name, int reach, int damage, int range, int level, ArrayList<String> images) {
         this.name = name;
         this.reach = reach;
         this.damage = damage;
         this.range = range;
+        this.level = level;
         this.images = images;
     }
-    public Arma(String name, int reach, int damage, int range) {
+    public Arma(String name, int reach, int damage, int level, int range) {
         this.name = name;
         this.reach = reach;
         this.damage = damage;
         this.range = range;
+        this.level = level;
     }
     
     public String getName() {
@@ -76,7 +79,7 @@ public class Arma implements iPrototype<Arma> {
 
     @Override
     public Arma clone() {
-        return new Arma(name, reach, damage, range, images);
+        return new Arma(name, reach, damage, range, level, images);
     }
 
     @Override
@@ -86,8 +89,13 @@ public class Arma implements iPrototype<Arma> {
 
     @Override
     public String toString() {
-        return "Nombre: " + name + "{ Alcance:" + reach + ", Daño: " + damage +
-        ", Rango: " + range + "\n, Apariencias: " + images.toString() + "}";
+        String texto = "Nombre: " + name + "{ Alcance:" + reach + ", Daño: " + damage +
+        ", Rango: " + range + ", Nivel: "+ level;
+        if(images != null){
+            texto += "\n, Apariencias: " + images.toString();
+        }
+        texto += "}";
+        return texto;
     }
 
     
@@ -97,6 +105,7 @@ public class Arma implements iPrototype<Arma> {
         int reach;
         int damage;
         int range;
+        int level;
         ArrayList<String> imagenes;
 
         public ArmaBuilder() {
@@ -130,8 +139,14 @@ public class Arma implements iPrototype<Arma> {
             return this;
         }
 
+
+        public ArmaBuilder setLevel(int level) {
+            this.level = level;
+            return this;
+        }
+
         Arma build() {
-            return new Arma(name, reach, damage, range, imagenes);
+            return new Arma(name, reach, damage, level, range, imagenes);
         }
 
     }

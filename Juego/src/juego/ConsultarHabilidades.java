@@ -41,7 +41,7 @@ public class ConsultarHabilidades extends javax.swing.JDialog {
         btnConsultar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txaConsulta = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -70,9 +70,9 @@ public class ConsultarHabilidades extends javax.swing.JDialog {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(460, 10, 180, 160);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txaConsulta.setColumns(20);
+        txaConsulta.setRows(5);
+        jScrollPane1.setViewportView(txaConsulta);
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(20, 180, 590, 290);
@@ -96,7 +96,9 @@ public class ConsultarHabilidades extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO add your handling code here:
+        String texto = controlHabilidad.consultarHabilidad();
+        System.out.println(texto);
+        txaConsulta.setText(texto);
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
@@ -146,7 +148,7 @@ public class ConsultarHabilidades extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblTitulo1;
+    private javax.swing.JTextArea txaConsulta;
     // End of variables declaration//GEN-END:variables
 }
