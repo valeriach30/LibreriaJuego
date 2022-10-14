@@ -21,8 +21,6 @@ public class Jugar extends javax.swing.JDialog {
     /**
      * Creates new form Jugar
      */
-    private Jugador objetoJugador1;
-    private Jugador objetoJugador2;
     private Controlador controlJugar ;
     public Jugar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -382,6 +380,8 @@ public class Jugar extends javax.swing.JDialog {
     }
     
     private void btnAtacar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacar2ActionPerformed
+        String nombreJugador2 = jugador2.getSelectedItem().toString();
+        String nombreJugador1 = jugador1.getSelectedItem().toString();
         String atacante = personaje2.getSelectedItem().toString();
         String arma = arma2.getSelectedItem().toString();
         String enemigo = personaje1.getSelectedItem().toString();
@@ -393,11 +393,15 @@ public class Jugar extends javax.swing.JDialog {
         }else if(enemigo == ""){
             JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
         }else{
-            int vidaAtacante = controlJugar.getVidaPersonaje(atacante);
-            int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo);
+            int vidaAtacante = controlJugar.getVidaPersonaje(atacante, nombreJugador2);
+            int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo, nombreJugador1);
             if(vidaAtacante > 0 && vidaEnemigo > 0){
+                
                 String ataque = controlJugar.atacar(1,0,atacante,enemigo, arma);
                 jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
+                
+                System.out.println("vida personaje 1:"+ vidaAtacante);
+                System.out.println("vida personaje 2:"+ vidaEnemigo);
             }
             else{
                 if(vidaAtacante == 0){
@@ -456,6 +460,8 @@ public class Jugar extends javax.swing.JDialog {
 
     private void btnAtacar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacar1ActionPerformed
         try{
+            String nombreJugador2 = jugador2.getSelectedItem().toString();
+            String nombreJugador1 = jugador1.getSelectedItem().toString();
             String atacante = personaje1.getSelectedItem().toString();
             String arma = arma1.getSelectedItem().toString();
             String enemigo = personaje2.getSelectedItem().toString();
@@ -467,11 +473,15 @@ public class Jugar extends javax.swing.JDialog {
             }else if(enemigo == ""){
                 JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
             }else{
-                int vidaAtacante = controlJugar.getVidaPersonaje(atacante);
-                int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo);
+                int vidaAtacante = controlJugar.getVidaPersonaje(atacante, nombreJugador1);
+                int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo, nombreJugador2);
                 if(vidaAtacante > 0 && vidaEnemigo > 0){
+                    
                     String ataque = controlJugar.atacar(0,1,atacante,enemigo, arma);
                     jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
+                    
+                    System.out.println("vida personaje 1:"+ vidaAtacante);
+                    System.out.println("vida personaje 2:"+ vidaEnemigo);
                 }
                 else{
                     if(vidaAtacante == 0){
@@ -518,11 +528,13 @@ public class Jugar extends javax.swing.JDialog {
         try{
             // Obtener imagenes y setear
             String imagen2 = controlJugar.obtenerImagenArma(armas2);
-            fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+            if(imagen2 != ""){
+                fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+                jTextArea1.setText(jTextArea1.getText() + armas2 + " subio de nivel!" + "\n");
+            }
         } catch(Error e){
             
         }
-        jTextArea1.setText(jTextArea1.getText() + armas2 + " subio de nivel!" + "\n");
     }//GEN-LAST:event_btnSubirNivelA2ActionPerformed
 
     private void btnSubirNivelP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirNivelP2ActionPerformed
@@ -532,12 +544,14 @@ public class Jugar extends javax.swing.JDialog {
         try{
             // Obtener imagenes y setear
             String imagen2 = controlJugar.obtenerImagenPersonaje(enemigo);
-            System.out.println(imagen2);
-            fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+            if(imagen2 != ""){
+                System.out.println(imagen2);
+                fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+                jTextArea1.setText(jTextArea1.getText() + enemigo + " subio de nivel!" + "\n");
+            }
         } catch(Error e){
             
         }
-        jTextArea1.setText(jTextArea1.getText() + enemigo + " subio de nivel!" + "\n");
     }//GEN-LAST:event_btnSubirNivelP2ActionPerformed
 
     private void btnSubirNivelP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirNivelP1ActionPerformed
@@ -546,13 +560,14 @@ public class Jugar extends javax.swing.JDialog {
         try{
             // Obtener imagenes y setear
             String imagen1 = controlJugar.obtenerImagenPersonaje(atacante);
-            System.out.println(imagen1);
-            fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+            if(imagen1 != ""){
+                System.out.println(imagen1);
+                fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+                jTextArea1.setText(jTextArea1.getText() + atacante + " subio de nivel!" + "\n");
+            }
         } catch(Error e){
             
         }
-        jTextArea1.setText(jTextArea1.getText() + atacante + " subio de nivel!" + "\n");
-        
     }//GEN-LAST:event_btnSubirNivelP1ActionPerformed
 
     private void btnSubirNivelA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirNivelA1ActionPerformed
@@ -561,11 +576,13 @@ public class Jugar extends javax.swing.JDialog {
         try{
             // Obtener imagenes y setear
             String imagen1 = controlJugar.obtenerImagenArma(armas1);
-            fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+            if(imagen1 != ""){
+                fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+                jTextArea1.setText(jTextArea1.getText() + armas1 + " subio de nivel!" + "\n");
+            }
         } catch(Error e){
             
         }
-        jTextArea1.setText(jTextArea1.getText() + armas1 + " subio de nivel!" + "\n");
     }//GEN-LAST:event_btnSubirNivelA1ActionPerformed
 
     private void btnSeleccionarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarJugadoresActionPerformed
@@ -580,8 +597,6 @@ public class Jugar extends javax.swing.JDialog {
         }
         else{
         }
-        // Guardar jugador 1
-        this.objetoJugador1 = controlJugar.getJugador(jugador1V);
         
         String jugador2V = jugador2.getSelectedItem().toString();
         
@@ -594,9 +609,6 @@ public class Jugar extends javax.swing.JDialog {
         }
         else{
         }
-        
-        // Guardar jugador 2
-        this.objetoJugador2 = controlJugar.getJugador(jugador2V);
         
         personaje1.setEnabled(true);
         personaje2.setEnabled(true);

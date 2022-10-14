@@ -502,7 +502,7 @@ public class Controlador {
                 }
             }
 
-            Personaje nuevoP = p.deepClone();
+            Personaje nuevoP = p.clone();
             // Buscar el jugador y agregarle el personaje
             for(int i = 0; i < juegoV.getJugadores().size(); i++){
                 if(juegoV.getJugadores().get(i).getNombre() == nombreJugador){
@@ -510,7 +510,6 @@ public class Controlador {
                     ArrayList<Personaje> array = new ArrayList<Personaje>();
                     array.add(nuevoP);
                     juegoV.getJugadores().get(i).setPersonajes(array);
-                    juegoV.getPersonajes().add(nuevoP);
                 }
             }
         }
@@ -528,10 +527,9 @@ public class Controlador {
                 }
             }
 
-            Personaje nuevoP = p.deepClone();
+            Personaje nuevoP = p.clone();
             // Buscar el jugador y agregarle el personaje
             juegoV.getJugadores().get(indexJugador).addPersonaje(nuevoP);
-            juegoV.getPersonajes().add(nuevoP);
         }
      }
      public void eliminarPerJugador(int indexJugador, String nombrePersonaje1) {
@@ -800,8 +798,10 @@ public class Controlador {
         
         // Atacar
         personajes.get(indexPersonaje).setDamage(arma.getDamage());
-        
-        return personajes.get(indexPersonaje).atacar();
+        String texto = personajes.get(indexPersonaje).atacar();
+        System.out.println(personajes.get(indexPersonaje).getVida());
+        System.out.println(personajes.get(indexPersonaje).getEnemigo().getVida());
+        return texto;
 
     }
     
@@ -971,15 +971,24 @@ public class Controlador {
         }
     }
 
-    public int getVidaPersonaje(String nombrePersonaje) {
-        // Encontrar el personaje
-        Personaje personaje = null;
-        for(int i = 0; i < juegoV.getPersonajes().size(); i++){
-            if(juegoV.getPersonajes().get(i).getNombre().equals(nombrePersonaje)){
-                personaje = juegoV.getPersonajes().get(i);
+    public int getVidaPersonaje(String nombrePersonaje, String nombreJugador) {
+        // Encontrar el personaje del jugador
+        int vida = 0;
+        if(juegoV.getJugadores() != null){
+            for(int i = 0; i < juegoV.getJugadores().size(); i++){
+                // Determinar si el jugador es el recibido
+                if(juegoV.getJugadores().get(i).getNombre() == nombreJugador){
+                    // Obtener el personaje
+                    for(int j = 0; j < juegoV.getJugadores().get(i).getPersonajes().size(); j++){
+                        String nombreActual = juegoV.getJugadores().get(i).getPersonajes().get(j).getNombre();
+                        if(nombreActual == nombrePersonaje){
+                            vida = juegoV.getJugadores().get(i).getPersonajes().get(j).getVida();
+                        }
+                    }
+                }
             }
         }
-        return personaje.getVida();
+        return vida;
     }
 
     public void SubirNivelPersonaje(String nombrePersonaje) {
