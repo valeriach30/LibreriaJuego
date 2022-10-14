@@ -115,23 +115,26 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         cloneDeep.costo = this.costo;
         cloneDeep.damage = this.damage;
         ArrayList <String> aparienciasClon = new ArrayList<>();
-        for(String aparienciaString : this.apariencias){
-            aparienciasClon.add(aparienciaString);
-        }            
-        cloneDeep.apariencias = aparienciasClon;
-        
-        ArrayList <Arma> armasClon = new ArrayList<>();
-        for(Arma ArmaClon : this.armas){
-            armasClon.add(ArmaClon);
+        if(this.apariencias != null){
+            for(String aparienciaString : this.apariencias){
+                aparienciasClon.add(aparienciaString);
+            }            
+            cloneDeep.apariencias = aparienciasClon;
         }
-        cloneDeep.armas = armasClon;
-            
-        ArrayList <Arma> hechizosClon = new ArrayList<>();
-        for(Arma HechizoClon : this.armas){
-            hechizosClon.add(HechizoClon);
+        if(this.armas != null){
+            ArrayList <Arma> armasClon = new ArrayList<>();
+            for(Arma ArmaClon : this.armas){
+                armasClon.add(ArmaClon);
+            }
+            cloneDeep.armas = armasClon;
+        } 
+        if(this.hechizos != null){
+            ArrayList <Arma> hechizosClon = new ArrayList<>();
+            for(Arma HechizoClon : this.hechizos){
+                hechizosClon.add(HechizoClon);
+            }
+            cloneDeep.hechizos = hechizosClon;
         }
-        cloneDeep.hechizos = hechizosClon;
-        
         return cloneDeep;
     }
 

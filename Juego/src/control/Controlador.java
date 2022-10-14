@@ -10,6 +10,8 @@ import Libreria.Juego.Juego;
 
 import Juego.Personaje.Categoria;
 import Juego.Personaje.Personaje;
+import Juego.Personaje.PersonajePrototypeFactory;
+import static Juego.Personaje.PersonajePrototypeFactory.getPrototypeDeep;
 import Juego.Personaje.SubCategoria;
 import Libreria.Juego.Jugador;
 import java.util.ArrayList;
@@ -128,8 +130,57 @@ public class Controlador {
            int cantidadV, String habilidadNombre, String nombrePersonaje, int alcance, 
            int danho, int rango, String subCategoria) {
         
+        // Buscar el arma y la habilidad
         
+        Arma habilidad = null;
+        for(int i = 0; i < juegoV.getHabilidades().size(); i++){
+            if(juegoV.getHabilidades().get(i).getName() == habilidadNombre){
+                habilidad = juegoV.getHabilidades().get(i);
+            }
+        }
+        
+        Arma arma = null;
+        for(int i = 0; i < juegoV.getArmas().size(); i++){
+            if(juegoV.getArmas().get(i).getName() == nombreArma){
+                arma = juegoV.getArmas().get(i);
+            }
+        }
+        
+        Personaje nuevoPer = new Personaje.PersonajeBuilder()
+            .agregarArma(arma)
+            .agregarHabilidad(habilidad)
+            .build();
 
+        // Agregar atributos
+        nuevoPer.setNombre(nombrePersonaje);
+        nuevoPer.setVida(vidaPer);
+        nuevoPer.setGolpesxtiempo(GxT);
+        nuevoPer.setNivel(nivelAparicion);
+        nuevoPer.setCampos(camposV);
+        nuevoPer.setNivelAparicion(nivelV);
+        nuevoPer.setCosto(costoV);
+        nuevoPer.setReach(alcance);
+        nuevoPer.setDamage(danho);
+        nuevoPer.setRange(rango);
+        
+        PersonajePrototypeFactory factory = new PersonajePrototypeFactory();
+        factory.addPrototype(nombrePersonaje, nuevoPer);
+        
+        // Clonar personaje y agregarlos al juego
+        ArrayList<Personaje> array = new ArrayList<Personaje>();
+        if(juegoV.getPersonajes() != null){
+            for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+                array.add(juegoV.getPersonajes().get(i));
+            }
+        }
+        array.add(nuevoPer);
+        
+        // Clonar y agregar
+        for(int i = 0; i < cantidadV ; i++){
+            array.add((Personaje) getPrototypeDeep(nombrePersonaje));
+        }
+        juegoV.setPersonajes(array);
+        
     }
     
     // Retorna las armas agregadas, se usa el clone del factory
@@ -147,8 +198,7 @@ public class Controlador {
         
         Arma habilidad = null;
         for(int i = 0; i < juegoV.getHabilidades().size(); i++){
-            System.out.println(juegoV.getHabilidades().get(i).getName());
-            System.out.println(nombreArma);
+            
             if(juegoV.getHabilidades().get(i).getName() == habilidadNombre){
                 habilidad = juegoV.getHabilidades().get(i);
             }
@@ -156,8 +206,7 @@ public class Controlador {
         
         Arma arma = null;
         for(int i = 0; i < juegoV.getArmas().size(); i++){
-            System.out.println(juegoV.getArmas().get(i).getName());
-            System.out.println(nombreArma);
+            
             if(juegoV.getArmas().get(i).getName() == nombreArma){
                 arma = juegoV.getArmas().get(i);
             }
