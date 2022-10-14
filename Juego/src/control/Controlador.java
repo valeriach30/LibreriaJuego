@@ -102,21 +102,7 @@ public class Controlador {
             }
         }
     }
-    
-    // Agrega un arma al juego
-    public void agregarArma(String arma, int alcanceV, int danhoV, int nivelV, int rangoV, int cantidadV){
-        Arma nuevaAr = new Arma(arma, alcanceV, danhoV, nivelV, rangoV);
-            
-        ArrayList<Arma> array = new ArrayList<Arma>();
-        if(juegoV.getArmas() != null){
-            for(int i = 0; i < juegoV.getArmas().size(); i++){
-                array.add(juegoV.getArmas().get(i));
-            }
-        }
-        array.add(nuevaAr);
-        juegoV.setArmas(array);
-    }
-    
+      
     // Agrega una habilidad al juego
     public void agregarHabilidad(String nombreArma, int alcanceV, int danhoV, int nivelV, int rangoV, int cantidadV){
         Arma nuevaAr = new Arma(nombreArma, alcanceV, danhoV, nivelV, rangoV);
@@ -171,21 +157,7 @@ public class Controlador {
         juegoV.setSubcategorias(array);
     }
     
-    // ------------------------> Imagenes <------------------------
-    
-   
-    // Agrega imagen a un arma
-    public void agregarImagenArma(String arma, String imagenUrl) {
-
-    }
-    
-    // Agrega imagen a una habilidad
-    public void agregarImagenHabilidad(String habilidad, String imagenUrl) {
-    }
-
-     
-    
-    // ------------------------> Clonar <------------------------
+    // ------------------------> Factory Prototype Personaje <------------------------
     
     // Retorna los Personajes Agregados, se usa el clone del factory
     public void clonarPersonaje(String nombreArma, int vidaPer, int GxT,
@@ -247,7 +219,7 @@ public class Controlador {
     }
     
     // Retorna las armas agregadas, se usa el clone del factory
-    public void clonarArma(String nombreArma, int alcanceV, int danhoV, int nivelV, int rangoV, int cantidadV) {
+    public void clonarArma(String nombreArma, int alcanceV, int danhoV, int nivelV, int rangoV, int cantidadV, String imagen) {
     }
 
     // ------------------------> Build Personaje <------------------------
@@ -349,6 +321,51 @@ public class Controlador {
         }
     }
     
+    // ------------------------> Factory Prototype Arma <------------------------
+    // Agrega un arma al juego
+    public void agregarArma(String armaNombre, String imagen){
+        
+        // Buscar el arms
+        Arma arma = null;
+        for(int i = 0; i < juegoV.getArmas().size(); i++){
+            
+            if(juegoV.getArmas().get(i).getName() == armaNombre){
+                arma = juegoV.getArmas().get(i);
+            }
+        }  
+        
+        ArrayList<String> array = new ArrayList<String>();
+        if(arma != null){
+            for(int i = 0; i < arma.getImages().size(); i++){
+                array.add(arma.getImages().get(i));
+            }
+        }
+        array.add(imagen);
+        arma.setImages(array);
+    }
+    
+    // ------------------------> Builder Arma <------------------------
+    public void builderArma(String arma, int alcanceV, int danhoV, int nivel, int rangoV, int cantidadV, String imagen){
+        
+        Arma nuevaAr = new Arma.ArmaBuilder().AgregarImagen(imagen).build();
+
+        nuevaAr.setRange(rangoV);
+        nuevaAr.setDamage(danhoV);
+        nuevaAr.setName(arma);
+        nuevaAr.setReach(alcanceV);
+        nuevaAr.setLevel(nivel);
+        
+        // Agregar arma al juego
+        ArrayList<Arma> array = new ArrayList<Arma>();
+        if(juegoV.getArmas() != null){
+            for(int i = 0; i < juegoV.getArmas().size(); i++){
+                array.add(juegoV.getArmas().get(i));
+            }
+        }
+        array.add(nuevaAr);
+        juegoV.setArmas(array);
+    }
+
     // ------------------------> Agregaciones Jugador <------------------------
     
     // Agrega un personaje a la lista del jugador

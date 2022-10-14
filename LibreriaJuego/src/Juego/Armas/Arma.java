@@ -80,6 +80,14 @@ public class Arma implements iPrototype<Arma> {
         this.images = images;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     @Override
     public Arma clone() {
         return new Arma(name, reach, damage, range, level, images);
@@ -116,6 +124,7 @@ public class Arma implements iPrototype<Arma> {
         }
 
         public ArmaBuilder AgregarImagen(String imagen) {
+            this.imagenes = new ArrayList<String>();
             if (imagen != null) {
                 imagenes.add(imagen);//quizas se tenga que cambiar esto
             }

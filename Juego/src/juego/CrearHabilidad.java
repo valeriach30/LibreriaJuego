@@ -251,7 +251,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
         int cantidadV = (int) cantidad.getValue();
         
         if(cantidadV > 1){
-            controlHabilidad.clonarArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV);
+            //controlHabilidad.clonarHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
         }
         else{
             controlHabilidad.agregarHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV);
