@@ -40,6 +40,11 @@ public class Arma implements iPrototype<Arma> {
         this.level = level;
     }
     
+    public void upgradeWeapon(int nivel){
+        setDamage( this.damage + (int) (nivel * (this.damage * 0.3)) ); //aumenta un 30% el dano del arma por default
+    }
+    
+    // <editor-fold defaultstate="collapsed" desc=" Getters and Setters ">   
     public String getName() {
         return name;
     }
@@ -87,7 +92,8 @@ public class Arma implements iPrototype<Arma> {
     public void setLevel(int level) {
         this.level = level;
     }
-
+    // </editor-fold>
+    
     @Override
     public Arma clone() {
         return new Arma(name, reach, damage, range, level, images);

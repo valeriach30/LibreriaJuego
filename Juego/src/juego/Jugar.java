@@ -5,6 +5,10 @@
 package juego;
 
 import control.Controlador;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,12 +24,28 @@ public class Jugar extends javax.swing.JDialog {
     public Jugar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
     }
     
     public Jugar(java.awt.Frame parent, boolean modal, Controlador elControl) {
         super(parent, modal);
         initComponents();
         controlJugar = elControl;
+        
+        
+        String[]  opciones = new String[] {"","","",""};
+        
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( opciones );
+        personaje1.setModel(model);
+        
+        model = new DefaultComboBoxModel<>( opciones );
+        personaje2.setModel(model);
+        
+        model = new DefaultComboBoxModel<>( opciones );
+        arma1.setModel(model);
+        
+        model = new DefaultComboBoxModel<>( opciones );
+        arma2.setModel(model);
     }
 
     /**
@@ -57,7 +77,7 @@ public class Jugar extends javax.swing.JDialog {
         fotopersonaje1 = new javax.swing.JLabel();
         fotopersonaje2 = new javax.swing.JLabel();
         fotoarma2 = new javax.swing.JLabel();
-        btnAgregarImagen1 = new javax.swing.JButton();
+        btnSeleccionarPersonaje1 = new javax.swing.JButton();
         btnAtacar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -66,7 +86,6 @@ public class Jugar extends javax.swing.JDialog {
         jPanel1.setLayout(null);
 
         lblTitulo1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 72)); // NOI18N
-        lblTitulo1.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo1.setText("Jugar");
         jPanel1.add(lblTitulo1);
         lblTitulo1.setBounds(20, 10, 440, 84);
@@ -84,15 +103,15 @@ public class Jugar extends javax.swing.JDialog {
 
         lblTitulo6.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo6.setForeground(new java.awt.Color(185, 185, 185));
-        lblTitulo6.setText("Seleccione el arma 2");
+        lblTitulo6.setText("Seleccione el arma/hechizo 2 ");
         jPanel1.add(lblTitulo6);
-        lblTitulo6.setBounds(400, 170, 180, 40);
+        lblTitulo6.setBounds(380, 170, 200, 40);
 
         arma1.setBackground(new java.awt.Color(153, 0, 25));
         arma1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         arma1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(arma1);
-        arma1.setBounds(570, 110, 150, 40);
+        arma1.setBounds(590, 110, 150, 40);
 
         lblTitulo7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo7.setForeground(new java.awt.Color(185, 185, 185));
@@ -104,7 +123,7 @@ public class Jugar extends javax.swing.JDialog {
         arma2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         arma2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(arma2);
-        arma2.setBounds(570, 170, 150, 40);
+        arma2.setBounds(590, 170, 150, 40);
 
         lblTitulo8.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo8.setForeground(new java.awt.Color(185, 185, 185));
@@ -144,9 +163,9 @@ public class Jugar extends javax.swing.JDialog {
 
         lblTitulo10.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo10.setForeground(new java.awt.Color(185, 185, 185));
-        lblTitulo10.setText("Seleccione el arma 1");
+        lblTitulo10.setText("Seleccione el arma/hechizo 1");
         jPanel1.add(lblTitulo10);
-        lblTitulo10.setBounds(400, 110, 180, 40);
+        lblTitulo10.setBounds(380, 110, 200, 40);
 
         lblTitulo11.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo11.setForeground(new java.awt.Color(185, 185, 185));
@@ -154,7 +173,7 @@ public class Jugar extends javax.swing.JDialog {
         jPanel1.add(lblTitulo11);
         lblTitulo11.setBounds(540, 300, 180, 40);
 
-        fotoarma1.setText("Foto arma");
+        fotoarma1.setText("Foto arma/hechizo");
         jPanel1.add(fotoarma1);
         fotoarma1.setBounds(730, 350, 150, 110);
 
@@ -166,21 +185,21 @@ public class Jugar extends javax.swing.JDialog {
         jPanel1.add(fotopersonaje2);
         fotopersonaje2.setBounds(540, 530, 150, 110);
 
-        fotoarma2.setText("Foto arma");
+        fotoarma2.setText("Foto arma/hechizo");
         jPanel1.add(fotoarma2);
         fotoarma2.setBounds(730, 530, 150, 110);
 
-        btnAgregarImagen1.setBackground(new java.awt.Color(204, 128, 6));
-        btnAgregarImagen1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        btnAgregarImagen1.setForeground(new java.awt.Color(102, 102, 102));
-        btnAgregarImagen1.setText("Seleccionar Personajes");
-        btnAgregarImagen1.addActionListener(new java.awt.event.ActionListener() {
+        btnSeleccionarPersonaje1.setBackground(new java.awt.Color(204, 128, 6));
+        btnSeleccionarPersonaje1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnSeleccionarPersonaje1.setForeground(new java.awt.Color(102, 102, 102));
+        btnSeleccionarPersonaje1.setText("Seleccionar Personajes");
+        btnSeleccionarPersonaje1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarImagen1ActionPerformed(evt);
+                btnSeleccionarPersonaje1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregarImagen1);
-        btnAgregarImagen1.setBounds(20, 240, 200, 40);
+        jPanel1.add(btnSeleccionarPersonaje1);
+        btnSeleccionarPersonaje1.setBounds(20, 240, 200, 40);
 
         btnAtacar1.setBackground(new java.awt.Color(153, 0, 25));
         btnAtacar1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -210,6 +229,24 @@ public class Jugar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void changeComboBoxes(int indexJugador){
+        String[] personajes = new String[4]; 
+        DefaultComboBoxModel<String> model;
+        
+        for (int i = 0; i < 4; i++) {
+            personajes[i] = controlJugar.getJugadorPersonajeNombre(indexJugador, i);
+        }
+        //cambia las opciones de los checkbox
+        model = new DefaultComboBoxModel<>( personajes );        
+        
+        if(indexJugador == 0)
+            personaje1.setModel(model);
+        else
+            personaje2.setModel(model);
+        
+        
+    }
+    
     private void btnAtacar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacar2ActionPerformed
         String nombrepersonaje1 = personaje1.getSelectedItem().toString();
         String nombreArma1 = arma1.getSelectedItem().toString();
@@ -221,9 +258,10 @@ public class Jugar extends javax.swing.JDialog {
         
     }//GEN-LAST:event_btnAtacar2ActionPerformed
 
-    private void btnAgregarImagen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagen1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarImagen1ActionPerformed
+    private void btnSeleccionarPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarPersonaje1ActionPerformed
+        SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
+        pant1.setVisible(true); 
+    }//GEN-LAST:event_btnSeleccionarPersonaje1ActionPerformed
 
     private void btnAtacar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacar1ActionPerformed
         // TODO add your handling code here:
@@ -274,9 +312,9 @@ public class Jugar extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> arma1;
     private javax.swing.JComboBox<String> arma2;
-    private javax.swing.JButton btnAgregarImagen1;
     private javax.swing.JButton btnAtacar1;
     private javax.swing.JButton btnAtacar2;
+    private javax.swing.JButton btnSeleccionarPersonaje1;
     private javax.swing.JLabel fotoarma1;
     private javax.swing.JLabel fotoarma2;
     private javax.swing.JLabel fotopersonaje1;
@@ -295,4 +333,28 @@ public class Jugar extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> personaje1;
     private javax.swing.JComboBox<String> personaje2;
     // End of variables declaration//GEN-END:variables
+}
+
+class personajeComboBox implements ActionListener {
+    private javax.swing.JComboBox<String> comboBox;//este indica el personaje seleccionado
+    private Controlador controlAumentar;
+    private int indexJugador;
+    private SeleccionPersonajes pantallaSeleccionPJ;
+
+    
+    
+    
+	@Override
+	public void actionPerformed(java.awt.event.ActionEvent e) {
+            String personajeNombre = (String) comboBox.getSelectedItem();
+            
+            
+            if( controlAumentar.getJugarPersonajesSize(indexJugador) < 4 ){
+                controlAumentar.agregarPerJugador(indexJugador,personajeNombre);
+                //refresca los personajes que tiene el jugador
+                pantallaSeleccionPJ.refrecarTextField(indexJugador);
+            }else{
+                JOptionPane.showMessageDialog(null, "No se puede tener mas de 4 Personajes por jugador", "Campos llenos", JOptionPane.OK_OPTION);
+            }
+        }
 }

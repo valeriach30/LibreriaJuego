@@ -477,6 +477,41 @@ public class Controlador {
             }
         }
     }
+    //este funciona por indice directo
+     public void agregarPerJugador(int indexJugador, String nombrePersonaje1) {
+        
+        //como el juego solo tiene dos jugadores pregunta si el index en menor a 
+        if(nombrePersonaje1 != ""){
+            // Buscar el personaje
+            Personaje p = new Personaje();
+            for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+                if(juegoV.getPersonajes().get(i).getNombre() == nombrePersonaje1){
+                    p = juegoV.getPersonajes().get(i);
+                }
+            }
+
+
+            // Buscar el jugador y agregarle el personaje
+            juegoV.getJugadores().get(indexJugador).addPersonaje(p);
+        }
+     }
+     public void eliminarPerJugador(int indexJugador, String nombrePersonaje1) {
+        
+        //como el juego solo tiene dos jugadores pregunta si el index en menor a 
+        if(nombrePersonaje1 != ""){
+            // Buscar el personaje
+            Personaje p = new Personaje();
+            for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+                if(juegoV.getPersonajes().get(i).getNombre() == nombrePersonaje1){
+                    p = juegoV.getPersonajes().get(i);
+                }
+            }
+
+
+            // Buscar el jugador y agregarle el personaje
+            juegoV.getJugadores().get(indexJugador).removePersonaje(p);
+        }
+     }
     
      // ------------------------------------------------ CONSULTAR ------------------------------------------------
     
@@ -492,6 +527,22 @@ public class Controlador {
         }
         else{
             return "No hay personajes";
+        }
+    }
+    
+    public String consultarPersonajesJugador(int index){ //el index el numero del jugador
+        ArrayList<Personaje> personajesJugador = juegoV.getJugadores().get(index).getPersonajes();
+        if(personajesJugador != null){
+            String texto = "";
+            
+            for(int i = 0; i < personajesJugador.size() ; i++){
+                texto += "\n";
+                texto += personajesJugador.get(i).toString();
+            }
+            return texto;
+        }
+        else{
+            return "El jugador " +index+" no tiene personajes";
         }
     }
     
@@ -667,5 +718,57 @@ public class Controlador {
         
         System.out.println(categoria.toString());
     }
-
+    
+    //metodos para el manejo de arrays de hechizos armas y combate
+    //gets:
+    public int getArmasSize(){
+        return juegoV.getArmas().size();
+    
+    }
+    public int getHechizosSize(){
+        return juegoV.getHabilidades().size();
+    
+    } 
+    public int getPersoanjesSize(){
+        return juegoV.getPersonajes().size();
+    
+    } 
+    
+    public int getJugarPersonajesSize(int index){
+        if ( juegoV.getJugadores().get(index).getPersonajes() == null)
+            return 0;
+        return juegoV.getJugadores().get(index).getPersonajes().size();
+    
+    } 
+    
+    public String getArmaNombre(int index){
+        return juegoV.getArmas().get(index).getName();
+    
+    } 
+    public String getHabilidadesNombre(int index){
+        return juegoV.getHabilidades().get(index).getName();
+    
+    } 
+    
+    public String getPersonajeNombre(int index){
+        return juegoV.getPersonajes().get(index).getNombre();
+    
+    } 
+    
+    public String getJugadorPersonajeNombre(int indexJugador, int indexPersonaje){
+        if(juegoV.getJugadores().get(indexJugador).getPersonajes().size() > indexPersonaje)
+            return juegoV.getJugadores().get(indexJugador).getPersonajes().get(indexPersonaje).getNombre();
+        return ""; //no hay personajes en esa posicion
+    } 
+    
+    public String getJugadorPersonajeArmaNombre(int indexJugador, int indexPersonaje, int indexArma){
+        if(juegoV.getJugadores().get(indexJugador).getPersonajes().size() > indexPersonaje)
+            if(juegoV.getJugadores().get(indexJugador).getPersonajes().get(indexPersonaje).getArmas().size() > indexArma)
+                return juegoV.getJugadores().get(indexJugador).getPersonajes().get(indexPersonaje).getArmas().get(indexArma).getName();
+        return ""; //no hay armas en esa posicion
+    } 
+    
+    //
+    
+    //public 
 }

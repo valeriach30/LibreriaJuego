@@ -11,6 +11,6 @@ package Juego.Personaje;
  */
 public interface iPersonaje {
  
-    public void atacar(String ataque);
+    public String atacar(); //retorna el mensaje de error o un string con el ataque
     public int aumentarNivel(int nivel);
 }

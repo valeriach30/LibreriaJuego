@@ -18,17 +18,20 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     private String nombre;
     private int vida;
     private int golpesxtiempo;
-    private int nivel = 0;
+    private int nivel = 1; //para mostrar las imagenes se resta un nivel
     private int campos;
     private int nivelAparicion;
     private int costo;
     private int reach = 1; // Alcance del ataque
     private int damage;
     private int range = 1; // Area de influecia
+    private Personaje enemigo = null;
     private String nombreCategoria;
     private ArrayList <String> apariencias;
     private ArrayList <Arma> armas;
+    //private Arma armaActual = null;
     private ArrayList <Arma> hechizos;
+    //private Arma hechizoActual = null;
     private String apariencia;
 
     public Personaje(){
@@ -84,9 +87,21 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         this.reach = reach;
         this.nombreCategoria = nombreCategoria;
     }
+    
+    
     @Override
-    public void atacar(String ataque) { // Revisar jugabilidad
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String atacar() { // Revisar jugabilidad
+        
+        
+        if(this.getEnemigo() != null & this.enemigo.getVida() > 0){
+            if(this.damage > 0){
+                this.enemigo.setVida(this.enemigo.getVida() - this.damage );
+                return this.nombre + " realizo un ataque a " + this.enemigo.getNombre() + "y le infliguio un total de: " +
+                        this.damage;
+            }
+            return "El personaje no puede atacar o no dispone un arma";
+        }
+        return "No hay un enemigo para realizar el ataque";
     }
 
     @Override
@@ -97,6 +112,12 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
             setApariencia(apariencia);
         }
         return nivel; // Si llega aca sin el if no sube de nivel
+    }
+    private void setArmaActual(Arma armaActual){
+        armaActual.upgradeWeapon(this.nivel); 
+        this.damage = armaActual.getDamage();
+        this.range = armaActual.getRange();
+        this.range = armaActual.getReach();
     }
     
     @Override
@@ -164,6 +185,22 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     // <editor-fold defaultstate="collapsed" desc=" Getters and Setters ">    
     public String getNombre() {
         return nombre;
+    }
+
+    public Personaje getEnemigo() {
+        return enemigo;
+    }
+
+    public void setEnemy(Personaje enemigo) {
+        this.enemigo = enemigo;
+    }
+
+    public String getNombreCategoria() {
+        return nombreCategoria;
+    }
+
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
     }
 
     public void setNombre(String nombre) {
@@ -288,6 +325,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         private int reach = 1; // Alcance del ataque
         private int damage;
         private int range = 1; // Area de influecia
+        private Personaje enemigo;
         private ArrayList <String> apariencias;
         private ArrayList <Arma> armas;
         private ArrayList <Arma> hechizos;
@@ -303,7 +341,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         }
         
         public PersonajeBuilder agregarAtributos(String nombre, int vida, int gxt, int nivel, 
-        int campos, int nivelAparicion, int costo, int reach, int damage, int range){
+        int campos, int nivelAparicion, int costo, int reach, int damage, int range, Personaje enemigo){
             this.nombre = nombre;
             this.vida = vida;
             this.golpesxtiempo = gxt;
@@ -314,10 +352,69 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
             this.reach = reach;
             this.damage = damage;
             this.range = range;
+            this.enemigo = enemigo;
             return this;
 
         }
+
+        // <editor-fold defaultstate="collapsed" desc=" Setters ">  
+        public PersonajeBuilder setNombre(String nombre) {
+            this.nombre = nombre;
+            return this;
+        }
+
+        public PersonajeBuilder setVida(int vida) {
+            this.vida = vida;
+            return this;
+        }
+
+        public PersonajeBuilder setGolpesxtiempo(int golpesxtiempo) {
+            this.golpesxtiempo = golpesxtiempo;
+            return this;
+        }
+
+        public PersonajeBuilder setNivel(int nivel) {
+            this.nivel = nivel;
+            return this;
+        }
+
+        public PersonajeBuilder setCampos(int campos) {
+            this.campos = campos;
+            return this;
+        }
+
+        public PersonajeBuilder setNivelAparicion(int nivelAparicion) {
+            this.nivelAparicion = nivelAparicion;
+            return this;
+        }
+
+        public PersonajeBuilder setCosto(int costo) {
+            this.costo = costo;
+            return this;
+        }
+
+        public PersonajeBuilder setReach(int reach) {
+            this.reach = reach;
+            return this;
+        }
+
+        public PersonajeBuilder setDamage(int damage) {
+            this.damage = damage;
+            return this;
+        }
+
+        public PersonajeBuilder setRange(int range) {
+            this.range = range;
+            return this;
+        }
+
+        public PersonajeBuilder setEnemigo(Personaje enemigo) {
+            this.enemigo = enemigo;
+            return this;
+        }
+        // </editor-fold>    
         
+
         public PersonajeBuilder agregarArma(Arma arma){
             if(arma != null){
                this.armas = new ArrayList<Arma>();

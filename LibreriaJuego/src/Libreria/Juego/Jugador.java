@@ -18,6 +18,7 @@ public class Jugador {
     String usuario;
     String contra;
     int edad;
+    int nivelActual = 1;
     ArrayList<Personaje> personajes;
 
     public Jugador(){
@@ -77,6 +78,24 @@ public class Jugador {
 
     public void setPersonajes(ArrayList<Personaje> personajes) {
         this.personajes = personajes;
+    }
+    
+    public void addPersonaje(Personaje pj) {
+        if(this.personajes == null)
+            this.personajes = new ArrayList<Personaje>();
+        this.personajes.add(pj);
+    }
+    public void removePersonaje(Personaje pj) {
+        if(this.personajes != null)
+            this.personajes.remove(pj);
+    }
+
+    public int getNivelActual() {
+        return nivelActual;
+    }
+
+    public void setNivelActual(int nivelActual) {
+        this.nivelActual = nivelActual;
     }
     
     
