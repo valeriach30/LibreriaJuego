@@ -160,7 +160,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
 
         gxp.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(gxp);
-        gxp.setBounds(300, 190, 31, 30);
+        gxp.setBounds(300, 190, 50, 30);
 
         lblTitulo1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 72)); // NOI18N
         lblTitulo1.setText("Crear Personaje");
@@ -187,7 +187,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
 
         campos.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(campos);
-        campos.setBounds(90, 240, 31, 30);
+        campos.setBounds(90, 240, 50, 30);
 
         cantidad.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         cantidad.setValue(1);
@@ -196,7 +196,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
 
         nivel.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(nivel);
-        nivel.setBounds(300, 240, 31, 30);
+        nivel.setBounds(300, 240, 50, 30);
 
         lblTitulo4.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo4.setForeground(new java.awt.Color(185, 185, 185));
@@ -212,7 +212,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
 
         danho.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(danho);
-        danho.setBounds(300, 340, 31, 30);
+        danho.setBounds(300, 340, 50, 30);
 
         btnJson.setBackground(new java.awt.Color(0, 102, 102));
         btnJson.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -300,7 +300,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
 
         vida.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(vida);
-        vida.setBounds(90, 190, 31, 30);
+        vida.setBounds(90, 190, 50, 30);
 
         lblTitulo12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo12.setForeground(new java.awt.Color(185, 185, 185));
@@ -330,7 +330,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
         nivel2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         nivel2.setValue(1);
         jPanel1.add(nivel2);
-        nivel2.setBounds(300, 290, 31, 30);
+        nivel2.setBounds(300, 290, 50, 30);
 
         lblTitulo15.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo15.setForeground(new java.awt.Color(185, 185, 185));
@@ -368,11 +368,6 @@ public class CrearPersonaje extends javax.swing.JDialog {
         armaBuilder.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         armaBuilder.setForeground(new java.awt.Color(185, 185, 185));
         armaBuilder.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
-        armaBuilder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                armaBuilderActionPerformed(evt);
-            }
-        });
         jPanel1.add(armaBuilder);
         armaBuilder.setBounds(220, 530, 150, 40);
 
@@ -391,11 +386,11 @@ public class CrearPersonaje extends javax.swing.JDialog {
 
         costo.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(costo);
-        costo.setBounds(90, 290, 31, 30);
+        costo.setBounds(90, 290, 50, 30);
 
         rango.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(rango);
-        rango.setBounds(90, 380, 31, 30);
+        rango.setBounds(90, 380, 50, 30);
 
         lblTitulo7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo7.setForeground(new java.awt.Color(185, 185, 185));
@@ -417,7 +412,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
 
         alcance.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(alcance);
-        alcance.setBounds(90, 340, 31, 30);
+        alcance.setBounds(90, 340, 50, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -497,10 +492,6 @@ public class CrearPersonaje extends javax.swing.JDialog {
             
         }
     }//GEN-LAST:event_btnAgregarCaractActionPerformed
-
-    private void armaBuilderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_armaBuilderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_armaBuilderActionPerformed
 
     /**
      * @param args the command line arguments
