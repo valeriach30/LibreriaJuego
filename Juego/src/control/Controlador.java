@@ -381,17 +381,76 @@ public class Controlador {
     
     // Agrega una habilidad al juego
     public void agregarHabilidad(String nombreArma, String imagenUrl){
-        /*Arma nuevaAr = new Arma(nombreArma, alcanceV, danhoV, nivelV, rangoV);
+        // Buscar la habilidad
+        Arma habilidad = null;
+        for(int i = 0; i < juegoV.getHabilidades().size(); i++){
             
+            if(juegoV.getHabilidades().get(i).getName() == nombreArma){
+                habilidad = juegoV.getHabilidades().get(i);
+            }
+        }  
+        
+        ArrayList<String> array = new ArrayList<String>();
+        if(habilidad != null){
+            for(int i = 0; i < habilidad.getImages().size(); i++){
+                array.add(habilidad.getImages().get(i));
+            }
+        }
+        array.add(imagenUrl);
+        habilidad.setImages(array);
+    }
+    
+    // ------------------------> Factory Prototype Habilidad <------------------------
+    public void clonarHabilidad(String nombreHab, int alcanceV, int danhoV, int nivelV, int rangoV, int cantidadV, String imagen) {
+        Arma nuevaHabilidad = new Arma.ArmaBuilder().AgregarImagen(imagen).build();
+
+        nuevaHabilidad.setRange(rangoV);
+        nuevaHabilidad.setDamage(danhoV);
+        nuevaHabilidad.setName(nombreHab);
+        nuevaHabilidad.setReach(alcanceV);
+        nuevaHabilidad.setLevel(nivelV);
+        
+        ArmaPrototypeFactory factoryArm = new ArmaPrototypeFactory();
+        factoryArm.addProtype(nombreHab, nuevaHabilidad);
+        
+        // Agregar arma al juego
         ArrayList<Arma> array = new ArrayList<Arma>();
         if(juegoV.getHabilidades() != null){
             for(int i = 0; i < juegoV.getHabilidades().size(); i++){
                 array.add(juegoV.getHabilidades().get(i));
             }
         }
-        array.add(nuevaAr);
-        juegoV.setHabilidades(array);*/
+        array.add(nuevaHabilidad);
+
+        // Clonar y agregar
+        for(int i = 0; i < cantidadV - 1; i++){
+            array.add((Arma) getPrototypeDeepArm(nombreHab));
+        }
+        juegoV.setHabilidades(array);
     }
+
+    // ------------------------> Builder Habilidad <------------------------
+    public void builderHabilidad(String nombreArma, int alcanceV, int danhoV, int nivelV, int rangoV, int cantidadV, String imagen) {
+        Arma nuevaHabilidad = new Arma.ArmaBuilder().AgregarImagen(imagen).build();
+
+        nuevaHabilidad.setRange(rangoV);
+        nuevaHabilidad.setDamage(danhoV);
+        nuevaHabilidad.setName(nombreArma);
+        nuevaHabilidad.setReach(alcanceV);
+        nuevaHabilidad.setLevel(nivelV);
+        
+        // Agregar arma al juego
+        ArrayList<Arma> array = new ArrayList<Arma>();
+        if(juegoV.getHabilidades() != null){
+            for(int i = 0; i < juegoV.getHabilidades().size(); i++){
+                array.add(juegoV.getHabilidades().get(i));
+            }
+        }
+        array.add(nuevaHabilidad);
+        juegoV.setHabilidades(array);
+    }
+    
+    
     // ------------------------> Agregaciones Jugador <------------------------
     
     // Agrega un personaje a la lista del jugador
@@ -578,16 +637,7 @@ public class Controlador {
     public void agregarRelacionCatSubCat(String nombreCategoria, String nombreSubCategoria) {
     }
 
+  
     
 
-    
-
-   
-    
-
-   
-
-    
-
-    
 }

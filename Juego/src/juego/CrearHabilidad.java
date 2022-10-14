@@ -47,7 +47,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        nombretxt1 = new javax.swing.JTextField();
+        imagentxt = new javax.swing.JTextField();
         lblTitulo1 = new javax.swing.JLabel();
         btnCrear = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -68,23 +68,24 @@ public class CrearHabilidad extends javax.swing.JDialog {
         cantidad = new javax.swing.JSpinner();
         lblTitulo7 = new javax.swing.JLabel();
         habilidades = new javax.swing.JComboBox<>();
+        nombretxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        nombretxt1.setBackground(new java.awt.Color(255, 255, 255));
-        nombretxt1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        nombretxt1.setForeground(new java.awt.Color(185, 185, 185));
-        nombretxt1.setText("Nombre");
-        nombretxt1.addActionListener(new java.awt.event.ActionListener() {
+        imagentxt.setBackground(new java.awt.Color(255, 255, 255));
+        imagentxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        imagentxt.setForeground(new java.awt.Color(185, 185, 185));
+        imagentxt.setText("Imagen");
+        imagentxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombretxt1ActionPerformed(evt);
+                imagentxtActionPerformed(evt);
             }
         });
-        jPanel1.add(nombretxt1);
-        nombretxt1.setBounds(20, 130, 200, 50);
+        jPanel1.add(imagentxt);
+        imagentxt.setBounds(240, 130, 200, 50);
 
         lblTitulo1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 72)); // NOI18N
         lblTitulo1.setForeground(new java.awt.Color(0, 0, 0));
@@ -212,6 +213,18 @@ public class CrearHabilidad extends javax.swing.JDialog {
         jPanel1.add(habilidades);
         habilidades.setBounds(280, 260, 150, 40);
 
+        nombretxt.setBackground(new java.awt.Color(255, 255, 255));
+        nombretxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        nombretxt.setForeground(new java.awt.Color(185, 185, 185));
+        nombretxt.setText("Nombre");
+        nombretxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombretxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nombretxt);
+        nombretxt.setBounds(20, 130, 200, 50);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -228,9 +241,9 @@ public class CrearHabilidad extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombretxt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxt1ActionPerformed
+    private void imagentxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imagentxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombretxt1ActionPerformed
+    }//GEN-LAST:event_imagentxtActionPerformed
 
     private void urltxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urltxtActionPerformed
         // TODO add your handling code here:
@@ -240,10 +253,12 @@ public class CrearHabilidad extends javax.swing.JDialog {
         String habilidad = habilidades.getSelectedItem().toString();
         String imagenUrl = urltxt.getText();
         controlHabilidad.agregarHabilidad(habilidad, imagenUrl);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        String nombreArma = nombretxt1.getText();
+        String nombreArma = nombretxt.getText();
+        String imagen = imagentxt.getText();
         int alcanceV = (int) alcance.getValue();
         int danhoV = (int) danho.getValue();
         int nivelV = (int) nivel.getValue();
@@ -251,14 +266,18 @@ public class CrearHabilidad extends javax.swing.JDialog {
         int cantidadV = (int) cantidad.getValue();
         
         if(cantidadV > 1){
-            //controlHabilidad.clonarHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
+            controlHabilidad.clonarHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
         }
         else{
-            //controlHabilidad.agregarHabilidad(nombreArma, alcanceV);
+            controlHabilidad.builderHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
         }
         
         this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void nombretxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombretxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,6 +328,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
     private javax.swing.JSpinner cantidad;
     private javax.swing.JSpinner danho;
     private javax.swing.JComboBox<String> habilidades;
+    private javax.swing.JTextField imagentxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTitulo;
@@ -322,7 +342,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitulo7;
     private javax.swing.JLabel lblTitulo9;
     private javax.swing.JSpinner nivel;
-    private javax.swing.JTextField nombretxt1;
+    private javax.swing.JTextField nombretxt;
     private javax.swing.JSpinner rango;
     private javax.swing.JTextField urltxt;
     // End of variables declaration//GEN-END:variables
