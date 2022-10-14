@@ -502,14 +502,24 @@ public class Controlador {
                 }
             }
 
-            Personaje nuevoP = p.clone();
+            Personaje nuevoP = p.deepClone();
             // Buscar el jugador y agregarle el personaje
             for(int i = 0; i < juegoV.getJugadores().size(); i++){
                 if(juegoV.getJugadores().get(i).getNombre() == nombreJugador){
                     
-                    ArrayList<Personaje> array = new ArrayList<Personaje>();
-                    array.add(nuevoP);
-                    juegoV.getJugadores().get(i).setPersonajes(array);
+                    ArrayList<Personaje> array = juegoV.getJugadores().get(i).getPersonajes();
+                    if(array != null){
+                        array.add(nuevoP);
+                        juegoV.getJugadores().get(i).setPersonajes(array);
+                        juegoV.getPersonajes().add(nuevoP);
+                    }
+                    else{
+                        ArrayList<Personaje> array2 = new ArrayList<Personaje>();
+                        array2.add(nuevoP);
+                        juegoV.getJugadores().get(i).setPersonajes(array2);
+                        juegoV.getPersonajes().add(nuevoP);
+                    }
+                    
                 }
             }
         }
@@ -679,11 +689,8 @@ public class Controlador {
         // Encontrar pesonaje
         Personaje per = null;
         for(int i = 0; i < juegoV.getPersonajes().size(); i++){
-            System.out.println("----------------");
-            System.out.println("nombre: " + nombrePersonaje);
-            System.out.println(juegoV.getPersonajes().get(i).getNombre());
+
             if(juegoV.getPersonajes().get(i).getNombre() == nombrePersonaje){
-                System.out.println("entre");
                 per = juegoV.getPersonajes().get(i);
             }
         }
@@ -799,8 +806,7 @@ public class Controlador {
         // Atacar
         personajes.get(indexPersonaje).setDamage(arma.getDamage());
         String texto = personajes.get(indexPersonaje).atacar();
-        System.out.println(personajes.get(indexPersonaje).getVida());
-        System.out.println(personajes.get(indexPersonaje).getEnemigo().getVida());
+
         return texto;
 
     }
@@ -922,11 +928,18 @@ public class Controlador {
                     }
                     imagen = juegoV.getPersonajes().get(i).getApariencias().get(nivel);
                 }
+                else{
+                    if(nivel > 0){
+                        nivel = nivel - 1;
+                    }
+                    imagen = juegoV.getPersonajes().get(i).getApariencias().get(nivel);
+                }
             }
         }
         return imagen;
     }
-
+    
+    
     public String obtenerImagenArma(String nombreArma) {
         String imagen = "";
         for(int i = 0; i < juegoV.getArmas().size(); i++){
@@ -935,6 +948,12 @@ public class Controlador {
                 int nivel = juegoV.getArmas().get(i).getLevel();
                 
                 if(nivel <= juegoV.getArmas().get(i).getImages().size()){
+                    if(nivel > 0){
+                        nivel = nivel - 1;
+                    }
+                    imagen = juegoV.getArmas().get(i).getImages().get(nivel);
+                }
+                else{
                     if(nivel > 0){
                         nivel = nivel - 1;
                     }
@@ -950,6 +969,12 @@ public class Controlador {
                     int nivel = juegoV.getHabilidades().get(i).getLevel();
 
                     if(nivel <= juegoV.getHabilidades().get(i).getImages().size()){
+                        if(nivel > 0){
+                            nivel = nivel - 1;
+                        }
+                        imagen = juegoV.getHabilidades().get(i).getImages().get(nivel);
+                    }
+                    else{
                         if(nivel > 0){
                             nivel = nivel - 1;
                         }

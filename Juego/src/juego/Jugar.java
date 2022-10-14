@@ -493,6 +493,7 @@ public class Jugar extends javax.swing.JDialog {
                         JOptionPane.showMessageDialog(null, "Ha ganado :)!!!!!", "mensaje", JOptionPane.OK_OPTION);
                         JOptionPane.showMessageDialog(null, "El enemigo ha muerto, no puede volver a atacarlo", "Warning", JOptionPane.OK_OPTION);
                         jTextArea1.setText(jTextArea1.getText() + atacante + " ha ganado!"  + "\n");
+                        
                     }
                 }
             }
