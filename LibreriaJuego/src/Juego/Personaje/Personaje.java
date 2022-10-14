@@ -304,6 +304,12 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     public void setArmas(ArrayList<Arma> armas) {
         this.armas = armas;
     }
+    
+    public void addArmas(Arma arma) {
+        if(this.armas == null)
+            this.armas = new ArrayList<Arma>();
+        this.armas.add(arma);
+    }
 
     public ArrayList<Arma> getHechizos() {
         return hechizos;

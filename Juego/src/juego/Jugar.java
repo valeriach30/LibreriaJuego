@@ -8,6 +8,7 @@ import control.Controlador;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -229,7 +230,7 @@ public class Jugar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void changeComboBoxes(int indexJugador){
+    public void changeComboBoxPJ(int indexJugador){
         String[] personajes = new String[4]; 
         DefaultComboBoxModel<String> model;
         
@@ -238,21 +239,58 @@ public class Jugar extends javax.swing.JDialog {
         }
         //cambia las opciones de los checkbox
         model = new DefaultComboBoxModel<>( personajes );        
+        JComboBox<String> personajeCB;
         
         if(indexJugador == 0)
-            personaje1.setModel(model);
+            personajeCB=personaje1;
         else
-            personaje2.setModel(model);
+            personajeCB=personaje2;
+
+        personajeCB.setModel(model);
+        personajeCB.addActionListener(new PersonajeComboBox(personajeCB, controlJugar, indexJugador, this) );
+        
+        
+    }
+    
+    public void changeComboBoxArma(int indexJugador, int indexPJ){
+        String[] armas = new String[4]; 
+        DefaultComboBoxModel<String> model;
+        
+        for (int i = 0; i < 4; i++) {
+            armas[i] = controlJugar.getJugadorPersonajeArmaNombre(indexJugador,indexPJ,i);
+        }
+        //cambia las opciones de los checkbox
+        model = new DefaultComboBoxModel<>( armas );        
+        JComboBox<String> armaCB;
+        
+        if(indexJugador == 0)
+            
+            armaCB=arma1;
+        else
+            armaCB=arma2;
+        armaCB.setModel(model);
+        
+        //armaCB.addActionListener(arma1);
         
         
     }
     
     private void btnAtacar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacar2ActionPerformed
-        String nombrepersonaje1 = personaje1.getSelectedItem().toString();
-        String nombreArma1 = arma1.getSelectedItem().toString();
-        String nombrePersonaje2 = personaje2.getSelectedItem().toString();
-        String nombreArma2 = arma2.getSelectedItem().toString();
+        String atacante = personaje2.getSelectedItem().toString();
+        String arma = arma2.getSelectedItem().toString();
+        String enemigo = personaje1.getSelectedItem().toString();
         
+        if(atacante == ""){
+            JOptionPane.showMessageDialog(null, "Falta un atacante", "Falta un atacante", JOptionPane.OK_OPTION);
+        }else if(arma == ""){
+            JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
+        }else if(enemigo == ""){
+            JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
+        }else{
+            String ataque = controlJugar.atacar(1,0,atacante,enemigo);
+            jTextArea1.setText(jTextArea1.getText() + ataque );
+        }
+
         // Mostrar las imagenes de los personajes
         
         
@@ -264,7 +302,21 @@ public class Jugar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSeleccionarPersonaje1ActionPerformed
 
     private void btnAtacar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacar1ActionPerformed
-        // TODO add your handling code here:
+        String atacante = personaje1.getSelectedItem().toString();
+        String arma = arma1.getSelectedItem().toString();
+        String enemigo = personaje2.getSelectedItem().toString();
+        
+        if(atacante == ""){
+            JOptionPane.showMessageDialog(null, "Falta un atacante", "Falta un atacante", JOptionPane.OK_OPTION);
+        }else if(arma == ""){
+            JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
+        }else if(enemigo == ""){
+            JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
+        }else{
+            String ataque = controlJugar.atacar(0,1,atacante,enemigo);
+            jTextArea1.setText(jTextArea1.getText() + ataque );
+        
+        }
     }//GEN-LAST:event_btnAtacar1ActionPerformed
 
     /**
@@ -335,26 +387,24 @@ public class Jugar extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 }
 
-class personajeComboBox implements ActionListener {
+class PersonajeComboBox implements ActionListener {
     private javax.swing.JComboBox<String> comboBox;//este indica el personaje seleccionado
-    private Controlador controlAumentar;
+    private Controlador controlComboBox;
     private int indexJugador;
-    private SeleccionPersonajes pantallaSeleccionPJ;
+    private Jugar pantallaJugar;
 
-    
-    
-    
-	@Override
-	public void actionPerformed(java.awt.event.ActionEvent e) {
-            String personajeNombre = (String) comboBox.getSelectedItem();
-            
-            
-            if( controlAumentar.getJugarPersonajesSize(indexJugador) < 4 ){
-                controlAumentar.agregarPerJugador(indexJugador,personajeNombre);
-                //refresca los personajes que tiene el jugador
-                pantallaSeleccionPJ.refrecarTextField(indexJugador);
-            }else{
-                JOptionPane.showMessageDialog(null, "No se puede tener mas de 4 Personajes por jugador", "Campos llenos", JOptionPane.OK_OPTION);
-            }
-        }
+    public PersonajeComboBox(JComboBox<String> comboBox, Controlador controlComboBox, int indexJugador, Jugar pantallaJugar) {
+        this.comboBox = comboBox;
+        this.controlComboBox = controlComboBox;
+        this.indexJugador = indexJugador;
+        this.pantallaJugar = pantallaJugar;
+    }
+
+    @Override
+    public void actionPerformed(java.awt.event.ActionEvent e) {
+        String personajeNombre = (String) comboBox.getSelectedItem();
+        int indexPersonaje = controlComboBox.getIndexPersonaje(indexJugador,personajeNombre);
+        pantallaJugar.changeComboBoxArma(indexJugador,indexPersonaje);
+
+    }
 }

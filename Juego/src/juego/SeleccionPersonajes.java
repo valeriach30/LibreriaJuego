@@ -143,12 +143,12 @@ public class SeleccionPersonajes extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(726, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(48, 48, 48)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(459, Short.MAX_VALUE)))
+                    .addContainerGap(255, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,7 +163,7 @@ public class SeleccionPersonajes extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1130, Short.MAX_VALUE)
+            .addGap(0, 653, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,7 +280,7 @@ class Disminuir implements ActionListener {
 	public void actionPerformed(java.awt.event.ActionEvent e) {
             controlAumentar.eliminarPerJugador(indexJugador,personajeNombre);
             pantallaSeleccionPJ.refrecarTextField(indexJugador);
-            pantallaJugar.changeComboBoxes(indexJugador);
+            pantallaJugar.changeComboBoxPJ(indexJugador);
 	}
 }
 class Aumentar implements ActionListener {
@@ -307,7 +307,7 @@ class Aumentar implements ActionListener {
                 controlAumentar.agregarPerJugador(indexJugador,personajeNombre);
                 //refresca los personajes que tiene el jugador
                 pantallaSeleccionPJ.refrecarTextField(indexJugador);
-                pantallaJugar.changeComboBoxes(indexJugador);
+                pantallaJugar.changeComboBoxPJ(indexJugador);
             }else{
                 JOptionPane.showMessageDialog(null, "No se puede tener mas de 4 Personajes por jugador", "Campos llenos", JOptionPane.OK_OPTION);
             }

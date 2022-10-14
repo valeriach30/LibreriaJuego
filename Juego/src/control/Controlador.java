@@ -61,14 +61,12 @@ public class Controlador {
                 
                 // Agregar arma al personaje
             
-                ArrayList<Arma> array = new ArrayList<Arma>();
                 if(personaje.getArmas() != null){
                     for(int i = 0; i < personaje.getArmas().size(); i++){
-                        array.add(personaje.getArmas().get(i));
+                        arma = personaje.getArmas().get(i);
                     }
                 }
-                array.add(arma);
-                personaje.setArmas(array);
+                personaje.addArmas(arma);
             }
             if(habilidadNombre != "Ninguna"){
                 
@@ -671,7 +669,19 @@ public class Controlador {
         return "";
     }
     
-    
+    public String atacar(int indexJugador, int indexJugadorEnemigo ,String nombrePersonaje, String nombreEnemigo){
+        ArrayList<Personaje> personajes = juegoV.getJugadores().get(indexJugador).getPersonajes();
+        ArrayList<Personaje> enemigos = juegoV.getJugadores().get(indexJugadorEnemigo).getPersonajes();
+
+        int indexPersonaje = this.getIndexPersonaje(indexJugador,nombrePersonaje);
+        int indexEnemigo = this.getIndexPersonaje(indexJugadorEnemigo,nombrePersonaje);
+        
+        //setea el enemigo que se va a atacar
+        personajes.get(indexPersonaje).setEnemy(enemigos.get(indexEnemigo)); 
+        
+        return personajes.get(indexPersonaje).atacar();
+
+    }
     
      // ------------------------------------------------ OTROS ------------------------------------------------
     
@@ -754,6 +764,16 @@ public class Controlador {
         return juegoV.getPersonajes().get(index).getNombre();
     
     } 
+    
+    public int getIndexPersonaje(int indexJugador,String personajeNombre){ 
+        for(int i=0; i < juegoV.getJugadores().get(indexJugador).getPersonajes().size() ;i++){
+            if(juegoV.getJugadores().get(indexJugador).getPersonajes().get(i).getNombre() == personajeNombre){
+                return i;
+            }
+        }
+        return 0;
+    
+    }
     
     public String getJugadorPersonajeNombre(int indexJugador, int indexPersonaje){
         if(juegoV.getJugadores().get(indexJugador).getPersonajes().size() > indexPersonaje)
