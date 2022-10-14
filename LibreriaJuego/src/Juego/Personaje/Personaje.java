@@ -93,13 +93,19 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     public String atacar() { // Revisar jugabilidad
         //System.out.println("entre");
         
-        if(this.getEnemigo() != null & this.enemigo.getVida() > 0){
-            if(this.damage > 0){
-                this.enemigo.setVida(this.enemigo.getVida() - this.damage );
-                return (this.nombre + " realizo un ataque a " + this.enemigo.getNombre() + "y le infliguio un total de: " +
-                        this.damage);
+        if(this.getEnemigo() != null){
+            if(this.enemigo.getVida() > 0){
+                if(this.damage > 0){
+                    this.enemigo.setVida(this.enemigo.getVida() - this.damage );
+                    return (this.nombre + " realizo un ataque a " + this.enemigo.getNombre() + "y le infliguio un total de: " +
+                            this.damage);
+                }
+                return "El personaje no puede atacar o no dispone un arma";
             }
-            return "El personaje no puede atacar o no dispone un arma";
+            else{
+                return "El enemigo: " + this.getEnemigo().getNombre() + "ha muerto!!" +
+                "Ganador: " + this.nombre;
+            }
         }
         return "No hay un enemigo para realizar el ataque";
     }

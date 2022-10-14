@@ -851,4 +851,15 @@ public class Controlador {
             return 0;
         }
     }
+
+    public int getVidaPersonaje(String nombrePersonaje) {
+        // Encontrar el personaje
+        Personaje personaje = null;
+        for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+            if(juegoV.getPersonajes().get(i).getNombre().equals(nombrePersonaje)){
+                personaje = juegoV.getPersonajes().get(i);
+            }
+        }
+        return personaje.getVida();
+    }
 }

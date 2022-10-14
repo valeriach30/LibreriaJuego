@@ -297,8 +297,20 @@ public class Jugar extends javax.swing.JDialog {
         }else if(enemigo == ""){
             JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
         }else{
-            String ataque = controlJugar.atacar(1,0,atacante,enemigo);
-            jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
+            int vidaAtacante = controlJugar.getVidaPersonaje(atacante);
+            int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo);
+            if(vidaAtacante > 0 && vidaEnemigo > 0){
+                String ataque = controlJugar.atacar(1,0,atacante,enemigo);
+                jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
+            }
+            else{
+                if(vidaAtacante == 0){
+                    JOptionPane.showMessageDialog(null, "El personaje ha muerto, no puede atacar", "Warning", JOptionPane.OK_OPTION);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "El enemigo ha muerto, no puede volver a atacarlo", "Warning", JOptionPane.OK_OPTION);
+                }
+            }
         }
         
         // Mostrar las imagenes de los personajes
@@ -359,9 +371,20 @@ public class Jugar extends javax.swing.JDialog {
             }else if(enemigo == ""){
                 JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
             }else{
-                String ataque = controlJugar.atacar(0,1,atacante,enemigo);
-                jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
-
+                int vidaAtacante = controlJugar.getVidaPersonaje(atacante);
+                int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo);
+                if(vidaAtacante > 0 && vidaEnemigo > 0){
+                    String ataque = controlJugar.atacar(0,1,atacante,enemigo);
+                    jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
+                }
+                else{
+                    if(vidaAtacante == 0){
+                        JOptionPane.showMessageDialog(null, "El personaje ha muerto, no puede atacar", "Warning", JOptionPane.OK_OPTION);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "El enemigo ha muerto, no puede volver a atacarlo", "Warning", JOptionPane.OK_OPTION);
+                    }
+                }
             }
         } catch(NullPointerException e){
             JOptionPane.showMessageDialog(null, "Debe agregarle personajes a los jugadores", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -375,11 +398,9 @@ public class Jugar extends javax.swing.JDialog {
 
             // Obtener imagenes y setear
             String imagen1 = controlJugar.obtenerImagenArma(armas1);
-            System.out.println(imagen1);
             fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
 
             String imagen2 = controlJugar.obtenerImagenArma(armas2);
-            System.out.println(imagen2);
             fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
 
             SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
