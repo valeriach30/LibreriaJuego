@@ -94,8 +94,7 @@ public class Controlador {
     }
 
     public void agregarSubCategoria(String nombre) {
-        SubCategoria nuevaSubCat = new SubCategoria();
-        nuevaSubCat.setNombreCategoria(nombre);
+        SubCategoria nuevaSubCat = new SubCategoria(nombre);
         
         ArrayList<SubCategoria> array = new ArrayList<SubCategoria>();
         if(juegoV.getSubcategorias()!= null){
