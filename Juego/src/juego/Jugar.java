@@ -34,19 +34,26 @@ public class Jugar extends javax.swing.JDialog {
         controlJugar = elControl;
         
         
-        String[]  opciones = new String[] {"","","",""};
-        
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( opciones );
-        personaje1.setModel(model);
-        
-        model = new DefaultComboBoxModel<>( opciones );
-        personaje2.setModel(model);
-        
-        model = new DefaultComboBoxModel<>( opciones );
-        arma1.setModel(model);
-        
-        model = new DefaultComboBoxModel<>( opciones );
-        arma2.setModel(model);
+        // Cargar Nombres de Personajes
+        ArrayList<String> nombresPersonajes = controlJugar.getNombresPersonajes();
+        if(nombresPersonajes != null){
+            for(int i = 0; i < nombresPersonajes.size(); i++){
+                personaje1.addItem(nombresPersonajes.get(i));
+                personaje2.addItem(nombresPersonajes.get(i));
+            }   
+        }
+        else{
+        }
+        // Cargar Nombres de Armas
+        ArrayList<String> nombresArmas = controlJugar.getNombresArmas();
+        if(nombresArmas != null){
+            for(int i = 0; i < nombresArmas.size(); i++){
+                arma1.addItem(nombresArmas.get(i));
+                arma2.addItem(nombresArmas.get(i));
+            }   
+        }
+        else{
+        }
     }
 
     /**
