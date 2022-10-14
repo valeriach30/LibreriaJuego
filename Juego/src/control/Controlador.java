@@ -32,7 +32,43 @@ public class Controlador {
     }
     
     public void crear(){  
-        // Crear el juego
+        // Agregar algunos personajes default
+        
+        // Armas
+        builderArma("Pistol", 1, 1, 1, 1, 1, "/imagenes/pistol1.jpg");
+        agregarArma("Pistol", "/imagenes/pistol2.jpg");
+        agregarArma("Pistol", "/imagenes/pistol3.jpg");
+        
+        builderArma("Snipper", 10, 10, 1, 100, 1, "/imagenes/snipper1.jpg");
+        agregarArma("Snipper", "/imagenes/snipper2.jpg");
+        agregarArma("Snipper", "/imagenes/snipper3.jpg");
+        
+        // Habilidades
+        builderHabilidad("Trueno", 5, 5, 1, 5, 1, "/imagenes/trueno1.jpg");
+        agregarHabilidad("Trueno", "/imagenes/trueno2.jpg");
+        agregarHabilidad("Trueno", "/imagenes/trueno3.jpg");
+        
+        builderHabilidad("Fuego", 4, 4, 1, 4, 1, "/imagenes/fuego1.jpg");
+        agregarHabilidad("Fuego", "/imagenes/fuego2.jpg");
+        agregarHabilidad("Fuego", "/imagenes/fuego3.jpg");
+        
+        // Personaje
+        
+        buildPersonaje("Pistol", 20, 5, 1, 5, 
+       1, 1, "", 1, "Trueno", "Pickachu", 1, 1, 1, "");
+        
+        // Agregar imagenes a pickachu
+        agregarPersonaje("Pistol", "Trueno", "/imagenes/pickachu1.png", "Pickachu");
+        agregarPersonaje("Ninguna", "Ninguna", "/imagenes/pickachu2.png", "Pickachu");
+        agregarPersonaje("Ninguna", "Ninguna", "/imagenes/pickachu3.png", "Pickachu");
+        
+        
+        buildPersonaje("Snipper", 20, 5, 1, 5, 
+       1, 1, "", 1, "Fuego", "Charmander", 1, 1, 1, "");
+        agregarPersonaje("Snipper", "Fuego", "/imagenes/charmander1.png", "Charmander");
+        agregarPersonaje("Ninguna", "Ninguna", "/imagenes/charmander2.png", "Charmander");
+        agregarPersonaje("Ninguna", "Ninguna", "/imagenes/charmander3.png", "Charmander");
+        
     }
     
     // ------------------------------------------------ CREAR ------------------------------------------------
@@ -841,7 +877,13 @@ public class Controlador {
         for(int i = 0; i < juegoV.getPersonajes().size(); i++){
             
             if(juegoV.getPersonajes().get(i).getNombre() == nombrePersonaje){
-                imagen = juegoV.getPersonajes().get(i).getApariencias().get(0);
+                int nivel = juegoV.getPersonajes().get(i).getNivel();
+                if(nivel <= juegoV.getPersonajes().get(i).getApariencias().size()){
+                    if(nivel > 0){
+                        nivel = nivel - 1;
+                    }
+                    imagen = juegoV.getPersonajes().get(i).getApariencias().get(nivel);
+                }
             }
         }
         return imagen;
@@ -852,7 +894,14 @@ public class Controlador {
         for(int i = 0; i < juegoV.getArmas().size(); i++){
             
             if(juegoV.getArmas().get(i).getName() == nombreArma){
-                imagen = juegoV.getArmas().get(i).getImages().get(0);
+                int nivel = juegoV.getArmas().get(i).getLevel();
+                
+                if(nivel <= juegoV.getArmas().get(i).getImages().size()){
+                    if(nivel > 0){
+                        nivel = nivel - 1;
+                    }
+                    imagen = juegoV.getArmas().get(i).getImages().get(nivel);
+                }
             }
         }
         if(imagen == ""){
@@ -860,7 +909,14 @@ public class Controlador {
             for(int i = 0; i < juegoV.getHabilidades().size(); i++){
             
                 if(juegoV.getHabilidades().get(i).getName() == nombreArma){
-                    imagen = juegoV.getHabilidades().get(i).getImages().get(0);
+                    int nivel = juegoV.getHabilidades().get(i).getLevel();
+
+                    if(nivel <= juegoV.getHabilidades().get(i).getImages().size()){
+                        if(nivel > 0){
+                            nivel = nivel - 1;
+                        }
+                        imagen = juegoV.getHabilidades().get(i).getImages().get(nivel);
+                    }
                 }
             }
         }
@@ -886,5 +942,45 @@ public class Controlador {
             }
         }
         return personaje.getVida();
+    }
+
+    public void SubirNivelPersonaje(String nombrePersonaje) {
+        Personaje personaje = null;
+        int indice = 0;
+        for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+            if(juegoV.getPersonajes().get(i).getNombre().equals(nombrePersonaje)){
+                personaje = juegoV.getPersonajes().get(i);
+                indice = i;
+            }
+        }
+        juegoV.getPersonajes().get(indice).setNivel(personaje.getNivel() + 1);
+    }
+
+    public void SubirNivelArma(String armaNombre) {
+        // Buscar arma
+        Arma arma = null;
+        int indice = 0;
+        for(int i = 0; i < juegoV.getArmas().size(); i++){
+            if(juegoV.getArmas().get(i).getName() == armaNombre){
+                arma = juegoV.getArmas().get(i);
+                indice = i;
+                break;
+            }
+        }
+        if(arma == null){
+            // Buscar en habilidades
+            Arma habilidad = null;
+            for(int i = 0; i < juegoV.getHabilidades().size(); i++){
+                if(juegoV.getHabilidades().get(i).getName() == armaNombre){
+                    habilidad = juegoV.getHabilidades().get(i);
+                    indice = i;
+                    break;
+                }
+            }
+            juegoV.getHabilidades().get(indice).setLevel(habilidad.getLevel() + 1);
+        }
+        else{
+            juegoV.getArmas().get(indice).setLevel(arma.getLevel() + 1);
+        }
     }
 }

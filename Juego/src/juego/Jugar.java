@@ -78,6 +78,10 @@ public class Jugar extends javax.swing.JDialog {
         btnSeleccionarPersonaje1 = new javax.swing.JButton();
         btnAtacar1 = new javax.swing.JButton();
         btnSeleccionarArmas = new javax.swing.JButton();
+        btnSubirNivelA2 = new javax.swing.JButton();
+        btnSubirNivelP2 = new javax.swing.JButton();
+        btnSubirNivelP1 = new javax.swing.JButton();
+        btnSubirNivelA1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -98,7 +102,7 @@ public class Jugar extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 300, 480, 350);
+        jScrollPane1.setBounds(20, 300, 480, 440);
 
         lblTitulo6.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo6.setForeground(new java.awt.Color(185, 185, 185));
@@ -134,7 +138,7 @@ public class Jugar extends javax.swing.JDialog {
         lblTitulo9.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo9.setText("Personaje 2");
         jPanel1.add(lblTitulo9);
-        lblTitulo9.setBounds(540, 470, 180, 40);
+        lblTitulo9.setBounds(540, 520, 180, 40);
 
         btnAtacar2.setBackground(new java.awt.Color(0, 83, 196));
         btnAtacar2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -146,7 +150,7 @@ public class Jugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnAtacar2);
-        btnAtacar2.setBounds(860, 460, 90, 40);
+        btnAtacar2.setBounds(860, 510, 90, 40);
 
         personaje1.setBackground(new java.awt.Color(153, 0, 25));
         personaje1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -182,11 +186,11 @@ public class Jugar extends javax.swing.JDialog {
 
         fotopersonaje2.setText("Foto personaje");
         jPanel1.add(fotopersonaje2);
-        fotopersonaje2.setBounds(540, 530, 150, 110);
+        fotopersonaje2.setBounds(540, 580, 150, 110);
 
         fotoarma2.setText("Foto arma/hechizo");
         jPanel1.add(fotoarma2);
-        fotoarma2.setBounds(730, 530, 150, 110);
+        fotoarma2.setBounds(730, 580, 150, 110);
 
         btnSeleccionarPersonaje1.setBackground(new java.awt.Color(204, 128, 6));
         btnSeleccionarPersonaje1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -210,7 +214,7 @@ public class Jugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnAtacar1);
-        btnAtacar1.setBounds(860, 300, 90, 40);
+        btnAtacar1.setBounds(860, 290, 90, 40);
 
         btnSeleccionarArmas.setBackground(new java.awt.Color(204, 128, 6));
         btnSeleccionarArmas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -225,6 +229,54 @@ public class Jugar extends javax.swing.JDialog {
         jPanel1.add(btnSeleccionarArmas);
         btnSeleccionarArmas.setBounds(380, 230, 200, 40);
 
+        btnSubirNivelA2.setBackground(new java.awt.Color(0, 83, 196));
+        btnSubirNivelA2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnSubirNivelA2.setForeground(new java.awt.Color(255, 255, 255));
+        btnSubirNivelA2.setText("Subir nivel arma");
+        btnSubirNivelA2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirNivelA2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSubirNivelA2);
+        btnSubirNivelA2.setBounds(720, 700, 180, 40);
+
+        btnSubirNivelP2.setBackground(new java.awt.Color(0, 83, 196));
+        btnSubirNivelP2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnSubirNivelP2.setForeground(new java.awt.Color(255, 255, 255));
+        btnSubirNivelP2.setText("Subir nivel personaje");
+        btnSubirNivelP2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirNivelP2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSubirNivelP2);
+        btnSubirNivelP2.setBounds(530, 700, 180, 40);
+
+        btnSubirNivelP1.setBackground(new java.awt.Color(153, 0, 25));
+        btnSubirNivelP1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnSubirNivelP1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSubirNivelP1.setText("Subir nivel personaje");
+        btnSubirNivelP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirNivelP1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSubirNivelP1);
+        btnSubirNivelP1.setBounds(530, 460, 180, 40);
+
+        btnSubirNivelA1.setBackground(new java.awt.Color(153, 0, 25));
+        btnSubirNivelA1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnSubirNivelA1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSubirNivelA1.setText("Subir nivel arma");
+        btnSubirNivelA1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirNivelA1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSubirNivelA1);
+        btnSubirNivelA1.setBounds(720, 460, 180, 40);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -235,7 +287,7 @@ public class Jugar extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
 
         pack();
@@ -349,6 +401,7 @@ public class Jugar extends javax.swing.JDialog {
         fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
         
         String imagen2 = controlJugar.obtenerImagenPersonaje(enemigo);
+        System.out.println(imagen2);
         fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
         
         btnSeleccionarArmas.setEnabled(true);
@@ -383,14 +436,12 @@ public class Jugar extends javax.swing.JDialog {
                     if(vidaAtacante == 0){
                         JOptionPane.showMessageDialog(null, "Ha perdido :(", "mensaje", JOptionPane.OK_OPTION);
                         JOptionPane.showMessageDialog(null, "El personaje ha muerto, no puede atacar", "Warning", JOptionPane.OK_OPTION);
-                        String ataque = controlJugar.atacar(0,1,atacante,enemigo, arma);
-                        jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
+                        jTextArea1.setText(jTextArea1.getText() + enemigo + "ha ganado!"  + "\n");
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "Ha ganado :)!!!!!", "mensaje", JOptionPane.OK_OPTION);
                         JOptionPane.showMessageDialog(null, "El enemigo ha muerto, no puede volver a atacarlo", "Warning", JOptionPane.OK_OPTION);
-                        String ataque = controlJugar.atacar(0,1,atacante,enemigo, arma);
-                        jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
+                        jTextArea1.setText(jTextArea1.getText() + atacante + "ha ganado!"  + "\n");
                     }
                 }
             }
@@ -406,6 +457,7 @@ public class Jugar extends javax.swing.JDialog {
 
             // Obtener imagenes y setear
             String imagen1 = controlJugar.obtenerImagenArma(armas1);
+            System.out.println(imagen1);
             fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
 
             String imagen2 = controlJugar.obtenerImagenArma(armas2);
@@ -417,6 +469,62 @@ public class Jugar extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Debe agregarle armas o habilidades a los personajes", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSeleccionarArmasActionPerformed
+
+    private void btnSubirNivelA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirNivelA2ActionPerformed
+        String armas2 = arma2.getSelectedItem().toString();
+        controlJugar.SubirNivelArma(armas2);
+        try{
+            // Obtener imagenes y setear
+            String imagen2 = controlJugar.obtenerImagenArma(armas2);
+            fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+        } catch(Error e){
+            
+        }
+        jTextArea1.setText(jTextArea1.getText() + armas2 + " subio de nivel!" + "\n");
+    }//GEN-LAST:event_btnSubirNivelA2ActionPerformed
+
+    private void btnSubirNivelP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirNivelP2ActionPerformed
+        String enemigo = personaje2.getSelectedItem().toString();
+        controlJugar.SubirNivelPersonaje(enemigo);
+        
+        try{
+            // Obtener imagenes y setear
+            String imagen2 = controlJugar.obtenerImagenPersonaje(enemigo);
+            System.out.println(imagen2);
+            fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+        } catch(Error e){
+            
+        }
+        jTextArea1.setText(jTextArea1.getText() + enemigo + " subio de nivel!" + "\n");
+    }//GEN-LAST:event_btnSubirNivelP2ActionPerformed
+
+    private void btnSubirNivelP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirNivelP1ActionPerformed
+        String atacante = personaje1.getSelectedItem().toString();
+        controlJugar.SubirNivelPersonaje(atacante);
+        try{
+            // Obtener imagenes y setear
+            String imagen1 = controlJugar.obtenerImagenPersonaje(atacante);
+            System.out.println(imagen1);
+            fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+        } catch(Error e){
+            
+        }
+        jTextArea1.setText(jTextArea1.getText() + atacante + " subio de nivel!" + "\n");
+        
+    }//GEN-LAST:event_btnSubirNivelP1ActionPerformed
+
+    private void btnSubirNivelA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirNivelA1ActionPerformed
+        String armas1 = arma1.getSelectedItem().toString();
+        controlJugar.SubirNivelArma(armas1);
+        try{
+            // Obtener imagenes y setear
+            String imagen1 = controlJugar.obtenerImagenArma(armas1);
+            fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+        } catch(Error e){
+            
+        }
+        jTextArea1.setText(jTextArea1.getText() + armas1 + " subio de nivel!" + "\n");
+    }//GEN-LAST:event_btnSubirNivelA1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -467,6 +575,10 @@ public class Jugar extends javax.swing.JDialog {
     private javax.swing.JButton btnAtacar2;
     private javax.swing.JButton btnSeleccionarArmas;
     private javax.swing.JButton btnSeleccionarPersonaje1;
+    private javax.swing.JButton btnSubirNivelA1;
+    private javax.swing.JButton btnSubirNivelA2;
+    private javax.swing.JButton btnSubirNivelP1;
+    private javax.swing.JButton btnSubirNivelP2;
     private javax.swing.JLabel fotoarma1;
     private javax.swing.JLabel fotoarma2;
     private javax.swing.JLabel fotopersonaje1;

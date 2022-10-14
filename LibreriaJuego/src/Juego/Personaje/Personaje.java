@@ -113,8 +113,8 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     @Override
     public int aumentarNivel(int nivel) {
         if ((nivel + 1) <= apariencias.size()){
-            nivel += 1; // Solo sube de nivel si le queda apariencias disponibles
-            apariencia = apariencias.get(nivel);
+            this.nivel += 1; // Solo sube de nivel si le queda apariencias disponibles
+            apariencia = apariencias.get(nivel-1);
             setApariencia(apariencia);
         }
         return nivel; // Si llega aca sin el if no sube de nivel
