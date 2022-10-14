@@ -35,9 +35,9 @@ public class Controlador {
         // Agregar algunos personajes default
         
         // Armas
-        builderArma("Pistol", 1, 1, 1, 1, 1, "/imagenes/pistol1.jpg");
+        builderArma("Pistol", 1, 1, 1, 1, 1, "/imagenes/pistol1.png");
         agregarArma("Pistol", "/imagenes/pistol2.jpg");
-        agregarArma("Pistol", "/imagenes/pistol3.jpg");
+        agregarArma("Pistol", "/imagenes/pistol3.png");
         
         builderArma("Snipper", 10, 10, 1, 100, 1, "/imagenes/snipper1.jpg");
         agregarArma("Snipper", "/imagenes/snipper2.jpg");
@@ -66,7 +66,7 @@ public class Controlador {
         buildPersonaje("Snipper", 20, 5, 1, 5, 
        1, 1, "", 1, "Fuego", "Charmander", 1, 1, 1, "");
         agregarPersonaje("Snipper", "Fuego", "/imagenes/charmander1.png", "Charmander");
-        agregarPersonaje("Ninguna", "Ninguna", "/imagenes/charmander2.png", "Charmander");
+        agregarPersonaje("Ninguna", "Ninguna", "/imagenes/charmander2.jpg", "Charmander");
         agregarPersonaje("Ninguna", "Ninguna", "/imagenes/charmander3.png", "Charmander");
         
     }
@@ -502,14 +502,15 @@ public class Controlador {
                 }
             }
 
-
+            Personaje nuevoP = p.deepClone();
             // Buscar el jugador y agregarle el personaje
             for(int i = 0; i < juegoV.getJugadores().size(); i++){
                 if(juegoV.getJugadores().get(i).getNombre() == nombreJugador){
                     
                     ArrayList<Personaje> array = new ArrayList<Personaje>();
-                    array.add(p);
+                    array.add(nuevoP);
                     juegoV.getJugadores().get(i).setPersonajes(array);
+                    juegoV.getPersonajes().add(nuevoP);
                 }
             }
         }
@@ -527,9 +528,10 @@ public class Controlador {
                 }
             }
 
-
+            Personaje nuevoP = p.deepClone();
             // Buscar el jugador y agregarle el personaje
-            juegoV.getJugadores().get(indexJugador).addPersonaje(p);
+            juegoV.getJugadores().get(indexJugador).addPersonaje(nuevoP);
+            juegoV.getPersonajes().add(nuevoP);
         }
      }
      public void eliminarPerJugador(int indexJugador, String nombrePersonaje1) {
@@ -609,8 +611,41 @@ public class Controlador {
         }
     }
     
+    // Obtiene los nombres de los personajes de un jugador
+    public ArrayList<String> getNombresPersonajesJugador(String jugador) {
+        ArrayList<String> nombres = new ArrayList<String>();
+        
+        if(juegoV.getJugadores() != null){
+            for(int i = 0; i < juegoV.getJugadores().size(); i++){
+                // Agregar nombres de los personajes del jugador
+                if(juegoV.getJugadores().get(i).getNombre() == jugador){
+                    for(int j = 0; j < juegoV.getJugadores().get(i).getPersonajes().size(); j++){
+                        nombres.add(juegoV.getJugadores().get(i).getPersonajes().get(j).getNombre());
+                    }
+                }
+            }
+            return nombres;
+        }
+        else{
+            return nombres;
+        }
+    }
     
-    
+    public Jugador getJugador(String jugador){
+        Jugador nuevoJ = null;
+        if(juegoV.getJugadores() != null){
+            for(int i = 0; i < juegoV.getJugadores().size(); i++){
+                // Agregar nombres de los personajes del jugador
+                if(juegoV.getJugadores().get(i).getNombre() == jugador){
+                    nuevoJ = juegoV.getJugadores().get(i);
+                }
+            }
+            return nuevoJ;
+        }
+        else{
+            return nuevoJ;
+        }
+    }
     // Obtiene los nombres de los personajes
     public ArrayList<String> getNombresPersonajes(){
         ArrayList<String> nombres = new ArrayList<String>();
@@ -646,8 +681,11 @@ public class Controlador {
         // Encontrar pesonaje
         Personaje per = null;
         for(int i = 0; i < juegoV.getPersonajes().size(); i++){
-            
+            System.out.println("----------------");
+            System.out.println("nombre: " + nombrePersonaje);
+            System.out.println(juegoV.getPersonajes().get(i).getNombre());
             if(juegoV.getPersonajes().get(i).getNombre() == nombrePersonaje){
+                System.out.println("entre");
                 per = juegoV.getPersonajes().get(i);
             }
         }
@@ -983,4 +1021,6 @@ public class Controlador {
             juegoV.getArmas().get(indice).setLevel(arma.getLevel() + 1);
         }
     }
+
+    
 }

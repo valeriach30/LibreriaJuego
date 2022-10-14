@@ -4,6 +4,7 @@
  */
 package juego;
 
+import Libreria.Juego.Jugador;
 import control.Controlador;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -20,7 +21,8 @@ public class Jugar extends javax.swing.JDialog {
     /**
      * Creates new form Jugar
      */
-    
+    private Jugador objetoJugador1;
+    private Jugador objetoJugador2;
     private Controlador controlJugar ;
     public Jugar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -34,12 +36,12 @@ public class Jugar extends javax.swing.JDialog {
         controlJugar = elControl;
         
         
-        // Cargar Nombres de Personajes
-        ArrayList<String> nombresPersonajes = controlJugar.getNombresPersonajes();
-        if(nombresPersonajes != null){
-            for(int i = 0; i < nombresPersonajes.size(); i++){
-                personaje1.addItem(nombresPersonajes.get(i));
-                personaje2.addItem(nombresPersonajes.get(i));
+        // Cargar Nombres de Jugadores
+        ArrayList<String> nombresJugadores = controlJugar.getNombresJugadores();
+        if(nombresJugadores != null){
+            for(int i = 0; i < nombresJugadores.size(); i++){
+                jugador1.addItem(nombresJugadores.get(i));
+                jugador2.addItem(nombresJugadores.get(i));
             }   
         }
         else{
@@ -61,7 +63,7 @@ public class Jugar extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         lblTitulo6 = new javax.swing.JLabel();
-        arma1 = new javax.swing.JComboBox<>();
+        jugador1 = new javax.swing.JComboBox<>();
         lblTitulo7 = new javax.swing.JLabel();
         arma2 = new javax.swing.JComboBox<>();
         lblTitulo8 = new javax.swing.JLabel();
@@ -82,6 +84,11 @@ public class Jugar extends javax.swing.JDialog {
         btnSubirNivelP2 = new javax.swing.JButton();
         btnSubirNivelP1 = new javax.swing.JButton();
         btnSubirNivelA1 = new javax.swing.JButton();
+        lblTitulo12 = new javax.swing.JLabel();
+        lblTitulo13 = new javax.swing.JLabel();
+        arma1 = new javax.swing.JComboBox<>();
+        jugador2 = new javax.swing.JComboBox<>();
+        btnSeleccionarJugadores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -95,50 +102,49 @@ public class Jugar extends javax.swing.JDialog {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fight.gif"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(740, 0, 190, 170);
+        jLabel1.setBounds(970, 0, 190, 170);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 300, 480, 440);
+        jScrollPane1.setBounds(20, 300, 600, 440);
 
         lblTitulo6.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo6.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo6.setText("Seleccione el arma/hechizo 2 ");
         jPanel1.add(lblTitulo6);
-        lblTitulo6.setBounds(380, 170, 200, 40);
+        lblTitulo6.setBounds(620, 170, 200, 40);
 
-        arma1.setBackground(new java.awt.Color(153, 0, 25));
-        arma1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        arma1.setEnabled(false);
-        jPanel1.add(arma1);
-        arma1.setBounds(590, 110, 150, 40);
+        jugador1.setBackground(new java.awt.Color(153, 0, 25));
+        jugador1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        jPanel1.add(jugador1);
+        jugador1.setBounds(100, 110, 120, 40);
 
         lblTitulo7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo7.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo7.setText("Seleccione el personaje  2");
         jPanel1.add(lblTitulo7);
-        lblTitulo7.setBounds(20, 170, 180, 40);
+        lblTitulo7.setBounds(270, 170, 180, 40);
 
         arma2.setBackground(new java.awt.Color(0, 83, 196));
         arma2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         arma2.setEnabled(false);
         jPanel1.add(arma2);
-        arma2.setBounds(590, 170, 150, 40);
+        arma2.setBounds(820, 170, 150, 40);
 
         lblTitulo8.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo8.setForeground(new java.awt.Color(185, 185, 185));
-        lblTitulo8.setText("Seleccione el personaje 1");
+        lblTitulo8.setText("Jugador2");
         jPanel1.add(lblTitulo8);
-        lblTitulo8.setBounds(20, 110, 180, 40);
+        lblTitulo8.setBounds(10, 170, 90, 40);
 
         lblTitulo9.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo9.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo9.setText("Personaje 2");
         jPanel1.add(lblTitulo9);
-        lblTitulo9.setBounds(540, 520, 180, 40);
+        lblTitulo9.setBounds(660, 520, 180, 40);
 
         btnAtacar2.setBackground(new java.awt.Color(0, 83, 196));
         btnAtacar2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -150,59 +156,62 @@ public class Jugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnAtacar2);
-        btnAtacar2.setBounds(860, 510, 90, 40);
+        btnAtacar2.setBounds(660, 690, 90, 40);
 
         personaje1.setBackground(new java.awt.Color(153, 0, 25));
         personaje1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        personaje1.setEnabled(false);
         jPanel1.add(personaje1);
-        personaje1.setBounds(200, 110, 150, 40);
+        personaje1.setBounds(450, 110, 150, 40);
 
         personaje2.setBackground(new java.awt.Color(0, 83, 196));
         personaje2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        personaje2.setEnabled(false);
         jPanel1.add(personaje2);
-        personaje2.setBounds(200, 170, 150, 40);
+        personaje2.setBounds(450, 170, 150, 40);
 
         lblTitulo10.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo10.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo10.setText("Seleccione el arma/hechizo 1");
         jPanel1.add(lblTitulo10);
-        lblTitulo10.setBounds(380, 110, 200, 40);
+        lblTitulo10.setBounds(620, 110, 200, 40);
 
         lblTitulo11.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo11.setForeground(new java.awt.Color(185, 185, 185));
         lblTitulo11.setText("Personaje 1");
         jPanel1.add(lblTitulo11);
-        lblTitulo11.setBounds(540, 300, 180, 40);
+        lblTitulo11.setBounds(660, 300, 180, 40);
 
         fotoarma1.setText("Foto arma/hechizo");
         jPanel1.add(fotoarma1);
-        fotoarma1.setBounds(730, 350, 150, 110);
+        fotoarma1.setBounds(900, 350, 150, 110);
 
         fotopersonaje1.setText("Foto personaje");
         fotopersonaje1.setMaximumSize(new java.awt.Dimension(190, 180));
         fotopersonaje1.setMinimumSize(new java.awt.Dimension(190, 180));
         jPanel1.add(fotopersonaje1);
-        fotopersonaje1.setBounds(540, 350, 150, 110);
+        fotopersonaje1.setBounds(660, 350, 150, 110);
 
         fotopersonaje2.setText("Foto personaje");
         jPanel1.add(fotopersonaje2);
-        fotopersonaje2.setBounds(540, 580, 150, 110);
+        fotopersonaje2.setBounds(660, 580, 150, 110);
 
         fotoarma2.setText("Foto arma/hechizo");
         jPanel1.add(fotoarma2);
-        fotoarma2.setBounds(730, 580, 150, 110);
+        fotoarma2.setBounds(920, 570, 150, 110);
 
         btnSeleccionarPersonaje1.setBackground(new java.awt.Color(204, 128, 6));
         btnSeleccionarPersonaje1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         btnSeleccionarPersonaje1.setForeground(new java.awt.Color(102, 102, 102));
         btnSeleccionarPersonaje1.setText("Seleccionar Personajes");
+        btnSeleccionarPersonaje1.setEnabled(false);
         btnSeleccionarPersonaje1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleccionarPersonaje1ActionPerformed(evt);
             }
         });
         jPanel1.add(btnSeleccionarPersonaje1);
-        btnSeleccionarPersonaje1.setBounds(20, 240, 200, 40);
+        btnSeleccionarPersonaje1.setBounds(270, 230, 200, 40);
 
         btnAtacar1.setBackground(new java.awt.Color(153, 0, 25));
         btnAtacar1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -214,7 +223,7 @@ public class Jugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnAtacar1);
-        btnAtacar1.setBounds(860, 290, 90, 40);
+        btnAtacar1.setBounds(660, 470, 90, 40);
 
         btnSeleccionarArmas.setBackground(new java.awt.Color(204, 128, 6));
         btnSeleccionarArmas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -227,7 +236,7 @@ public class Jugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnSeleccionarArmas);
-        btnSeleccionarArmas.setBounds(380, 230, 200, 40);
+        btnSeleccionarArmas.setBounds(620, 230, 200, 40);
 
         btnSubirNivelA2.setBackground(new java.awt.Color(0, 83, 196));
         btnSubirNivelA2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -239,7 +248,7 @@ public class Jugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnSubirNivelA2);
-        btnSubirNivelA2.setBounds(720, 700, 180, 40);
+        btnSubirNivelA2.setBounds(950, 690, 180, 40);
 
         btnSubirNivelP2.setBackground(new java.awt.Color(0, 83, 196));
         btnSubirNivelP2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -251,7 +260,7 @@ public class Jugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnSubirNivelP2);
-        btnSubirNivelP2.setBounds(530, 700, 180, 40);
+        btnSubirNivelP2.setBounds(760, 690, 180, 40);
 
         btnSubirNivelP1.setBackground(new java.awt.Color(153, 0, 25));
         btnSubirNivelP1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -263,7 +272,7 @@ public class Jugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnSubirNivelP1);
-        btnSubirNivelP1.setBounds(530, 460, 180, 40);
+        btnSubirNivelP1.setBounds(760, 470, 180, 40);
 
         btnSubirNivelA1.setBackground(new java.awt.Color(153, 0, 25));
         btnSubirNivelA1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -275,14 +284,49 @@ public class Jugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnSubirNivelA1);
-        btnSubirNivelA1.setBounds(720, 460, 180, 40);
+        btnSubirNivelA1.setBounds(950, 470, 180, 40);
+
+        lblTitulo12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo12.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo12.setText("Seleccione el personaje 1");
+        jPanel1.add(lblTitulo12);
+        lblTitulo12.setBounds(270, 110, 180, 40);
+
+        lblTitulo13.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        lblTitulo13.setForeground(new java.awt.Color(185, 185, 185));
+        lblTitulo13.setText("Jugador1");
+        jPanel1.add(lblTitulo13);
+        lblTitulo13.setBounds(10, 110, 90, 40);
+
+        arma1.setBackground(new java.awt.Color(153, 0, 25));
+        arma1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        arma1.setEnabled(false);
+        jPanel1.add(arma1);
+        arma1.setBounds(820, 110, 150, 40);
+
+        jugador2.setBackground(new java.awt.Color(0, 83, 196));
+        jugador2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        jPanel1.add(jugador2);
+        jugador2.setBounds(100, 170, 120, 40);
+
+        btnSeleccionarJugadores.setBackground(new java.awt.Color(204, 128, 6));
+        btnSeleccionarJugadores.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnSeleccionarJugadores.setForeground(new java.awt.Color(102, 102, 102));
+        btnSeleccionarJugadores.setText("Seleccionar Jugadores");
+        btnSeleccionarJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarJugadoresActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSeleccionarJugadores);
+        btnSeleccionarJugadores.setBounds(20, 230, 200, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 962, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -327,7 +371,7 @@ public class Jugar extends javax.swing.JDialog {
         JComboBox<String> armaCB;
         
         if(indexJugador == 0)
-            armaCB=arma1;
+            armaCB=jugador1;
         else
             armaCB=arma2;
         armaCB.setModel(model);
@@ -373,44 +417,41 @@ public class Jugar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAtacar2ActionPerformed
 
     private void btnSeleccionarPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarPersonaje1ActionPerformed
-        try{
-        String atacante = personaje1.getSelectedItem().toString();
-        String enemigo = personaje2.getSelectedItem().toString();
         
-        // Cargar Nombres de Armas
-        ArrayList<String> nombresArmas = controlJugar.getNombresArmasPersonaje(atacante);
-        if(nombresArmas != null){
-            for(int i = 0; i < nombresArmas.size(); i++){
-                arma1.addItem(nombresArmas.get(i));
-            }   
-        }
-        else{
-        }
-        
-        ArrayList<String> nombresArmas2 = controlJugar.getNombresArmasPersonaje(enemigo);
-        if(nombresArmas2 != null){
-            for(int i = 0; i < nombresArmas2.size(); i++){
-                arma2.addItem(nombresArmas2.get(i));
-            }   
-        }
-        else{
-        }
-        // Obtener imagenes y setear
-        String imagen1 = controlJugar.obtenerImagenPersonaje(atacante);
-        System.out.println(imagen1);
-        fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
-        
-        String imagen2 = controlJugar.obtenerImagenPersonaje(enemigo);
-        System.out.println(imagen2);
-        fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
-        
-        btnSeleccionarArmas.setEnabled(true);
-        arma1.setEnabled(true);
-        arma2.setEnabled(true);
-        }
-        catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Debe agregarle personajes al jugador", "Error!", JOptionPane.ERROR_MESSAGE);
-        }
+            String atacante = personaje1.getSelectedItem().toString();
+            String enemigo = personaje2.getSelectedItem().toString();
+
+            // Cargar Nombres de Armas
+            ArrayList<String> nombresArmas = controlJugar.getNombresArmasPersonaje(atacante);
+            if(nombresArmas != null){
+                for(int i = 0; i < nombresArmas.size(); i++){
+                    arma1.addItem(nombresArmas.get(i));
+                }   
+            }
+            else{
+            }
+
+            ArrayList<String> nombresArmas2 = controlJugar.getNombresArmasPersonaje(enemigo);
+            if(nombresArmas2 != null){
+                for(int i = 0; i < nombresArmas2.size(); i++){
+                    arma2.addItem(nombresArmas2.get(i));
+                }   
+            }
+            else{
+            }
+            // Obtener imagenes y setear
+            String imagen1 = controlJugar.obtenerImagenPersonaje(atacante);
+            System.out.println(imagen1);
+            fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+
+            String imagen2 = controlJugar.obtenerImagenPersonaje(enemigo);
+            System.out.println(imagen2);
+            fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+
+            btnSeleccionarArmas.setEnabled(true);
+            arma1.setEnabled(true);
+            arma2.setEnabled(true);
+            btnSeleccionarPersonaje1.setEnabled(false);
     }//GEN-LAST:event_btnSeleccionarPersonaje1ActionPerformed
 
     private void btnAtacar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacar1ActionPerformed
@@ -436,12 +477,12 @@ public class Jugar extends javax.swing.JDialog {
                     if(vidaAtacante == 0){
                         JOptionPane.showMessageDialog(null, "Ha perdido :(", "mensaje", JOptionPane.OK_OPTION);
                         JOptionPane.showMessageDialog(null, "El personaje ha muerto, no puede atacar", "Warning", JOptionPane.OK_OPTION);
-                        jTextArea1.setText(jTextArea1.getText() + enemigo + "ha ganado!"  + "\n");
+                        jTextArea1.setText(jTextArea1.getText() + enemigo + " ha ganado!"  + "\n");
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "Ha ganado :)!!!!!", "mensaje", JOptionPane.OK_OPTION);
                         JOptionPane.showMessageDialog(null, "El enemigo ha muerto, no puede volver a atacarlo", "Warning", JOptionPane.OK_OPTION);
-                        jTextArea1.setText(jTextArea1.getText() + atacante + "ha ganado!"  + "\n");
+                        jTextArea1.setText(jTextArea1.getText() + atacante + " ha ganado!"  + "\n");
                     }
                 }
             }
@@ -457,7 +498,6 @@ public class Jugar extends javax.swing.JDialog {
 
             // Obtener imagenes y setear
             String imagen1 = controlJugar.obtenerImagenArma(armas1);
-            System.out.println(imagen1);
             fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
 
             String imagen2 = controlJugar.obtenerImagenArma(armas2);
@@ -465,6 +505,8 @@ public class Jugar extends javax.swing.JDialog {
 
             SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
             pant1.setVisible(true); 
+            
+            btnSeleccionarArmas.setEnabled(false);
         } catch(NullPointerException e){
             JOptionPane.showMessageDialog(null, "Debe agregarle armas o habilidades a los personajes", "Error!", JOptionPane.ERROR_MESSAGE);
         }
@@ -526,6 +568,42 @@ public class Jugar extends javax.swing.JDialog {
         jTextArea1.setText(jTextArea1.getText() + armas1 + " subio de nivel!" + "\n");
     }//GEN-LAST:event_btnSubirNivelA1ActionPerformed
 
+    private void btnSeleccionarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarJugadoresActionPerformed
+        String jugador1V = jugador1.getSelectedItem().toString();
+        
+        // Cargar Nombres de Personajes
+        ArrayList<String> nombresPersonajes = controlJugar.getNombresPersonajesJugador(jugador1V);
+        if(nombresPersonajes != null){
+            for(int i = 0; i < nombresPersonajes.size(); i++){
+                personaje1.addItem(nombresPersonajes.get(i));
+            }   
+        }
+        else{
+        }
+        // Guardar jugador 1
+        this.objetoJugador1 = controlJugar.getJugador(jugador1V);
+        
+        String jugador2V = jugador2.getSelectedItem().toString();
+        
+        // Cargar Nombres de Personajes
+        ArrayList<String> nombresPersonajes2 = controlJugar.getNombresPersonajesJugador(jugador2V);
+        if(nombresPersonajes2 != null){
+            for(int i = 0; i < nombresPersonajes2.size(); i++){
+                personaje2.addItem(nombresPersonajes2.get(i));
+            }   
+        }
+        else{
+        }
+        
+        // Guardar jugador 2
+        this.objetoJugador2 = controlJugar.getJugador(jugador2V);
+        
+        personaje1.setEnabled(true);
+        personaje2.setEnabled(true);
+        btnSeleccionarPersonaje1.setEnabled(true);
+        btnSeleccionarJugadores.setEnabled(false);
+    }//GEN-LAST:event_btnSeleccionarJugadoresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -574,6 +652,7 @@ public class Jugar extends javax.swing.JDialog {
     private javax.swing.JButton btnAtacar1;
     private javax.swing.JButton btnAtacar2;
     private javax.swing.JButton btnSeleccionarArmas;
+    private javax.swing.JButton btnSeleccionarJugadores;
     private javax.swing.JButton btnSeleccionarPersonaje1;
     private javax.swing.JButton btnSubirNivelA1;
     private javax.swing.JButton btnSubirNivelA2;
@@ -587,9 +666,13 @@ public class Jugar extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JComboBox<String> jugador1;
+    private javax.swing.JComboBox<String> jugador2;
     private javax.swing.JLabel lblTitulo1;
     private javax.swing.JLabel lblTitulo10;
     private javax.swing.JLabel lblTitulo11;
+    private javax.swing.JLabel lblTitulo12;
+    private javax.swing.JLabel lblTitulo13;
     private javax.swing.JLabel lblTitulo6;
     private javax.swing.JLabel lblTitulo7;
     private javax.swing.JLabel lblTitulo8;

@@ -104,7 +104,6 @@ public class CrearPersonaje extends javax.swing.JDialog {
         lblTitulo4 = new javax.swing.JLabel();
         lblTitulo5 = new javax.swing.JLabel();
         danho = new javax.swing.JSpinner();
-        btnJson = new javax.swing.JButton();
         lblTitulo6 = new javax.swing.JLabel();
         habilidades = new javax.swing.JComboBox<>();
         lblTitulo8 = new javax.swing.JLabel();
@@ -213,18 +212,6 @@ public class CrearPersonaje extends javax.swing.JDialog {
         danho.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(danho);
         danho.setBounds(300, 340, 50, 30);
-
-        btnJson.setBackground(new java.awt.Color(0, 102, 102));
-        btnJson.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        btnJson.setForeground(new java.awt.Color(185, 185, 185));
-        btnJson.setText("Subir Json");
-        btnJson.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJsonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnJson);
-        btnJson.setBounds(170, 700, 140, 40);
 
         lblTitulo6.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo6.setForeground(new java.awt.Color(185, 185, 185));
@@ -469,10 +456,6 @@ public class CrearPersonaje extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
 
-    private void btnJsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJsonActionPerformed
-        
-    }//GEN-LAST:event_btnJsonActionPerformed
-
     private void nombretxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombretxtActionPerformed
@@ -541,7 +524,6 @@ public class CrearPersonaje extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> armas;
     private javax.swing.JButton btnAgregarCaract;
     private javax.swing.JButton btnCrear;
-    private javax.swing.JButton btnJson;
     private javax.swing.JSpinner campos;
     private javax.swing.JSpinner cantidad;
     private javax.swing.JComboBox<String> categorias;
