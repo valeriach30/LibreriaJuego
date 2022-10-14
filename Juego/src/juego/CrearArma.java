@@ -6,6 +6,7 @@ package juego;
 
 import control.Controlador;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -266,14 +267,22 @@ public class CrearArma extends javax.swing.JDialog {
         int rangoV = (int) rango.getValue();
         int cantidadV = (int) cantidad.getValue();
         
-        if(cantidadV > 1){
-            controlArmas.clonarArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
-        }
-        else{
-            controlArmas.builderArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
+        //System.out.println(nombreArma);
+        if(nombreArma.equals("Nombre")){
+            JOptionPane.showMessageDialog(null, "Falta Rellenar el nombre", "Nombre invalido", JOptionPane.OK_OPTION);
+            
+        }else{
+            if(cantidadV > 1){
+                controlArmas.clonarArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
+            }
+            else{
+                controlArmas.builderArma(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
+            }
+            this.setVisible(false);
         }
         
-        this.setVisible(false);
+        
+        
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void nombretxt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxt2ActionPerformed

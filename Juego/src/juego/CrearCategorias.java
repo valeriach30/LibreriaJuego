@@ -6,6 +6,7 @@ package juego;
 
 import control.Controlador;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -205,8 +206,13 @@ public class CrearCategorias extends javax.swing.JDialog {
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         String nombre = nombretxt.getText();
-        controlCategorias.agregarCategoria(nombre);
-        this.setVisible(false);
+        if(nombre.equals("Nombre")){
+            JOptionPane.showMessageDialog(null, "Falta Rellenar el nombre", "Nombre invalido", JOptionPane.OK_OPTION);
+            
+        }else{
+            controlCategorias.agregarCategoria(nombre);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void nombretxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxtActionPerformed
@@ -225,8 +231,13 @@ public class CrearCategorias extends javax.swing.JDialog {
 
     private void btnCrear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear2ActionPerformed
         String nombre = nombretxt1.getText();
-        controlCategorias.agregarSubCategoria(nombre);
-        this.setVisible(false);
+        if(nombre.equals("Nombre")){
+            JOptionPane.showMessageDialog(null, "Falta Rellenar el nombre", "Nombre invalido", JOptionPane.OK_OPTION);
+            
+        }else{
+            controlCategorias.agregarSubCategoria(nombre);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btnCrear2ActionPerformed
 
     /**

@@ -34,12 +34,12 @@ public class SeleccionPersonajes extends javax.swing.JDialog {
         //preguta si hay jugadores sufientes y si no los crea
         
         
-        if(controlSelecPer.getNombresJugadores().size() == 0){
+        /*if(controlSelecPer.getNombresJugadores().size() == 0){
             controlSelecPer.agregarJugador("Jugador 1", "Jugador 1", " ", 0);
             controlSelecPer.agregarJugador("Jugador 2", "Jugador 2", " ", 0);
         }else if(controlSelecPer.getNombresJugadores().size() == 1){
             controlSelecPer.agregarJugador("Jugador 2", "Jugador 2", " ", 0);
-        }
+        }*/
         
         refrecarTextField(0);
         refrecarTextField(1);
@@ -203,7 +203,7 @@ public class SeleccionPersonajes extends javax.swing.JDialog {
         
         if(indexPlayer == 0){
             jTextArea2.setText(controlSelecPer.consultarPersonajesJugador(0));
-            System.out.println(controlSelecPer.consultarPersonajesJugador(0));
+            //System.out.println(controlSelecPer.consultarPersonajesJugador(0));
         }else if (indexPlayer == 1){
             jTextArea1.setText(controlSelecPer.consultarPersonajesJugador(1));
         }

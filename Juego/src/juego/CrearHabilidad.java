@@ -6,6 +6,7 @@ package juego;
 
 import control.Controlador;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -75,7 +76,6 @@ public class CrearHabilidad extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        imagentxt.setBackground(new java.awt.Color(255, 255, 255));
         imagentxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         imagentxt.setForeground(new java.awt.Color(185, 185, 185));
         imagentxt.setText("Imagen");
@@ -88,7 +88,6 @@ public class CrearHabilidad extends javax.swing.JDialog {
         imagentxt.setBounds(240, 130, 200, 50);
 
         lblTitulo1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 72)); // NOI18N
-        lblTitulo1.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo1.setText("Crear Habilidad");
         jPanel1.add(lblTitulo1);
         lblTitulo1.setBounds(20, 10, 330, 84);
@@ -116,7 +115,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
 
         alcance.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(alcance);
-        alcance.setBounds(150, 200, 64, 30);
+        alcance.setBounds(150, 200, 31, 30);
 
         lblTitulo.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(185, 185, 185));
@@ -126,7 +125,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
 
         danho.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(danho);
-        danho.setBounds(150, 250, 64, 30);
+        danho.setBounds(150, 250, 31, 30);
 
         lblTitulo2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo2.setForeground(new java.awt.Color(185, 185, 185));
@@ -136,7 +135,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
 
         nivel.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(nivel);
-        nivel.setBounds(150, 300, 64, 30);
+        nivel.setBounds(150, 300, 31, 30);
 
         lblTitulo4.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo4.setForeground(new java.awt.Color(185, 185, 185));
@@ -146,7 +145,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
 
         rango.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(rango);
-        rango.setBounds(150, 350, 64, 30);
+        rango.setBounds(150, 350, 31, 30);
 
         lblTitulo9.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo9.setForeground(new java.awt.Color(185, 185, 185));
@@ -154,7 +153,6 @@ public class CrearHabilidad extends javax.swing.JDialog {
         jPanel1.add(lblTitulo9);
         lblTitulo9.setBounds(280, 310, 320, 40);
 
-        urltxt.setBackground(new java.awt.Color(255, 255, 255));
         urltxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         urltxt.setForeground(new java.awt.Color(185, 185, 185));
         urltxt.setText("Url");
@@ -198,7 +196,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
 
         cantidad.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(cantidad);
-        cantidad.setBounds(150, 420, 64, 30);
+        cantidad.setBounds(150, 420, 31, 30);
 
         lblTitulo7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo7.setForeground(new java.awt.Color(185, 185, 185));
@@ -213,7 +211,6 @@ public class CrearHabilidad extends javax.swing.JDialog {
         jPanel1.add(habilidades);
         habilidades.setBounds(280, 260, 150, 40);
 
-        nombretxt.setBackground(new java.awt.Color(255, 255, 255));
         nombretxt.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         nombretxt.setForeground(new java.awt.Color(185, 185, 185));
         nombretxt.setText("Nombre");
@@ -265,14 +262,19 @@ public class CrearHabilidad extends javax.swing.JDialog {
         int rangoV = (int) rango.getValue();
         int cantidadV = (int) cantidad.getValue();
         
-        if(cantidadV > 1){
-            controlHabilidad.clonarHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
+        if(nombreArma.equals("Nombre")){
+            JOptionPane.showMessageDialog(null, "Falta Rellenar el nombre", "Nombre invalido", JOptionPane.OK_OPTION);
+            
+        }else{
+            if(cantidadV > 1){
+                controlHabilidad.clonarHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
+            }
+            else{
+                controlHabilidad.builderHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
+            }
+
+            this.setVisible(false);
         }
-        else{
-            controlHabilidad.builderHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
-        }
-        
-        this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void nombretxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxtActionPerformed

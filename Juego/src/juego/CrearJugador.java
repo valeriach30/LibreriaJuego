@@ -6,6 +6,7 @@ package juego;
 
 import control.Controlador;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -218,14 +219,17 @@ public class CrearJugador extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAgregarPersonajeActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        String nombreJ = nombretxt1.getText();
+        String nombreJ =  nombretxt1.getText();
         String usuarioJ = usuariotxt.getText();
         String contraJ = contratxt.getText();
         int edadJ = (int) edad.getValue();
-        
-        controlJugador.agregarJugador(nombreJ, usuarioJ, contraJ, edadJ);
-        
-        this.setVisible(false);
+        if(nombreJ.equals("Nombre")){
+            JOptionPane.showMessageDialog(null, "Falta Rellenar el nombre", "Nombre invalido", JOptionPane.OK_OPTION);
+        }else{
+            controlJugador.agregarJugador(nombreJ, usuarioJ, contraJ, edadJ);
+            this.setVisible(false);
+        }
+            
     }//GEN-LAST:event_btnCrearActionPerformed
 
     /**

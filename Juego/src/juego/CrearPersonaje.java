@@ -6,6 +6,7 @@ package juego;
 
 import control.Controlador;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -440,20 +441,24 @@ public class CrearPersonaje extends javax.swing.JDialog {
         
         int cantidadV = (int) cantidad.getValue();
         
-        if(cantidadV > 1){
-            // Clonar
-            controlPersonajes.clonarPersonaje(armaNombre, vidaPer, GxT,
-           nivel2V, camposV, nivelV, costoV, categoriaV,
-           cantidadV, habilidadNombre, nombrePersonaje, alcanceV, danhoV, rangoV, subCategoriaV);
-        }
-        else{
-            // Crear solo 1
-            controlPersonajes.buildPersonaje(armaNombre, vidaPer, GxT,
-           nivel2V, camposV, nivelV, costoV, categoriaV,
-           cantidadV, habilidadNombre, nombrePersonaje, alcanceV, danhoV, rangoV, subCategoriaV);
-        }
+        if(nombrePersonaje.equals("Nombre")){
+            JOptionPane.showMessageDialog(null, "Falta Rellenar el nombre", "Nombre invalido", JOptionPane.OK_OPTION);
+        }else{
+            if(cantidadV > 1){
+                // Clonar
+                controlPersonajes.clonarPersonaje(armaNombre, vidaPer, GxT,
+               nivel2V, camposV, nivelV, costoV, categoriaV,
+               cantidadV, habilidadNombre, nombrePersonaje, alcanceV, danhoV, rangoV, subCategoriaV);
+            }
+            else{
+                // Crear solo 1
+                controlPersonajes.buildPersonaje(armaNombre, vidaPer, GxT,
+               nivel2V, camposV, nivelV, costoV, categoriaV,
+               cantidadV, habilidadNombre, nombrePersonaje, alcanceV, danhoV, rangoV, subCategoriaV);
+            }
         
-        this.setVisible(false);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void nombretxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxtActionPerformed
