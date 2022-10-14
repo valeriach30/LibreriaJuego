@@ -694,7 +694,8 @@ public class Controlador {
     public String atacar(int indexJugador, int indexJugadorEnemigo ,String nombrePersonaje, String nombreEnemigo){
         ArrayList<Personaje> personajes = juegoV.getJugadores().get(indexJugador).getPersonajes();
         ArrayList<Personaje> enemigos = juegoV.getJugadores().get(indexJugadorEnemigo).getPersonajes();
-
+        
+        // Encontrar enemigo
         int indexPersonaje = this.getIndexPersonaje(indexJugador,nombrePersonaje);
         int indexEnemigo = this.getIndexPersonaje(indexJugadorEnemigo,nombreEnemigo);
         
@@ -840,5 +841,14 @@ public class Controlador {
         }
         
         return imagen;
+    }
+
+    public int getJugadores() {
+        if(juegoV.getJugadores() != null){
+            return juegoV.getJugadores().size();
+        }
+        else{
+            return 0;
+        }
     }
 }

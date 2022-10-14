@@ -5,6 +5,7 @@
 package juego;
 
 import control.Controlador;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -252,8 +253,15 @@ public class Juego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarHabActionPerformed
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
-        Jugar pant1 = new Jugar(this, true,elControlador);
-        pant1.setVisible(true);   
+        int jugadores = elControlador.getJugadores();
+        if(jugadores < 2){
+            JOptionPane.showMessageDialog(null, "Debe crear al menos 2 jugadores", "Error!", JOptionPane.ERROR_MESSAGE);
+        
+        }
+        else{
+            Jugar pant1 = new Jugar(this, true,elControlador);
+            pant1.setVisible(true);  
+        }
     }//GEN-LAST:event_btnJugarActionPerformed
 
     private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed

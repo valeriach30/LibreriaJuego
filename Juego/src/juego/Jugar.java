@@ -307,6 +307,7 @@ public class Jugar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAtacar2ActionPerformed
 
     private void btnSeleccionarPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarPersonaje1ActionPerformed
+        try{
         String atacante = personaje1.getSelectedItem().toString();
         String enemigo = personaje2.getSelectedItem().toString();
         
@@ -339,43 +340,53 @@ public class Jugar extends javax.swing.JDialog {
         btnSeleccionarArmas.setEnabled(true);
         arma1.setEnabled(true);
         arma2.setEnabled(true);
-        
+        }
+        catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Debe agregarle personajes al jugador", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSeleccionarPersonaje1ActionPerformed
 
     private void btnAtacar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacar1ActionPerformed
-        String atacante = personaje1.getSelectedItem().toString();
-        String arma = arma1.getSelectedItem().toString();
-        String enemigo = personaje2.getSelectedItem().toString();
-        
-        if(atacante == ""){
-            JOptionPane.showMessageDialog(null, "Falta un atacante", "Falta un atacante", JOptionPane.OK_OPTION);
-        }else if(arma == ""){
-            JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
-        }else if(enemigo == ""){
-            JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
-        }else{
-            String ataque = controlJugar.atacar(0,1,atacante,enemigo);
-            jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
-        
+        try{
+            String atacante = personaje1.getSelectedItem().toString();
+            String arma = arma1.getSelectedItem().toString();
+            String enemigo = personaje2.getSelectedItem().toString();
+
+            if(atacante == ""){
+                JOptionPane.showMessageDialog(null, "Falta un atacante", "Falta un atacante", JOptionPane.OK_OPTION);
+            }else if(arma == ""){
+                JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
+            }else if(enemigo == ""){
+                JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
+            }else{
+                String ataque = controlJugar.atacar(0,1,atacante,enemigo);
+                jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
+
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Debe agregarle personajes a los jugadores", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAtacar1ActionPerformed
 
     private void btnSeleccionarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarArmasActionPerformed
-        String armas1 = arma1.getSelectedItem().toString();
-        String armas2 = arma2.getSelectedItem().toString();
-        
-        // Obtener imagenes y setear
-        String imagen1 = controlJugar.obtenerImagenArma(armas1);
-        System.out.println(imagen1);
-        fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
-        
-        String imagen2 = controlJugar.obtenerImagenArma(armas2);
-        System.out.println(imagen2);
-        fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
-        
-        SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
-        pant1.setVisible(true); 
-        
+        try{
+            String armas1 = arma1.getSelectedItem().toString();
+            String armas2 = arma2.getSelectedItem().toString();
+
+            // Obtener imagenes y setear
+            String imagen1 = controlJugar.obtenerImagenArma(armas1);
+            System.out.println(imagen1);
+            fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+
+            String imagen2 = controlJugar.obtenerImagenArma(armas2);
+            System.out.println(imagen2);
+            fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+
+            SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
+            pant1.setVisible(true); 
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Debe agregarle armas o habilidades a los personajes", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSeleccionarArmasActionPerformed
 
     /**
