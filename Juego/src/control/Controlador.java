@@ -691,16 +691,41 @@ public class Controlador {
         } 
     }
     
-    public String atacar(int indexJugador, int indexJugadorEnemigo ,String nombrePersonaje, String nombreEnemigo){
+    public String atacar(int indexJugador, int indexJugadorEnemigo ,String nombrePersonaje, String nombreEnemigo, String nombreArma){
         ArrayList<Personaje> personajes = juegoV.getJugadores().get(indexJugador).getPersonajes();
         ArrayList<Personaje> enemigos = juegoV.getJugadores().get(indexJugadorEnemigo).getPersonajes();
         
+        // Encontrar el arma y obtener el daño
+        Arma arma = null;
+        for(int i = 0; i < juegoV.getArmas().size(); i++){
+            if(juegoV.getArmas().get(i).getName() == nombreArma){
+                arma = juegoV.getArmas().get(i);
+                break;
+            }
+        }
+        // No es un arma, es una habilidad
+        if(arma == null){
+            for(int i = 0; i < juegoV.getHabilidades().size(); i++){
+                if(juegoV.getHabilidades().get(i).getName() == nombreArma){
+                    arma = juegoV.getHabilidades().get(i);
+                    break;
+                }
+            }
+        }
         // Encontrar enemigo
         int indexPersonaje = this.getIndexPersonaje(indexJugador,nombrePersonaje);
         int indexEnemigo = this.getIndexPersonaje(indexJugadorEnemigo,nombreEnemigo);
         
         //setea el enemigo que se va a atacar
         personajes.get(indexPersonaje).setEnemy(enemigos.get(indexEnemigo)); 
+        
+        // Setear la info del arma al personaje para que ataque con eso
+        personajes.get(indexPersonaje).setDamage(arma.getDamage());
+        personajes.get(indexPersonaje).setReach(arma.getReach());
+        personajes.get(indexPersonaje).setRange(arma.getRange());
+        
+        // Atacar
+        personajes.get(indexPersonaje).setDamage(arma.getDamage());
         
         return personajes.get(indexPersonaje).atacar();
 

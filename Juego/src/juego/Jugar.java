@@ -300,14 +300,16 @@ public class Jugar extends javax.swing.JDialog {
             int vidaAtacante = controlJugar.getVidaPersonaje(atacante);
             int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo);
             if(vidaAtacante > 0 && vidaEnemigo > 0){
-                String ataque = controlJugar.atacar(1,0,atacante,enemigo);
+                String ataque = controlJugar.atacar(1,0,atacante,enemigo, arma);
                 jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
             }
             else{
                 if(vidaAtacante == 0){
+                    JOptionPane.showMessageDialog(null, "Ha perdido :(", "mensaje", JOptionPane.OK_OPTION);
                     JOptionPane.showMessageDialog(null, "El personaje ha muerto, no puede atacar", "Warning", JOptionPane.OK_OPTION);
                 }
                 else{
+                    JOptionPane.showMessageDialog(null, "Ha ganado :)!!!!!", "mensaje", JOptionPane.OK_OPTION);
                     JOptionPane.showMessageDialog(null, "El enemigo ha muerto, no puede volver a atacarlo", "Warning", JOptionPane.OK_OPTION);
                 }
             }
@@ -374,15 +376,21 @@ public class Jugar extends javax.swing.JDialog {
                 int vidaAtacante = controlJugar.getVidaPersonaje(atacante);
                 int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo);
                 if(vidaAtacante > 0 && vidaEnemigo > 0){
-                    String ataque = controlJugar.atacar(0,1,atacante,enemigo);
+                    String ataque = controlJugar.atacar(0,1,atacante,enemigo, arma);
                     jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
                 }
                 else{
                     if(vidaAtacante == 0){
+                        JOptionPane.showMessageDialog(null, "Ha perdido :(", "mensaje", JOptionPane.OK_OPTION);
                         JOptionPane.showMessageDialog(null, "El personaje ha muerto, no puede atacar", "Warning", JOptionPane.OK_OPTION);
+                        String ataque = controlJugar.atacar(0,1,atacante,enemigo, arma);
+                        jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
                     }
                     else{
+                        JOptionPane.showMessageDialog(null, "Ha ganado :)!!!!!", "mensaje", JOptionPane.OK_OPTION);
                         JOptionPane.showMessageDialog(null, "El enemigo ha muerto, no puede volver a atacarlo", "Warning", JOptionPane.OK_OPTION);
+                        String ataque = controlJugar.atacar(0,1,atacante,enemigo, arma);
+                        jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
                     }
                 }
             }
