@@ -30,8 +30,7 @@ public class SubCategoria extends Categoria {
     }
     @Override
     public String atacar() {
-        super.atacar(); //To change body of generated methods, choose Tools | Templates.
-        return "";
+        return super.atacar(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

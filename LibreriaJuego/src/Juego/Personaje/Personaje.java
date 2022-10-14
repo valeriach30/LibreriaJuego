@@ -91,13 +91,13 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     
     @Override
     public String atacar() { // Revisar jugabilidad
-        
+        //System.out.println("entre");
         
         if(this.getEnemigo() != null & this.enemigo.getVida() > 0){
             if(this.damage > 0){
                 this.enemigo.setVida(this.enemigo.getVida() - this.damage );
-                return this.nombre + " realizo un ataque a " + this.enemigo.getNombre() + "y le infliguio un total de: " +
-                        this.damage;
+                return (this.nombre + " realizo un ataque a " + this.enemigo.getNombre() + "y le infliguio un total de: " +
+                        this.damage);
             }
             return "El personaje no puede atacar o no dispone un arma";
         }
@@ -296,7 +296,13 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     public void setApariencias(ArrayList<String> apariencias) {
         this.apariencias = apariencias;
     }
-
+    
+    public void addApariencias(String apariencia) {
+        if(this.armas == null)
+            this.apariencias = new ArrayList<String>();
+        this.apariencias.add(apariencia);
+    }
+    
     public ArrayList<Arma> getArmas() {
         return armas;
     }

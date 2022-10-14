@@ -257,14 +257,13 @@ public class Jugar extends javax.swing.JDialog {
         DefaultComboBoxModel<String> model;
         
         for (int i = 0; i < 4; i++) {
-            armas[i] = controlJugar.getJugadorPersonajeArmaNombre(indexJugador,indexPJ,i);
+            armas[i] = controlJugar.getJugadorPersonajeArmaNombre(indexJugador, indexPJ ,i);
         }
         //cambia las opciones de los checkbox
         model = new DefaultComboBoxModel<>( armas );        
         JComboBox<String> armaCB;
         
         if(indexJugador == 0)
-            
             armaCB=arma1;
         else
             armaCB=arma2;
@@ -288,7 +287,7 @@ public class Jugar extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
         }else{
             String ataque = controlJugar.atacar(1,0,atacante,enemigo);
-            jTextArea1.setText(jTextArea1.getText() + ataque );
+            jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
         }
 
         // Mostrar las imagenes de los personajes
@@ -314,7 +313,7 @@ public class Jugar extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Falta un arma", "Falta un arma", JOptionPane.OK_OPTION);
         }else{
             String ataque = controlJugar.atacar(0,1,atacante,enemigo);
-            jTextArea1.setText(jTextArea1.getText() + ataque );
+            jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
         
         }
     }//GEN-LAST:event_btnAtacar1ActionPerformed

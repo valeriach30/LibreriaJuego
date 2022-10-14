@@ -61,11 +61,11 @@ public class Controlador {
                 
                 // Agregar arma al personaje
             
-                if(personaje.getArmas() != null){
+                /*if(personaje.getArmas() != null){
                     for(int i = 0; i < personaje.getArmas().size(); i++){
                         arma = personaje.getArmas().get(i);
                     }
-                }
+                }*/
                 personaje.addArmas(arma);
             }
             if(habilidadNombre != "Ninguna"){
@@ -80,7 +80,7 @@ public class Controlador {
 
                 // Agregar habilidad al personaje
             
-                ArrayList<Arma> array = new ArrayList<Arma>();
+                /*ArrayList<Arma> array = new ArrayList<Arma>();
                 if(personaje.getHechizos() != null){
                     for(int i = 0; i < personaje.getHechizos().size(); i++){
                         array.add(personaje.getHechizos().get(i));
@@ -88,18 +88,23 @@ public class Controlador {
                 }
                 array.add(habilidad);
                 personaje.setHechizos(array);
+                */
+                
+                
+                //no hay habilidades solo armas
+                personaje.addArmas(habilidad);
             }
             if(imagen != "Url"){
                 
                 // Agregar imagen al personaje
-                ArrayList<String> array = new ArrayList<String>();
+                /*ArrayList<String> array = new ArrayList<String>();
                 if(personaje.getApariencias() != null){
                     for(int i = 0; i < personaje.getApariencias().size(); i++){
                         array.add(personaje.getApariencias().get(i));
                     }
                 }
-                array.add(imagen);
-                personaje.setApariencias(array);
+                array.add(imagen);*/
+                personaje.setApariencias(imagen);
             }
         }
     }
@@ -674,7 +679,7 @@ public class Controlador {
         ArrayList<Personaje> enemigos = juegoV.getJugadores().get(indexJugadorEnemigo).getPersonajes();
 
         int indexPersonaje = this.getIndexPersonaje(indexJugador,nombrePersonaje);
-        int indexEnemigo = this.getIndexPersonaje(indexJugadorEnemigo,nombrePersonaje);
+        int indexEnemigo = this.getIndexPersonaje(indexJugadorEnemigo,nombreEnemigo);
         
         //setea el enemigo que se va a atacar
         personajes.get(indexPersonaje).setEnemy(enemigos.get(indexEnemigo)); 
