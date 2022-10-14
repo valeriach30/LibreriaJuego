@@ -16,6 +16,13 @@ import java.util.HashMap;
 public class ArmaPrototypeFactory {
     private static HashMap<String, iPrototype> prototypes = new HashMap<>();
     
+    public static iPrototype getPrototypeDeepArm(String nombreArma){ // Crea copias identicas pero con atributos individuales
+        if (nombreArma != null){
+            return prototypes.get(nombreArma).deepClone();
+        }
+        return null;
+    }
+    
     public static iPrototype getProtype(String nombreArma){
         if(nombreArma != null){
             return prototypes.get(nombreArma).deepClone();
@@ -29,6 +36,4 @@ public class ArmaPrototypeFactory {
         }
         
     }
-    
-    
 }

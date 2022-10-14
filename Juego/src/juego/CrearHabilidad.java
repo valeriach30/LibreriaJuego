@@ -239,7 +239,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         String habilidad = habilidades.getSelectedItem().toString();
         String imagenUrl = urltxt.getText();
-        controlHabilidad.agregarImagenHabilidad(habilidad, imagenUrl);
+        controlHabilidad.agregarHabilidad(habilidad, imagenUrl);
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
@@ -254,7 +254,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
             //controlHabilidad.clonarHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV, imagen);
         }
         else{
-            controlHabilidad.agregarHabilidad(nombreArma, alcanceV, danhoV, nivelV, rangoV, cantidadV);
+            //controlHabilidad.agregarHabilidad(nombreArma, alcanceV);
         }
         
         this.setVisible(false);
