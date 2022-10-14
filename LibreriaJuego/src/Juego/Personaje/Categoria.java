@@ -53,5 +53,9 @@ public class Categoria extends Personaje{
     public int aumentarNivel(int nivel) {
         return super.aumentarNivel(nivel); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public String toString() {
+        return super.toString() + "Subcategorias: " + subCategorias.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
 }

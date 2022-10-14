@@ -635,9 +635,37 @@ public class Controlador {
     }
 
     public void agregarRelacionCatSubCat(String nombreCategoria, String nombreSubCategoria) {
+        // Buscar categoria
+        Categoria categoria = null;
+        for(int i = 0; i < juegoV.getCategorias().size(); i++){
+            
+            if(juegoV.getCategorias().get(i).getNombreCategoria() == nombreCategoria){
+                categoria = juegoV.getCategorias().get(i);
+            }
+        } 
+        // Buscar subcategoria
+        SubCategoria subcategoria = null;
+        for(int i = 0; i < juegoV.getSubcategorias().size(); i++){
+            
+            if(juegoV.getSubcategorias().get(i).getNombreSubCategoria() == nombreSubCategoria){
+                subcategoria = juegoV.getSubcategorias().get(i);
+            }
+        } 
+        
+        // Agregar subcategoria a la categoria
+        if(categoria != null){
+            
+            ArrayList<SubCategoria> subcategorias = new ArrayList<SubCategoria>();
+            if(categoria.getSubCategorias() != null){
+                for(int i = 0; i < categoria.getSubCategorias().size(); i++){
+                    subcategorias.add(categoria.getSubCategorias().get(i));
+                }
+            }
+            subcategorias.add(subcategoria);
+            categoria.setSubCategorias(subcategorias);
+        }
+        
+        System.out.println(categoria.toString());
     }
-
-  
-    
 
 }
