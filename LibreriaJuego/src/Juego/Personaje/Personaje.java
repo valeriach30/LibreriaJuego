@@ -25,6 +25,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     private int reach = 1; // Alcance del ataque
     private int damage;
     private int range = 1; // Area de influecia
+    private String nombreCategoria;
     private ArrayList <String> apariencias;
     private ArrayList <Arma> armas;
     private ArrayList <Arma> hechizos;
@@ -59,6 +60,30 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         this.damage = damage;
     }
 
+    public Personaje(String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo, int damage, int range, int reach) {
+        this.nombre = nombre;
+        this.vida = vida;
+        this.golpesxtiempo = golpesxtiempo;
+        this.campos = campos;
+        this.nivelAparicion = nivelAparicion;
+        this.costo = costo;
+        this.damage = damage;
+        this.range = range;
+        this.reach = reach;
+    }
+    
+    public Personaje(String nombreCategoria, String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo, int damage, int range, int reach) {
+        this.nombre = nombre;
+        this.vida = vida;
+        this.golpesxtiempo = golpesxtiempo;
+        this.campos = campos;
+        this.nivelAparicion = nivelAparicion;
+        this.costo = costo;
+        this.damage = damage;
+        this.range = range;
+        this.reach = reach;
+        this.nombreCategoria = nombreCategoria;
+    }
     @Override
     public void atacar(String ataque) { // Revisar jugabilidad
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -115,6 +140,9 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         String texto =  "Nombre: " + nombre + "{ Vida:" + vida + ", Golpes por tiempo: " + golpesxtiempo +
         ", Nivel: " + nivel + ", Campos: " + campos + ", Nivel de Aparicion: " + nivelAparicion + 
         ", Costo: " + costo;
+        if(nombreCategoria != null){
+            texto += "Categoria: " + nombreCategoria;
+        }
         if(apariencias != null){
             texto += "\n, Apariencias: " + apariencias.toString();
         }

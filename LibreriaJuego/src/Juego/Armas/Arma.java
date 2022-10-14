@@ -92,7 +92,7 @@ public class Arma implements iPrototype<Arma> {
 
     @Override
     public String toString() {
-        String texto = "Nombre: " + name + "{ Alcance:" + reach + ", Daño: " + damage +
+        String texto = "\n" + "Nombre: " + name + "{ Alcance:" + reach + ", Daño: " + damage +
         ", Rango: " + range + ", Nivel: "+ level;
         if(images != null){
             texto += "\n, Apariencias: " + images.toString();

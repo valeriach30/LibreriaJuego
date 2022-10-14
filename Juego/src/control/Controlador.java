@@ -124,7 +124,12 @@ public class Controlador {
     // ------------------------> Clonar <------------------------
     
     // Retorna los Personajes Agregados, se usa el clone del factory
-    public void clonarPersonaje(String nombrePersonaje, int vidaPer, int GxT, int camposV, int nivelV, int costoV, int cantidadV, String categoriaV, int cantidadV1, String armaNombre, String habilidadNombre, int alcanceV, int danhoV, int rangoV) {
+    public void clonarPersonaje(String nombreArma, int vidaPer, int GxT,
+           int nivelAparicion, int camposV, int nivelV, int costoV, String categoriaV,
+           int cantidadV, String habilidadNombre, String nombrePersonaje, int alcance, 
+           int danho, int rango, String subCategoria) {
+        
+        
 
     }
     
@@ -136,7 +141,8 @@ public class Controlador {
     
     public void buildPersonaje(String nombreArma, int vidaPer, int GxT,
            int nivelAparicion, int camposV, int nivelV, int costoV, String categoriaV,
-           int cantidadV, String habilidadNombre, String nombrePersonaje, int alcance, int danho, int rango) {
+           int cantidadV, String habilidadNombre, String nombrePersonaje, int alcance, 
+           int danho, int rango, String subCategoria) {
         
         // Buscar el arma y la habilidad
         
@@ -157,16 +163,16 @@ public class Controlador {
                 arma = juegoV.getArmas().get(i);
             }
         }
-        System.out.println(arma);
-        System.out.println(habilidad);
+       
         // Usar builder
-        if(arma != null && habilidad != null){
-            System.out.println("entre");
+        if(arma != null && habilidad != null && categoriaV == "Ninguna" && subCategoria == "Ninguna"){
+
             Personaje nuevoPer = new Personaje.PersonajeBuilder()
             .agregarArma(arma)
             .agregarHabilidad(habilidad)
             .build();
 
+            // Agregar atributos
             nuevoPer.setNombre(nombrePersonaje);
             nuevoPer.setVida(vidaPer);
             nuevoPer.setGolpesxtiempo(GxT);
@@ -187,8 +193,48 @@ public class Controlador {
             }
             array.add(nuevoPer);
             juegoV.setPersonajes(array);
+        }
+        else{
             
-            System.out.println(consultarPersonajes());
+            // Crear un personaje de una categoria
+            if(categoriaV != "Ninguna" && subCategoria == "Ninguna"){
+                
+                Categoria nuevoPersonaje = new Categoria(categoriaV, 
+                nombrePersonaje, vidaPer, GxT, nivelV, 
+                camposV, nivelAparicion, costoV, danho, rango, 
+                alcance);
+                
+                // Agregar el personaje al juego
+                ArrayList<Personaje> array = new ArrayList<Personaje>();
+                if(juegoV.getPersonajes() != null){
+                    for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+                        array.add(juegoV.getPersonajes().get(i));
+                    }
+                }
+                array.add(nuevoPersonaje);
+                juegoV.setPersonajes(array);
+                
+                
+            }
+            // Crear un personaje de una subcategoria
+            else{
+                SubCategoria nuevoPersonaje = new SubCategoria(subCategoria, 
+                nombrePersonaje, vidaPer, GxT, nivelV, 
+                camposV, nivelAparicion, costoV, danho, rango, 
+                alcance);
+                
+                // Agregar el personaje al juego
+                ArrayList<Personaje> array = new ArrayList<Personaje>();
+                if(juegoV.getPersonajes() != null){
+                    for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+                        array.add(juegoV.getPersonajes().get(i));
+                    }
+                }
+                array.add(nuevoPersonaje);
+                juegoV.setPersonajes(array);
+            }
+            
+            
         }
     }
     

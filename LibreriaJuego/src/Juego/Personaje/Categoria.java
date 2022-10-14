@@ -17,11 +17,15 @@ public class Categoria extends Personaje{
     private String nombreCategoria;
     private ArrayList <SubCategoria> subCategorias = new ArrayList<>(); 
 
-    public Categoria(String nombreCategoria, String nombre, int vida, int golpesxtiempo, int campos, int nivelAparicion, int costo, int damage, ArrayList<String> apariencias, ArrayList<Arma> armas, ArrayList<Arma> hechizos) {
-        super(nombre, vida, golpesxtiempo, campos, nivelAparicion, costo, damage, apariencias, armas, hechizos);
+    public Categoria(String nombreCategoria, String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo, int damage, int range, int reach) {
+        super(nombreCategoria, nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, damage, range, reach);
         this.nombreCategoria = nombreCategoria;
     }
-
+    
+    public Categoria(String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo, int damage, int range, int reach){
+        super(nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, damage, range, reach);
+    }
+    
     public Categoria() {
     }
 

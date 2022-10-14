@@ -16,11 +16,11 @@ public class SubCategoria extends Categoria {
     
     private String nombreSubCategoria;
 
-    public SubCategoria(String nombreSubCategoria, String nombreCategoria, String nombre, int vida, int golpesxtiempo, int campos, int nivelAparicion, int costo, int damage, ArrayList<String> apariencias, ArrayList<Arma> armas, ArrayList<Arma> hechizos) {
-        super(nombreCategoria, nombre, vida, golpesxtiempo, campos, nivelAparicion, costo, damage, apariencias, armas, hechizos);
-        this.nombreSubCategoria = nombreSubCategoria;
+    public SubCategoria(String nombreCategoria, String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo, int damage, int range, int reach) {
+        super(nombreCategoria, nombre, vida, golpesxtiempo, nivel, campos, nivelAparicion, costo, damage, range, reach);
+        this.nombreSubCategoria = nombreCategoria;
     }
-
+    
     public SubCategoria() {
     }
 

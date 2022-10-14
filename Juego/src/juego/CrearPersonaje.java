@@ -449,6 +449,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
         int danhoV = (int) danho.getValue();
         int rangoV = (int) rango.getValue();
         String categoriaV = categorias.getSelectedItem().toString();
+        String subCategoriaV = subcategoria.getSelectedItem().toString();
         String armaNombre = armaBuilder.getSelectedItem().toString();
         String habilidadNombre = habilidadBuilder.getSelectedItem().toString();
         
@@ -459,13 +460,13 @@ public class CrearPersonaje extends javax.swing.JDialog {
             // Clonar
             controlPersonajes.clonarPersonaje(armaNombre, vidaPer, GxT,
            nivel2V, camposV, nivelV, costoV, categoriaV,
-           cantidadV, habilidadNombre, nombrePersonaje, alcanceV, danhoV, rangoV);
+           cantidadV, habilidadNombre, nombrePersonaje, alcanceV, danhoV, rangoV, subCategoriaV);
         }
         else{
             // Crear solo 1
             controlPersonajes.buildPersonaje(armaNombre, vidaPer, GxT,
            nivel2V, camposV, nivelV, costoV, categoriaV,
-           cantidadV, habilidadNombre, nombrePersonaje, alcanceV, danhoV, rangoV);
+           cantidadV, habilidadNombre, nombrePersonaje, alcanceV, danhoV, rangoV, subCategoriaV);
         }
         
         this.setVisible(false);
