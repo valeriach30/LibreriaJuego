@@ -605,6 +605,30 @@ public class Controlador {
         }    
     }
     
+    // Obtiene los nombres de las armas de un pesonaje
+    public ArrayList<String> getNombresArmasPersonaje(String nombrePersonaje ){
+        // Encontrar pesonaje
+        Personaje per = null;
+        for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+            
+            if(juegoV.getPersonajes().get(i).getNombre() == nombrePersonaje){
+                per = juegoV.getPersonajes().get(i);
+            }
+        }
+        
+        ArrayList<String> nombres = new ArrayList<String>();
+        
+        if(per.getArmas() != null){
+            for(int i = 0; i < per.getArmas().size(); i++){
+                nombres.add(per.getArmas().get(i).getName());
+            }
+            return nombres;
+        }
+        else{
+            return nombres;
+        }    
+    }
+    
     // Obtiene los nombres de las habilidades
     public ArrayList<String> getNombresHabilidades(){
         ArrayList<String> nombres = new ArrayList<String>();

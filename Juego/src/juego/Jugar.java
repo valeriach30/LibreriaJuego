@@ -44,16 +44,6 @@ public class Jugar extends javax.swing.JDialog {
         }
         else{
         }
-        // Cargar Nombres de Armas
-        ArrayList<String> nombresArmas = controlJugar.getNombresArmas();
-        if(nombresArmas != null){
-            for(int i = 0; i < nombresArmas.size(); i++){
-                arma1.addItem(nombresArmas.get(i));
-                arma2.addItem(nombresArmas.get(i));
-            }   
-        }
-        else{
-        }
     }
 
     /**
@@ -87,6 +77,7 @@ public class Jugar extends javax.swing.JDialog {
         fotoarma2 = new javax.swing.JLabel();
         btnSeleccionarPersonaje1 = new javax.swing.JButton();
         btnAtacar1 = new javax.swing.JButton();
+        btnSeleccionarArmas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -117,7 +108,7 @@ public class Jugar extends javax.swing.JDialog {
 
         arma1.setBackground(new java.awt.Color(153, 0, 25));
         arma1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        arma1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        arma1.setEnabled(false);
         jPanel1.add(arma1);
         arma1.setBounds(590, 110, 150, 40);
 
@@ -129,7 +120,7 @@ public class Jugar extends javax.swing.JDialog {
 
         arma2.setBackground(new java.awt.Color(0, 83, 196));
         arma2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        arma2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        arma2.setEnabled(false);
         jPanel1.add(arma2);
         arma2.setBounds(590, 170, 150, 40);
 
@@ -159,13 +150,11 @@ public class Jugar extends javax.swing.JDialog {
 
         personaje1.setBackground(new java.awt.Color(153, 0, 25));
         personaje1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        personaje1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(personaje1);
         personaje1.setBounds(200, 110, 150, 40);
 
         personaje2.setBackground(new java.awt.Color(0, 83, 196));
         personaje2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        personaje2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(personaje2);
         personaje2.setBounds(200, 170, 150, 40);
 
@@ -220,6 +209,19 @@ public class Jugar extends javax.swing.JDialog {
         });
         jPanel1.add(btnAtacar1);
         btnAtacar1.setBounds(850, 370, 90, 40);
+
+        btnSeleccionarArmas.setBackground(new java.awt.Color(204, 128, 6));
+        btnSeleccionarArmas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        btnSeleccionarArmas.setForeground(new java.awt.Color(102, 102, 102));
+        btnSeleccionarArmas.setText("Seleccionar Armas");
+        btnSeleccionarArmas.setEnabled(false);
+        btnSeleccionarArmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarArmasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSeleccionarArmas);
+        btnSeleccionarArmas.setBounds(380, 230, 200, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -296,15 +298,39 @@ public class Jugar extends javax.swing.JDialog {
             String ataque = controlJugar.atacar(1,0,atacante,enemigo);
             jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
         }
-
+        
         // Mostrar las imagenes de los personajes
         
         
     }//GEN-LAST:event_btnAtacar2ActionPerformed
 
     private void btnSeleccionarPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarPersonaje1ActionPerformed
-        SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
-        pant1.setVisible(true); 
+        String atacante = personaje1.getSelectedItem().toString();
+        String enemigo = personaje2.getSelectedItem().toString();
+        
+        // Cargar Nombres de Armas
+        ArrayList<String> nombresArmas = controlJugar.getNombresArmasPersonaje(atacante);
+        if(nombresArmas != null){
+            for(int i = 0; i < nombresArmas.size(); i++){
+                arma1.addItem(nombresArmas.get(i));
+            }   
+        }
+        else{
+        }
+        
+        ArrayList<String> nombresArmas2 = controlJugar.getNombresArmasPersonaje(enemigo);
+        if(nombresArmas2 != null){
+            for(int i = 0; i < nombresArmas2.size(); i++){
+                arma2.addItem(nombresArmas2.get(i));
+            }   
+        }
+        else{
+        }
+        
+        btnSeleccionarArmas.setEnabled(true);
+        arma1.setEnabled(true);
+        arma2.setEnabled(true);
+        
     }//GEN-LAST:event_btnSeleccionarPersonaje1ActionPerformed
 
     private void btnAtacar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtacar1ActionPerformed
@@ -324,6 +350,12 @@ public class Jugar extends javax.swing.JDialog {
         
         }
     }//GEN-LAST:event_btnAtacar1ActionPerformed
+
+    private void btnSeleccionarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarArmasActionPerformed
+        SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
+        pant1.setVisible(true); 
+        
+    }//GEN-LAST:event_btnSeleccionarArmasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -372,6 +404,7 @@ public class Jugar extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> arma2;
     private javax.swing.JButton btnAtacar1;
     private javax.swing.JButton btnAtacar2;
+    private javax.swing.JButton btnSeleccionarArmas;
     private javax.swing.JButton btnSeleccionarPersonaje1;
     private javax.swing.JLabel fotoarma1;
     private javax.swing.JLabel fotoarma2;
