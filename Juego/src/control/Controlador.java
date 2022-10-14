@@ -38,6 +38,69 @@ public class Controlador {
     
     // Agrega caracteristicas a un personaje
     public void agregarPersonaje(String armaNombre, String habilidadNombre, String imagen, String nombrePersonaje){
+        
+        // Encontrar el personaje
+        Personaje personaje = null;
+        for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+            if(juegoV.getPersonajes().get(i).getNombre().equals(nombrePersonaje)){
+                personaje = juegoV.getPersonajes().get(i);
+            }
+        }
+        if(personaje != null){
+            if(armaNombre != "Ninguna"){
+                // Buscar arma
+                Arma arma = null;
+                for(int i = 0; i < juegoV.getArmas().size(); i++){
+                    if(juegoV.getArmas().get(i).getName().equals(armaNombre)){
+                        arma = juegoV.getArmas().get(i);
+                    }
+                }
+                
+                // Agregar arma al personaje
+            
+                ArrayList<Arma> array = new ArrayList<Arma>();
+                if(personaje.getArmas() != null){
+                    for(int i = 0; i < personaje.getArmas().size(); i++){
+                        array.add(personaje.getArmas().get(i));
+                    }
+                }
+                array.add(arma);
+                personaje.setArmas(array);
+            }
+            if(habilidadNombre != "Ninguna"){
+                
+                // Buscar habilidad
+                Arma habilidad = null;
+                for(int i = 0; i < juegoV.getHabilidades().size(); i++){
+                    if(juegoV.getHabilidades().get(i).getName().equals(habilidadNombre)){
+                        habilidad = juegoV.getHabilidades().get(i);
+                    }
+                }
+
+                // Agregar habilidad al personaje
+            
+                ArrayList<Arma> array = new ArrayList<Arma>();
+                if(personaje.getHechizos() != null){
+                    for(int i = 0; i < personaje.getHechizos().size(); i++){
+                        array.add(personaje.getHechizos().get(i));
+                    }
+                }
+                array.add(habilidad);
+                personaje.setHechizos(array);
+            }
+            if(imagen != "Url"){
+                
+                // Agregar imagen al personaje
+                ArrayList<String> array = new ArrayList<String>();
+                if(personaje.getApariencias() != null){
+                    for(int i = 0; i < personaje.getApariencias().size(); i++){
+                        array.add(personaje.getApariencias().get(i));
+                    }
+                }
+                array.add(imagen);
+                personaje.setApariencias(array);
+            }
+        }
     }
     
     // Agrega un arma al juego
@@ -176,7 +239,7 @@ public class Controlador {
         array.add(nuevoPer);
         
         // Clonar y agregar
-        for(int i = 0; i < cantidadV ; i++){
+        for(int i = 0; i < cantidadV - 1; i++){
             array.add((Personaje) getPrototypeDeep(nombrePersonaje));
         }
         juegoV.setPersonajes(array);

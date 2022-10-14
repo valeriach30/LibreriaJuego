@@ -482,13 +482,15 @@ public class CrearPersonaje extends javax.swing.JDialog {
 
     private void btnAgregarCaractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCaractActionPerformed
         try{
-        String armasV = habilidadBuilder.getSelectedItem().toString();
-        String habilidadesV = habilidades.getSelectedItem().toString();
-        
-        String imagen = urltxt.getText();
-        String nombrePersonaje = personajes.getSelectedItem().toString();
-        
-        controlPersonajes.agregarPersonaje(armasV, habilidadesV, imagen, nombrePersonaje);
+            String armasV = armas.getSelectedItem().toString();
+            String habilidadesV = habilidades.getSelectedItem().toString();
+
+            String imagen = urltxt.getText();
+            String nombrePersonaje = personajes.getSelectedItem().toString();
+
+            controlPersonajes.agregarPersonaje(armasV, habilidadesV, imagen, nombrePersonaje);
+            
+            this.setVisible(false);
         } catch(Error e){
             
         }

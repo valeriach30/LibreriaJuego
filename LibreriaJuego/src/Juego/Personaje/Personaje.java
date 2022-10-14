@@ -147,13 +147,13 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
             texto += "Categoria: " + nombreCategoria;
         }
         if(apariencias != null){
-            texto += "\n, Apariencias: " + apariencias.toString();
+            texto += "\nApariencias: " + apariencias.toString() + "\n";
         }
         if(armas != null){
-            texto += "\n, Armas: " + armas.toString().toString();
+            texto += "\nArmas: " + armas.toString().toString() + "\n";
         }
         if(hechizos != null){
-            texto += "\n, Habilidades: "+ hechizos.toString();
+            texto += "\nHabilidades: "+ hechizos.toString()+ "\n";
         }
         texto += "}";
         
