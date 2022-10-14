@@ -294,6 +294,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     
     
     public void setApariencias(ArrayList<String> apariencias) {
+        this.apariencia = apariencias.get(0);
         this.apariencias = apariencias;
     }
     

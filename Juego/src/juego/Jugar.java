@@ -146,7 +146,7 @@ public class Jugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnAtacar2);
-        btnAtacar2.setBounds(850, 560, 90, 40);
+        btnAtacar2.setBounds(860, 460, 90, 40);
 
         personaje1.setBackground(new java.awt.Color(153, 0, 25));
         personaje1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -175,6 +175,8 @@ public class Jugar extends javax.swing.JDialog {
         fotoarma1.setBounds(730, 350, 150, 110);
 
         fotopersonaje1.setText("Foto personaje");
+        fotopersonaje1.setMaximumSize(new java.awt.Dimension(190, 180));
+        fotopersonaje1.setMinimumSize(new java.awt.Dimension(190, 180));
         jPanel1.add(fotopersonaje1);
         fotopersonaje1.setBounds(540, 350, 150, 110);
 
@@ -208,7 +210,7 @@ public class Jugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnAtacar1);
-        btnAtacar1.setBounds(850, 370, 90, 40);
+        btnAtacar1.setBounds(860, 300, 90, 40);
 
         btnSeleccionarArmas.setBackground(new java.awt.Color(204, 128, 6));
         btnSeleccionarArmas.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
@@ -326,6 +328,13 @@ public class Jugar extends javax.swing.JDialog {
         }
         else{
         }
+        // Obtener imagenes y setear
+        String imagen1 = controlJugar.obtenerImagenPersonaje(atacante);
+        System.out.println(imagen1);
+        fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+        
+        String imagen2 = controlJugar.obtenerImagenPersonaje(enemigo);
+        fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
         
         btnSeleccionarArmas.setEnabled(true);
         arma1.setEnabled(true);
@@ -352,6 +361,18 @@ public class Jugar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAtacar1ActionPerformed
 
     private void btnSeleccionarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarArmasActionPerformed
+        String armas1 = arma1.getSelectedItem().toString();
+        String armas2 = arma2.getSelectedItem().toString();
+        
+        // Obtener imagenes y setear
+        String imagen1 = controlJugar.obtenerImagenArma(armas1);
+        System.out.println(imagen1);
+        fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+        
+        String imagen2 = controlJugar.obtenerImagenArma(armas2);
+        System.out.println(imagen2);
+        fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+        
         SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
         pant1.setVisible(true); 
         

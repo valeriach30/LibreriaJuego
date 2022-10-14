@@ -622,6 +622,11 @@ public class Controlador {
             for(int i = 0; i < per.getArmas().size(); i++){
                 nombres.add(per.getArmas().get(i).getName());
             }
+            if(per.getHechizos() != null){
+                for(int i = 0; i < per.getHechizos().size(); i++){
+                    nombres.add(per.getHechizos().get(i).getName());
+                }
+            }
             return nombres;
         }
         else{
@@ -684,16 +689,6 @@ public class Controlador {
         else{
             return nombres;
         } 
-    }
-    
-    // Obtiene la imagen actual de un personaje
-    public String getImagenPersonaje(String nombrePersonaje){
-        return "";
-    }
-    
-    // Obtiene la imagen actual del arma
-    public String getImagenArma(String nombreArma){
-        return "";
     }
     
     public String atacar(int indexJugador, int indexJugadorEnemigo ,String nombrePersonaje, String nombreEnemigo){
@@ -815,7 +810,35 @@ public class Controlador {
         return ""; //no hay armas en esa posicion
     } 
     
-    //
-    
-    //public 
+    public String obtenerImagenPersonaje(String nombrePersonaje){
+        String imagen = "";
+        for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+            
+            if(juegoV.getPersonajes().get(i).getNombre() == nombrePersonaje){
+                imagen = juegoV.getPersonajes().get(i).getApariencias().get(0);
+            }
+        }
+        return imagen;
+    }
+
+    public String obtenerImagenArma(String nombreArma) {
+        String imagen = "";
+        for(int i = 0; i < juegoV.getArmas().size(); i++){
+            
+            if(juegoV.getArmas().get(i).getName() == nombreArma){
+                imagen = juegoV.getArmas().get(i).getImages().get(0);
+            }
+        }
+        if(imagen == ""){
+            // Buscar en habilidades
+            for(int i = 0; i < juegoV.getHabilidades().size(); i++){
+            
+                if(juegoV.getHabilidades().get(i).getName() == nombreArma){
+                    imagen = juegoV.getHabilidades().get(i).getImages().get(0);
+                }
+            }
+        }
+        
+        return imagen;
+    }
 }

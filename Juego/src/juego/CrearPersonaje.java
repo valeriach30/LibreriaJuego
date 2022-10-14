@@ -192,7 +192,7 @@ public class CrearPersonaje extends javax.swing.JDialog {
         cantidad.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         cantidad.setValue(1);
         jPanel1.add(cantidad);
-        cantidad.setBounds(280, 640, 31, 30);
+        cantidad.setBounds(280, 640, 70, 30);
 
         nivel.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(nivel);
