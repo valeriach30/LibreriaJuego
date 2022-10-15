@@ -358,23 +358,6 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
             this.hechizos = new ArrayList<Arma>();
             this.apariencias = new ArrayList<String>();
         }
-        
-        public PersonajeBuilder agregarAtributos(String nombre, int vida, int gxt, int nivel, 
-        int campos, int nivelAparicion, int costo, int reach, int damage, int range, Personaje enemigo){
-            this.nombre = nombre;
-            this.vida = vida;
-            this.golpesxtiempo = gxt;
-            this.nivel = nivel;
-            this.campos = campos;
-            this.nivelAparicion = nivelAparicion;
-            this.costo = costo;
-            this.reach = reach;
-            this.damage = damage;
-            this.range = range;
-            this.enemigo = enemigo;
-            return this;
-
-        }
 
         // <editor-fold defaultstate="collapsed" desc=" Setters ">  
         public PersonajeBuilder setNombre(String nombre) {
