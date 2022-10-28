@@ -386,7 +386,7 @@ public class Jugar extends javax.swing.JDialog {
         String arma = arma2.getSelectedItem().toString();
         String armas2 = arma1.getSelectedItem().toString();
         String enemigo = personaje1.getSelectedItem().toString();
-        
+        try{
         if(atacante == ""){
             JOptionPane.showMessageDialog(null, "Falta un atacante", "Falta un atacante", JOptionPane.OK_OPTION);
         }else if(arma == ""){
@@ -420,10 +420,9 @@ public class Jugar extends javax.swing.JDialog {
                 controlJugar.resetVidas(enemigo, atacante , armas2, arma, nombreJugador1, nombreJugador2);
             }
         }
-        
-        // Mostrar las imagenes de los personajes
-        
-        
+        } catch( Error e){
+            
+        }
     }//GEN-LAST:event_btnAtacar2ActionPerformed
 
     private void btnSeleccionarPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarPersonaje1ActionPerformed
@@ -450,14 +449,17 @@ public class Jugar extends javax.swing.JDialog {
             else{
             }
             // Obtener imagenes y setear
-            String imagen1 = controlJugar.obtenerImagenPersonaje(atacante);
-            System.out.println(imagen1);
-            fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+            try{
+                String imagen1 = controlJugar.obtenerImagenPersonaje(atacante);
+                fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
 
-            String imagen2 = controlJugar.obtenerImagenPersonaje(enemigo);
-            System.out.println(imagen2);
-            fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+                String imagen2 = controlJugar.obtenerImagenPersonaje(enemigo);
+                fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
 
+            } catch (NullPointerException e){
+                JOptionPane.showMessageDialog(null, "Error al cargar imagen", "Warning", JOptionPane.OK_OPTION);
+            }
+            
             btnSeleccionarArmas.setEnabled(true);
             arma1.setEnabled(true);
             arma2.setEnabled(true);
@@ -519,7 +521,8 @@ public class Jugar extends javax.swing.JDialog {
             // Obtener imagenes y setear
             String imagen1 = controlJugar.obtenerImagenArma(armas1);
             fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
-
+            fotoarma1.setText("");
+            
             String imagen2 = controlJugar.obtenerImagenArma(armas2);
             fotoarma2.setText("");
             fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
@@ -529,7 +532,7 @@ public class Jugar extends javax.swing.JDialog {
             
             btnSeleccionarArmas.setEnabled(false);
         } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Debe agregarle armas o habilidades a los personajes", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al cargar imagen de alguna arma", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSeleccionarArmasActionPerformed
 
