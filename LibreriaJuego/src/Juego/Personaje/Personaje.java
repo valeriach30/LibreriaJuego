@@ -115,6 +115,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         if ((nivel + 1) <= apariencias.size()){
             this.nivel += 1; // Solo sube de nivel si le queda apariencias disponibles
             apariencia = apariencias.get(nivel-1);
+            damage += 2;
             setApariencia(apariencia);
         }
         return nivel; // Si llega aca sin el if no sube de nivel
@@ -167,20 +168,20 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
 
     @Override
     public String toString() {
-        String texto =  "Nombre: " + nombre + "{ Vida:" + vida + ", Golpes por tiempo: " + golpesxtiempo +
-        ", Nivel: " + nivel + ", Campos: " + campos + ", Nivel de Aparicion: " + nivelAparicion + 
-        ", Costo: " + costo;
+        String texto =  "----->" + nombre + "<-----" + "\n> Vida:" + vida + "\n> Golpes por tiempo: " + golpesxtiempo +
+        "\n> Nivel: " + nivel + "\n> Campos: " + campos + "\n> Nivel de Aparicion: " + nivelAparicion + 
+        "\n> Costo: " + costo;
         if(nombreCategoria != null){
-            texto += "Categoria: " + nombreCategoria;
+            texto += "\n> Categoria: " + "[" + nombreCategoria + "]";
         }
         if(apariencias != null){
-            texto += "\nApariencias: " + apariencias.toString() + "\n";
+            texto += "\n> Apariencias: " + apariencias.toString() + "\n";
         }
         if(armas != null){
-            texto += "\nArmas: " + armas.toString().toString() + "\n";
+            texto += "\n> Armas: " + armas.toString().toString() + "\n";
         }
         if(hechizos != null){
-            texto += "\nHabilidades: "+ hechizos.toString()+ "\n";
+            texto += "\n> Habilidades: "+ hechizos.toString()+ "\n";
         }
         texto += "}";
         

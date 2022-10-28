@@ -35,7 +35,7 @@ public class Controlador {
         // Agregar algunos personajes default
         
         // Armas
-        builderArma("Pistol", 1, 1, 1, 1, 1, "/imagenes/pistol1.png");
+        builderArma("Pistol", 1, 5, 1, 1, 1, "/imagenes/pistol1.png");
         agregarArma("Pistol", "/imagenes/pistol2.jpg");
         agregarArma("Pistol", "/imagenes/pistol3.png");
         
@@ -43,7 +43,12 @@ public class Controlador {
         agregarArma("Snipper", "/imagenes/snipper2.jpg");
         agregarArma("Snipper", "/imagenes/snipper3.jpg");
         
+         builderArma("The Monado", 10, 10, 1, 15, 1, "/imagenes/monado.png");
+        agregarArma("The Monado", "/imagenes/monado2.png");
+        agregarArma("The Monado", "/imagenes/monado3.png");
+        
         // Habilidades
+        
         builderHabilidad("Trueno", 5, 5, 1, 5, 1, "/imagenes/trueno1.jpg");
         agregarHabilidad("Trueno", "/imagenes/trueno2.jpg");
         agregarHabilidad("Trueno", "/imagenes/trueno3.jpg");
@@ -52,6 +57,9 @@ public class Controlador {
         agregarHabilidad("Fuego", "/imagenes/fuego2.jpg");
         agregarHabilidad("Fuego", "/imagenes/fuego3.jpg");
         
+        builderHabilidad("Potion", 3, 3, 1, 5, 1, "/imagenes/potion1.jpg");
+        agregarHabilidad("Potion", "/imagenes/potion2.jpg");
+        agregarHabilidad("Potion", "/imagenes/potion3.jpg");
         // Personaje
         
         buildPersonaje("Pistol", 20, 5, 1, 5, 
@@ -68,6 +76,23 @@ public class Controlador {
         agregarPersonaje("Snipper", "Fuego", "/imagenes/charmander1.png", "Charmander");
         agregarPersonaje("Ninguna", "Ninguna", "/imagenes/charmander2.jpg", "Charmander");
         agregarPersonaje("Ninguna", "Ninguna", "/imagenes/charmander3.png", "Charmander");
+        
+        buildPersonaje("The Monado", 20, 5, 1, 5, 
+       1, 1, "", 1, "Potion", "Bulbasaur", 1, 1, 1, "");
+        agregarPersonaje("The Monado", "Potion", "/imagenes/bulbasaur1.png", "Bulbasaur");
+        agregarPersonaje("Ninguna", "Ninguna", "/imagenes/balbasaur2.jpg", "Bulbasaur");
+        agregarPersonaje("Ninguna", "Ninguna", "/imagenes/bulbasaur3.png", "Bulbasaur");
+        
+        
+        // Agregar Jugadores
+        agregarJugador("valeria", "valeriach30", "xd1234", 20);
+        agregarJugador("raul", "rayguti", "nose222", 20);
+        agregarJugador("fabricio", "keisch", "nose444", 20);
+        
+        // Agregar personajes a jugadores
+        agregarPerJugador("valeria", "Pickachu");
+        agregarPerJugador("raul", "Charmander");
+        agregarPerJugador("fabricio", "Bulbasaur");
         
     }
     
@@ -567,7 +592,7 @@ public class Controlador {
         if(juegoV.getPersonajes() != null){
             String texto = "";
             for(int i = 0; i < juegoV.getPersonajes().size(); i++){
-                texto += "\n";
+                texto += "\n----------------------------------------------------------------------------------------------------\n";
                 texto += juegoV.getPersonajes().get(i).toString();
             }
             return texto;
@@ -627,8 +652,13 @@ public class Controlador {
             for(int i = 0; i < juegoV.getJugadores().size(); i++){
                 // Agregar nombres de los personajes del jugador
                 if(juegoV.getJugadores().get(i).getNombre() == jugador){
-                    for(int j = 0; j < juegoV.getJugadores().get(i).getPersonajes().size(); j++){
-                        nombres.add(juegoV.getJugadores().get(i).getPersonajes().get(j).getNombre());
+                    if(juegoV.getJugadores().get(i).getPersonajes() != null){
+                        for(int j = 0; j < juegoV.getJugadores().get(i).getPersonajes().size(); j++){
+                            nombres.add(juegoV.getJugadores().get(i).getPersonajes().get(j).getNombre());
+                        }
+                    }
+                    else{
+                        return null;
                     }
                 }
             }
@@ -806,22 +836,13 @@ public class Controlador {
         // Atacar
         personajes.get(indexPersonaje).setDamage(arma.getDamage());
         String texto = personajes.get(indexPersonaje).atacar();
-
+        texto += " usando " + arma.getName();
         return texto;
 
     }
     
      // ------------------------------------------------ OTROS ------------------------------------------------
     
-    // Funcion para leer json y crear personajes
-    public String leerJson(String Json){
-        return "";
-    }
-    
-    // Este es el metodo que hace que los personajes se ataquen 
-    public String Jugar(){
-        return "";
-    }
 
     public void agregarRelacionCatSubCat(String nombreCategoria, String nombreSubCategoria) {
         // Buscar categoria
@@ -917,11 +938,12 @@ public class Controlador {
     } 
     
     public String obtenerImagenPersonaje(String nombrePersonaje){
-        String imagen = "";
+        String imagen = "null";
         for(int i = 0; i < juegoV.getPersonajes().size(); i++){
             
             if(juegoV.getPersonajes().get(i).getNombre() == nombrePersonaje){
                 int nivel = juegoV.getPersonajes().get(i).getNivel();
+                
                 if(nivel <= juegoV.getPersonajes().get(i).getApariencias().size()){
                     if(nivel > 0){
                         nivel = nivel - 1;
@@ -941,12 +963,12 @@ public class Controlador {
     
     
     public String obtenerImagenArma(String nombreArma) {
-        String imagen = "";
+        String imagen = "null";
+        try{
         for(int i = 0; i < juegoV.getArmas().size(); i++){
             
             if(juegoV.getArmas().get(i).getName() == nombreArma){
                 int nivel = juegoV.getArmas().get(i).getLevel();
-                
                 if(nivel <= juegoV.getArmas().get(i).getImages().size()){
                     if(nivel > 0){
                         nivel = nivel - 1;
@@ -955,13 +977,13 @@ public class Controlador {
                 }
                 else{
                     if(nivel > 0){
-                        nivel = nivel - 1;
+                        nivel = nivel - 2;
                     }
                     imagen = juegoV.getArmas().get(i).getImages().get(nivel);
                 }
             }
         }
-        if(imagen == ""){
+        if(imagen == "null"){
             // Buscar en habilidades
             for(int i = 0; i < juegoV.getHabilidades().size(); i++){
             
@@ -976,12 +998,15 @@ public class Controlador {
                     }
                     else{
                         if(nivel > 0){
-                            nivel = nivel - 1;
+                            nivel = nivel - 2;
                         }
                         imagen = juegoV.getHabilidades().get(i).getImages().get(nivel);
                     }
                 }
             }
+        }
+        } catch(Error e){
+            
         }
         
         return imagen;
@@ -1025,7 +1050,7 @@ public class Controlador {
                 indice = i;
             }
         }
-        juegoV.getPersonajes().get(indice).setNivel(personaje.getNivel() + 1);
+        juegoV.getPersonajes().get(indice).aumentarNivel(juegoV.getPersonajes().get(indice).getNivel());
     }
 
     public void SubirNivelArma(String armaNombre) {
@@ -1050,9 +1075,11 @@ public class Controlador {
                 }
             }
             juegoV.getHabilidades().get(indice).setLevel(habilidad.getLevel() + 1);
+            juegoV.getHabilidades().get(indice).setDamage(habilidad.getDamage() + 2);
         }
         else{
             juegoV.getArmas().get(indice).setLevel(arma.getLevel() + 1);
+            juegoV.getArmas().get(indice).setDamage(arma.getDamage() + 2);
         }
     }
 
