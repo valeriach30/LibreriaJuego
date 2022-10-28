@@ -263,7 +263,9 @@ public class Controlador {
         
         // Clonar y agregar
         for(int i = 0; i < cantidadV - 1; i++){
-            array.add((Personaje) getPrototypeDeep(nombrePersonaje));
+            Personaje clon = (Personaje) getPrototypeDeep(nombrePersonaje);
+            clon.setNombre(clon.getNombre() + (i + 2));
+            array.add(clon);
         }
         juegoV.setPersonajes(array);
         
@@ -874,8 +876,6 @@ public class Controlador {
             subcategorias.add(subcategoria);
             categoria.setSubCategorias(subcategorias);
         }
-        
-        System.out.println(categoria.toString());
     }
     
     //metodos para el manejo de arrays de hechizos armas y combate
@@ -943,7 +943,6 @@ public class Controlador {
             
             if(juegoV.getPersonajes().get(i).getNombre() == nombrePersonaje){
                 int nivel = juegoV.getPersonajes().get(i).getNivel();
-                
                 if(nivel <= juegoV.getPersonajes().get(i).getApariencias().size()){
                     if(nivel > 0){
                         nivel = nivel - 1;
@@ -1081,6 +1080,90 @@ public class Controlador {
             juegoV.getArmas().get(indice).setLevel(arma.getLevel() + 1);
             juegoV.getArmas().get(indice).setDamage(arma.getDamage() + 2);
         }
+    }
+
+    public Arma getArmaPersonaje(String nombreJugador, String nombrePersonaje, String nombreArma){
+        Arma arma = null;
+        for(int i = 0; i < juegoV.getJugadores().size(); i++){
+            if(juegoV.getJugadores().get(i).getNombre() == nombreJugador){
+                Jugador jug = juegoV.getJugadores().get(i);
+                Personaje p = new Personaje();
+                for(int j = 0; j < jug.getPersonajes().size(); j++){
+                    if(jug.getPersonajes().get(j).getNombre() == nombrePersonaje){
+                        p = jug.getPersonajes().get(j);
+                        for(int k = 0; k < p.getArmas().size(); k++){
+                            if(p.getArmas().get(k).getName() == nombreArma){
+                                arma = p.getArmas().get(k);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(arma == null){
+            // Buscar en habilidades
+            for(int i = 0; i < juegoV.getJugadores().size(); i++){
+                if(juegoV.getJugadores().get(i).getNombre() == nombreJugador){
+                    Jugador jug = juegoV.getJugadores().get(i);
+                    Personaje p = new Personaje();
+                    for(int j = 0; j < jug.getPersonajes().size(); j++){
+                        if(jug.getPersonajes().get(j).getNombre() == nombrePersonaje){
+                            p = jug.getPersonajes().get(j);
+                            for(int k = 0; k < p.getHechizos().size(); k++){
+                                if(p.getHechizos().get(k).getName() == nombreArma){
+                                    arma = p.getHechizos().get(k);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return arma;
+    }
+    
+    public Personaje getPersonajeJugador(String nombreJugador, String nombrePersonaje){
+        for(int i = 0; i < juegoV.getJugadores().size(); i++){
+            if(juegoV.getJugadores().get(i).getNombre() == nombreJugador){
+                Jugador jug = juegoV.getJugadores().get(i);
+                Personaje p = new Personaje();
+                for(int j = 0; j < jug.getPersonajes().size(); j++){
+                    if(jug.getPersonajes().get(j).getNombre() == nombrePersonaje){
+                        p = jug.getPersonajes().get(j);
+                        return p;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
+    public Personaje getPersonaje(String nombrePersonaje){
+        Personaje p = null;
+        for(int i = 0; i < juegoV.getPersonajes().size(); i++){
+            if(juegoV.getPersonajes().get(i).getNombre() == nombrePersonaje){
+                p = juegoV.getPersonajes().get(i);
+            }
+        }
+        return p;
+    }
+    
+    public void resetVidas(String per1, String per2, String arma, String arma2, String jugador1, String jugador2) {
+        
+        Arma arm1 = getArmaPersonaje(jugador1, per1, arma);
+        arm1.setLevel(1);
+        Arma arm2 = getArmaPersonaje(jugador2, per2, arma2);
+        arm2.setLevel(1);
+        Personaje p1 = getPersonajeJugador(jugador1, per1);
+        p1.setNivel(1);
+        p1.setVida(10);
+        p1.setEnemy(null);
+        Personaje p2 = getPersonajeJugador(jugador2, per2);
+        p2.setNivel(1);
+        p2.setVida(10);
+        p2.setEnemy(null);
     }
 
     

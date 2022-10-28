@@ -384,6 +384,7 @@ public class Jugar extends javax.swing.JDialog {
         String nombreJugador1 = jugador1.getSelectedItem().toString();
         String atacante = personaje2.getSelectedItem().toString();
         String arma = arma2.getSelectedItem().toString();
+        String armas2 = arma1.getSelectedItem().toString();
         String enemigo = personaje1.getSelectedItem().toString();
         
         if(atacante == ""){
@@ -416,6 +417,7 @@ public class Jugar extends javax.swing.JDialog {
                 btnSubirNivelP2.setEnabled(false);
                 btnSubirNivelA1.setEnabled(false);
                 btnSubirNivelA2.setEnabled(false);
+                controlJugar.resetVidas(enemigo, atacante , armas2, arma, nombreJugador1, nombreJugador2);
             }
         }
         
@@ -468,6 +470,7 @@ public class Jugar extends javax.swing.JDialog {
             String nombreJugador1 = jugador1.getSelectedItem().toString();
             String atacante = personaje1.getSelectedItem().toString();
             String arma = arma1.getSelectedItem().toString();
+            String armas2 = arma2.getSelectedItem().toString();
             String enemigo = personaje2.getSelectedItem().toString();
 
             if(atacante == ""){
@@ -500,6 +503,7 @@ public class Jugar extends javax.swing.JDialog {
                     btnSubirNivelP2.setEnabled(false);
                     btnSubirNivelA1.setEnabled(false);
                     btnSubirNivelA2.setEnabled(false);
+                    controlJugar.resetVidas(atacante, enemigo, arma, armas2, nombreJugador1, nombreJugador2);
                 }
             }
         } catch(NullPointerException e){
