@@ -416,7 +416,9 @@ public class Controlador {
 
         // Clonar y agregar
         for(int i = 0; i < cantidadV - 1; i++){
-            array.add((Arma) getPrototypeDeepArm(nombreArma));
+            Arma clon = ((Arma) getPrototypeDeepArm(nombreArma));
+            clon.setName(clon.getName() + (i + 2));
+            array.add(clon);
         }
         juegoV.setArmas(array);
     }
@@ -488,7 +490,9 @@ public class Controlador {
 
         // Clonar y agregar
         for(int i = 0; i < cantidadV - 1; i++){
-            array.add((Arma) getPrototypeDeepArm(nombreHab));
+            Arma clon = ((Arma) getPrototypeDeepArm(nombreHab));
+            clon.setName(clon.getName() + (i + 2));
+            array.add(clon);
         }
         juegoV.setHabilidades(array);
     }
@@ -802,7 +806,25 @@ public class Controlador {
         } 
     }
     
-    public String atacar(int indexJugador, int indexJugadorEnemigo ,String nombrePersonaje, String nombreEnemigo, String nombreArma){
+    public int getIndexJugador(String nombreJugador){
+        int indice = -1;
+        if(juegoV.getJugadores()!= null){
+            for(int i = 0; i < juegoV.getJugadores().size(); i++){
+                if(juegoV.getJugadores().get(i).getNombre() == nombreJugador){
+                    indice = i;
+                }
+            }
+            return indice;
+        }
+        else{
+            return indice;
+        } 
+    }
+    
+    public String atacar(String nombreJugador1, String nombreJugador2 ,String nombrePersonaje, String nombreEnemigo, String nombreArma){
+        int indexJugador = getIndexJugador(nombreJugador1);
+        int indexJugadorEnemigo = getIndexJugador(nombreJugador2);
+        
         ArrayList<Personaje> personajes = juegoV.getJugadores().get(indexJugador).getPersonajes();
         ArrayList<Personaje> enemigos = juegoV.getJugadores().get(indexJugadorEnemigo).getPersonajes();
         
@@ -838,7 +860,8 @@ public class Controlador {
         // Atacar
         personajes.get(indexPersonaje).setDamage(arma.getDamage());
         String texto = personajes.get(indexPersonaje).atacar();
-        texto += " usando " + arma.getName();
+        texto += "\nArma / Habilidad usada: " + arma.getName();
+        texto += "\n============================================================";
         return texto;
 
     }

@@ -16,14 +16,14 @@ import java.util.ArrayList;
 public class Personaje implements iPersonaje, iPrototype<Personaje>{
     
     private String nombre;
-    private int vida;
-    private int golpesxtiempo;
+    private int vida = 5;
+    private int golpesxtiempo = 1;
     private int nivel = 1; //para mostrar las imagenes se resta un nivel
-    private int campos;
-    private int nivelAparicion;
-    private int costo;
+    private int campos = 1;
+    private int nivelAparicion = 1;
+    private int costo = 1;
     private int reach = 1; // Alcance del ataque
-    private int damage;
+    private int damage = 1;
     private int range = 1; // Area de influecia
     private Personaje enemigo = null;
     private String nombreCategoria;
@@ -97,10 +97,24 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
             if(this.enemigo.getVida() > 0){
                 if(this.damage > 0){
                     this.enemigo.setVida(this.enemigo.getVida() - this.damage );
-                    return (this.nombre + " realizo un ataque a " + this.enemigo.getNombre() + "y le infliguio un total de: " +
-                            this.damage);
+                    String texto = this.nombre + " realizo un ataque a " + this.enemigo.getNombre() 
+                            + "y le infliguio un total de: " + this.damage;
+                    texto += "\n------------------VIDAS------------------\n> Vida " 
+                          + this.nombre + ": " + this.vida;
+                    texto += "\n> Vida " + this.enemigo.getNombre() + ": " + this.enemigo.getVida();
+                    texto += "\n-----------------------------------------";
+                    return (texto);
                 }
-                return "El personaje no puede atacar o no dispone un arma";
+                else{
+                    this.setVida(vida - this.damage);
+                    this.enemigo.setVida(this.enemigo.getVida() - this.golpesxtiempo );
+                    String texto = this.nombre + " aumento su vida. Su vida actual ahora es: " + this.vida +
+                          "\n" + this.nombre + "ataco a " + this.enemigo.getNombre() +
+                           "y le infliguio un total de: " + this.golpesxtiempo;
+                    texto += "\n- > VIDAS < -\n Vida " + this.nombre + ": " + this.vida;
+                    texto += "\n Vida " + this.enemigo.getNombre() + ": " + this.enemigo.getVida();
+                    return texto;
+                }
             }
             else{
                 return "El enemigo: " + this.getEnemigo().getNombre() + "ha muerto!!" +

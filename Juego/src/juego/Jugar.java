@@ -397,7 +397,7 @@ public class Jugar extends javax.swing.JDialog {
             int vidaAtacante = controlJugar.getVidaPersonaje(atacante, nombreJugador2);
             int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo, nombreJugador1);
             if(vidaAtacante > 0 && vidaEnemigo > 0){
-                String ataque = controlJugar.atacar(1,0,atacante,enemigo, arma);
+                String ataque = controlJugar.atacar(nombreJugador2,nombreJugador1,atacante,enemigo, arma);
                 jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
             }
             else{
@@ -483,7 +483,7 @@ public class Jugar extends javax.swing.JDialog {
                 int vidaAtacante = controlJugar.getVidaPersonaje(atacante, nombreJugador1);
                 int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo, nombreJugador2);
                 if(vidaAtacante > 0 && vidaEnemigo > 0){
-                    String ataque = controlJugar.atacar(0,1,atacante,enemigo, arma);
+                    String ataque = controlJugar.atacar(nombreJugador1,nombreJugador2,atacante,enemigo, arma);
                     jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
                 }
                 else{
@@ -524,8 +524,8 @@ public class Jugar extends javax.swing.JDialog {
             fotoarma2.setText("");
             fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
             
-            SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
-            pant1.setVisible(true); 
+            //SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
+            //pant1.setVisible(true); 
             
             btnSeleccionarArmas.setEnabled(false);
         } catch(NullPointerException e){
