@@ -401,7 +401,7 @@ public class Jugar extends javax.swing.JDialog {
                 jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
             }
             else{
-                if(vidaAtacante == 0){
+                if(vidaAtacante <= 0){
                     JOptionPane.showMessageDialog(null, "Ha perdido :(", "mensaje", JOptionPane.OK_OPTION);
                     JOptionPane.showMessageDialog(null, "El personaje ha muerto, no puede atacar", "Warning", JOptionPane.OK_OPTION);
                     jTextArea1.setText(jTextArea1.getText() + enemigo + " ha ganado!"  + "\n");
@@ -489,7 +489,7 @@ public class Jugar extends javax.swing.JDialog {
                     jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
                 }
                 else{
-                    if(vidaAtacante == 0){
+                    if(vidaAtacante <= 0){
                         JOptionPane.showMessageDialog(null, "Ha perdido :(", "mensaje", JOptionPane.OK_OPTION);
                         JOptionPane.showMessageDialog(null, "El personaje ha muerto, no puede atacar", "Warning", JOptionPane.OK_OPTION);
                         jTextArea1.setText(jTextArea1.getText() + enemigo + " ha ganado!"  + "\n");
@@ -552,7 +552,7 @@ public class Jugar extends javax.swing.JDialog {
                 btnSubirNivelA2.setEnabled(false);
             }
         } catch(Error e){
-            
+            JOptionPane.showMessageDialog(null, "No se pudo subir de nivel. El arma no tiene mas apariencias", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSubirNivelA2ActionPerformed
 
@@ -572,7 +572,7 @@ public class Jugar extends javax.swing.JDialog {
                 btnSubirNivelP2.setEnabled(false);
             }
         } catch(Error e){
-            
+            JOptionPane.showMessageDialog(null, "No se pudo subir de nivel. El personaje no tiene mas apariencias", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSubirNivelP2ActionPerformed
 
@@ -591,7 +591,7 @@ public class Jugar extends javax.swing.JDialog {
                 btnSubirNivelP1.setEnabled(false);
             }
         } catch(Error e){
-            
+            JOptionPane.showMessageDialog(null, "No se pudo subir de nivel. El personaje no tiene mas apariencias", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSubirNivelP1ActionPerformed
 
@@ -610,7 +610,7 @@ public class Jugar extends javax.swing.JDialog {
                 btnSubirNivelA1.setEnabled(false);
             }
         } catch(Error e){
-            
+            JOptionPane.showMessageDialog(null, "No se pudo subir de nivel. El arma no tiene mas apariencias", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSubirNivelA1ActionPerformed
 
