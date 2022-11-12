@@ -96,7 +96,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         
         if(this.getEnemigos() != null){
             Personaje enemigo;
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < enemigos.size(); i++) {
                 enemigo = enemigos.get(i);
                 if(enemigo.getVida() > 0){
                     if(this.damage > 0){
