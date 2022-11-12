@@ -25,7 +25,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     private int reach = 1; // Alcance del ataque
     private int damage;
     private int range = 1; // Area de influecia
-    private Personaje enemigo = null;
+    private ArrayList<Personaje> enemigos = null;
     private String nombreCategoria;
     private ArrayList <String> apariencias;
     private ArrayList <Arma> armas;
@@ -92,22 +92,30 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
     @Override
     public String atacar() { // Revisar jugabilidad
         //System.out.println("entre");
+        String ataque ="";
         
-        if(this.getEnemigo() != null){
-            if(this.enemigo.getVida() > 0){
-                if(this.damage > 0){
-                    this.enemigo.setVida(this.enemigo.getVida() - this.damage );
-                    return (this.nombre + " realizo un ataque a " + this.enemigo.getNombre() + "y le infliguio un total de: " +
-                            this.damage);
+        if(this.getEnemigos() != null){
+            Personaje enemigo;
+            for (int i = 0; i < 10; i++) {
+                enemigo = enemigos.get(i);
+                if(enemigo.getVida() > 0){
+                    if(this.damage > 0){
+                        enemigo.setVida(enemigo.getVida() - this.damage );
+                        ataque += (this.nombre + " realizo un ataque a " + this.getNombre() + "y le infliguio un total de: " +
+                                this.damage + "\n");
+                    }else{
+                        ataque += "El personaje no puede atacar o no dispone un arma\n";
+                    }
+                    
                 }
-                return "El personaje no puede atacar o no dispone un arma";
+                else{
+                    ataque += "El enemigo: " + enemigo.getNombre() + "ha muerto!!\n";
+                }
             }
-            else{
-                return "El enemigo: " + this.getEnemigo().getNombre() + "ha muerto!!" +
-                "Ganador: " + this.nombre;
-            }
+            return ataque;
         }
-        return "No hay un enemigo para realizar el ataque";
+        else
+            return "No hay un enemigos para realizar el ataque";
     }
 
     @Override
@@ -193,13 +201,15 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         return nombre;
     }
 
-    public Personaje getEnemigo() {
-        return enemigo;
+    public ArrayList<Personaje> getEnemigos() {
+        return enemigos;
     }
 
-    public void setEnemy(Personaje enemigo) {
-        this.enemigo = enemigo;
+    public void setEnemigos(ArrayList<Personaje> enemigos) {
+        this.enemigos = enemigos;
     }
+
+    
 
     public String getNombreCategoria() {
         return nombreCategoria;
@@ -344,7 +354,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         private int reach = 1; // Alcance del ataque
         private int damage;
         private int range = 1; // Area de influecia
-        private Personaje enemigo;
+        private ArrayList<Personaje> enemigos;
         private ArrayList <String> apariencias;
         private ArrayList <Arma> armas;
         private ArrayList <Arma> hechizos;
@@ -410,10 +420,6 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
             return this;
         }
 
-        public PersonajeBuilder setEnemigo(Personaje enemigo) {
-            this.enemigo = enemigo;
-            return this;
-        }
         // </editor-fold>    
         
 
@@ -442,6 +448,15 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
             }
             return null;
         } 
+        
+        public PersonajeBuilder agregarEnemigos(Personaje enemigo){
+            if(enemigo != null){
+               this.enemigos = new ArrayList<Personaje>();
+               enemigos.add(enemigo);
+               return this;
+            }
+            return null;
+        }
         public Personaje build(){
             return new Personaje(nombre, vida, golpesxtiempo, campos, nivelAparicion, costo, damage, apariencias, armas, hechizos);
         } 

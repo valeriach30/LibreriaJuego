@@ -26,6 +26,7 @@ import java.util.ArrayList;
  */
 public class Controlador {
     private Juego juegoV = new Juego();
+
     
     public Controlador() {                                      //AGREGAR AL UML
         
@@ -796,7 +797,9 @@ public class Controlador {
         int indexEnemigo = this.getIndexPersonaje(indexJugadorEnemigo,nombreEnemigo);
         
         //setea el enemigo que se va a atacar
-        personajes.get(indexPersonaje).setEnemy(enemigos.get(indexEnemigo)); 
+        ArrayList<Personaje> enemigos2 = new ArrayList<Personaje>();
+        enemigos.add(enemigos2.get(indexEnemigo));
+        personajes.get(indexPersonaje).setEnemigos(enemigos2); 
         
         // Setear la info del arma al personaje para que ataque con eso
         personajes.get(indexPersonaje).setDamage(arma.getDamage());

@@ -304,6 +304,11 @@ public class Jugar extends javax.swing.JDialog {
 
         jugador2.setBackground(new java.awt.Color(0, 83, 196));
         jugador2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        jugador2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jugador2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jugador2);
         jugador2.setBounds(100, 170, 120, 40);
 
@@ -616,6 +621,10 @@ public class Jugar extends javax.swing.JDialog {
         btnSeleccionarPersonaje1.setEnabled(true);
         btnSeleccionarJugadores.setEnabled(false);
     }//GEN-LAST:event_btnSeleccionarJugadoresActionPerformed
+
+    private void jugador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugador2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jugador2ActionPerformed
 
     /**
      * @param args the command line arguments
