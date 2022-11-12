@@ -1185,11 +1185,11 @@ public class Controlador {
         Personaje p1 = getPersonajeJugador(jugador1, per1);
         p1.setNivel(1);
         p1.setVida(10);
-        p1.setEnemy(null);
+        p1.setEnemigos(null);
         Personaje p2 = getPersonajeJugador(jugador2, per2);
         p2.setNivel(1);
         p2.setVida(10);
-        p2.setEnemy(null);
+        p2.setEnemigos(null);
     }
 
     
