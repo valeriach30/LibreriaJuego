@@ -16,14 +16,14 @@ import java.util.ArrayList;
 public class Personaje implements iPersonaje, iPrototype<Personaje>{
     
     private String nombre;
-    private int vida;
-    private int golpesxtiempo;
+    private int vida = 5;
+    private int golpesxtiempo = 1;
     private int nivel = 1; //para mostrar las imagenes se resta un nivel
-    private int campos;
-    private int nivelAparicion;
-    private int costo;
+    private int campos = 1;
+    private int nivelAparicion = 1;
+    private int costo = 1;
     private int reach = 1; // Alcance del ataque
-    private int damage;
+    private int damage = 1;
     private int range = 1; // Area de influecia
     private ArrayList<Personaje> enemigos = null;
     private String nombreCategoria;
@@ -135,6 +135,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         if ((nivel + 1) <= apariencias.size()){
             this.nivel += 1; // Solo sube de nivel si le queda apariencias disponibles
             apariencia = apariencias.get(nivel-1);
+            damage += 2;
             setApariencia(apariencia);
         }
         return nivel; // Si llega aca sin el if no sube de nivel
@@ -187,20 +188,20 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
 
     @Override
     public String toString() {
-        String texto =  "Nombre: " + nombre + "{ Vida:" + vida + ", Golpes por tiempo: " + golpesxtiempo +
-        ", Nivel: " + nivel + ", Campos: " + campos + ", Nivel de Aparicion: " + nivelAparicion + 
-        ", Costo: " + costo;
+        String texto =  "----->" + nombre + "<-----" + "\n> Vida:" + vida + "\n> Golpes por tiempo: " + golpesxtiempo +
+        "\n> Nivel: " + nivel + "\n> Campos: " + campos + "\n> Nivel de Aparicion: " + nivelAparicion + 
+        "\n> Costo: " + costo;
         if(nombreCategoria != null){
-            texto += "Categoria: " + nombreCategoria;
+            texto += "\n> Categoria: " + "[" + nombreCategoria + "]";
         }
         if(apariencias != null){
-            texto += "\nApariencias: " + apariencias.toString() + "\n";
+            texto += "\n> Apariencias: " + apariencias.toString() + "\n";
         }
         if(armas != null){
-            texto += "\nArmas: " + armas.toString().toString() + "\n";
+            texto += "\n> Armas: " + armas.toString().toString() + "\n";
         }
         if(hechizos != null){
-            texto += "\nHabilidades: "+ hechizos.toString()+ "\n";
+            texto += "\n> Habilidades: "+ hechizos.toString()+ "\n";
         }
         texto += "}";
         

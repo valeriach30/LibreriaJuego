@@ -115,7 +115,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
 
         alcance.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(alcance);
-        alcance.setBounds(150, 200, 31, 30);
+        alcance.setBounds(150, 200, 70, 30);
 
         lblTitulo.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(185, 185, 185));
@@ -125,7 +125,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
 
         danho.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(danho);
-        danho.setBounds(150, 250, 31, 30);
+        danho.setBounds(150, 250, 70, 30);
 
         lblTitulo2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo2.setForeground(new java.awt.Color(185, 185, 185));
@@ -135,7 +135,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
 
         nivel.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(nivel);
-        nivel.setBounds(150, 300, 31, 30);
+        nivel.setBounds(150, 300, 70, 30);
 
         lblTitulo4.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo4.setForeground(new java.awt.Color(185, 185, 185));
@@ -145,7 +145,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
 
         rango.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(rango);
-        rango.setBounds(150, 350, 31, 30);
+        rango.setBounds(150, 350, 70, 30);
 
         lblTitulo9.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo9.setForeground(new java.awt.Color(185, 185, 185));
@@ -196,7 +196,7 @@ public class CrearHabilidad extends javax.swing.JDialog {
 
         cantidad.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 18)); // NOI18N
         jPanel1.add(cantidad);
-        cantidad.setBounds(150, 420, 31, 30);
+        cantidad.setBounds(150, 420, 70, 30);
 
         lblTitulo7.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         lblTitulo7.setForeground(new java.awt.Color(185, 185, 185));

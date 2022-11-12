@@ -389,8 +389,9 @@ public class Jugar extends javax.swing.JDialog {
         String nombreJugador1 = jugador1.getSelectedItem().toString();
         String atacante = personaje2.getSelectedItem().toString();
         String arma = arma2.getSelectedItem().toString();
+        String armas2 = arma1.getSelectedItem().toString();
         String enemigo = personaje1.getSelectedItem().toString();
-        
+        try{
         if(atacante == ""){
             JOptionPane.showMessageDialog(null, "Falta un atacante", "Falta un atacante", JOptionPane.OK_OPTION);
         }else if(arma == ""){
@@ -401,28 +402,32 @@ public class Jugar extends javax.swing.JDialog {
             int vidaAtacante = controlJugar.getVidaPersonaje(atacante, nombreJugador2);
             int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo, nombreJugador1);
             if(vidaAtacante > 0 && vidaEnemigo > 0){
-                
-                String ataque = controlJugar.atacar(1,0,atacante,enemigo, arma);
+                String ataque = controlJugar.atacar(nombreJugador2,nombreJugador1,atacante,enemigo, arma);
                 jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
-                
-                System.out.println("vida personaje 1:"+ vidaAtacante);
-                System.out.println("vida personaje 2:"+ vidaEnemigo);
             }
             else{
-                if(vidaAtacante == 0){
+                if(vidaAtacante <= 0){
                     JOptionPane.showMessageDialog(null, "Ha perdido :(", "mensaje", JOptionPane.OK_OPTION);
                     JOptionPane.showMessageDialog(null, "El personaje ha muerto, no puede atacar", "Warning", JOptionPane.OK_OPTION);
+                    jTextArea1.setText(jTextArea1.getText() + enemigo + " ha ganado!"  + "\n");
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Ha ganado :)!!!!!", "mensaje", JOptionPane.OK_OPTION);
                     JOptionPane.showMessageDialog(null, "El enemigo ha muerto, no puede volver a atacarlo", "Warning", JOptionPane.OK_OPTION);
+                    jTextArea1.setText(jTextArea1.getText() + atacante + " ha ganado!"  + "\n");
                 }
+                btnAtacar1.setEnabled(false);
+                btnAtacar2.setEnabled(false);
+                btnSubirNivelP1.setEnabled(false);
+                btnSubirNivelP2.setEnabled(false);
+                btnSubirNivelA1.setEnabled(false);
+                btnSubirNivelA2.setEnabled(false);
+                controlJugar.resetVidas(enemigo, atacante , armas2, arma, nombreJugador1, nombreJugador2);
             }
         }
-        
-        // Mostrar las imagenes de los personajes
-        
-        
+        } catch( Error e){
+            
+        }
     }//GEN-LAST:event_btnAtacar2ActionPerformed
 
     private void btnSeleccionarPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarPersonaje1ActionPerformed
@@ -449,14 +454,17 @@ public class Jugar extends javax.swing.JDialog {
             else{
             }
             // Obtener imagenes y setear
-            String imagen1 = controlJugar.obtenerImagenPersonaje(atacante);
-            System.out.println(imagen1);
-            fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+            try{
+                String imagen1 = controlJugar.obtenerImagenPersonaje(atacante);
+                fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
 
-            String imagen2 = controlJugar.obtenerImagenPersonaje(enemigo);
-            System.out.println(imagen2);
-            fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+                String imagen2 = controlJugar.obtenerImagenPersonaje(enemigo);
+                fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
 
+            } catch (NullPointerException e){
+                JOptionPane.showMessageDialog(null, "Error al cargar imagen", "Warning", JOptionPane.OK_OPTION);
+            }
+            
             btnSeleccionarArmas.setEnabled(true);
             arma1.setEnabled(true);
             arma2.setEnabled(true);
@@ -469,6 +477,7 @@ public class Jugar extends javax.swing.JDialog {
             String nombreJugador1 = jugador1.getSelectedItem().toString();
             String atacante = personaje1.getSelectedItem().toString();
             String arma = arma1.getSelectedItem().toString();
+            String armas2 = arma2.getSelectedItem().toString();
             String enemigo = personaje2.getSelectedItem().toString();
 
             if(atacante == ""){
@@ -481,15 +490,11 @@ public class Jugar extends javax.swing.JDialog {
                 int vidaAtacante = controlJugar.getVidaPersonaje(atacante, nombreJugador1);
                 int vidaEnemigo = controlJugar.getVidaPersonaje(enemigo, nombreJugador2);
                 if(vidaAtacante > 0 && vidaEnemigo > 0){
-                    
-                    String ataque = controlJugar.atacar(0,1,atacante,enemigo, arma);
+                    String ataque = controlJugar.atacar(nombreJugador1,nombreJugador2,atacante,enemigo, arma);
                     jTextArea1.setText(jTextArea1.getText() + ataque + "\n");
-                    
-                    System.out.println("vida personaje 1:"+ vidaAtacante);
-                    System.out.println("vida personaje 2:"+ vidaEnemigo);
                 }
                 else{
-                    if(vidaAtacante == 0){
+                    if(vidaAtacante <= 0){
                         JOptionPane.showMessageDialog(null, "Ha perdido :(", "mensaje", JOptionPane.OK_OPTION);
                         JOptionPane.showMessageDialog(null, "El personaje ha muerto, no puede atacar", "Warning", JOptionPane.OK_OPTION);
                         jTextArea1.setText(jTextArea1.getText() + enemigo + " ha ganado!"  + "\n");
@@ -498,8 +503,14 @@ public class Jugar extends javax.swing.JDialog {
                         JOptionPane.showMessageDialog(null, "Ha ganado :)!!!!!", "mensaje", JOptionPane.OK_OPTION);
                         JOptionPane.showMessageDialog(null, "El enemigo ha muerto, no puede volver a atacarlo", "Warning", JOptionPane.OK_OPTION);
                         jTextArea1.setText(jTextArea1.getText() + atacante + " ha ganado!"  + "\n");
-                        
                     }
+                    btnAtacar1.setEnabled(false);
+                    btnAtacar2.setEnabled(false);
+                    btnSubirNivelP1.setEnabled(false);
+                    btnSubirNivelP2.setEnabled(false);
+                    btnSubirNivelA1.setEnabled(false);
+                    btnSubirNivelA2.setEnabled(false);
+                    controlJugar.resetVidas(atacante, enemigo, arma, armas2, nombreJugador1, nombreJugador2);
                 }
             }
         } catch(NullPointerException e){
@@ -515,111 +526,135 @@ public class Jugar extends javax.swing.JDialog {
             // Obtener imagenes y setear
             String imagen1 = controlJugar.obtenerImagenArma(armas1);
             fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
-
+            fotoarma1.setText("");
+            
             String imagen2 = controlJugar.obtenerImagenArma(armas2);
+            fotoarma2.setText("");
             fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
-
-            SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
-            pant1.setVisible(true); 
+            
+            //SeleccionPersonajes pant1 = new SeleccionPersonajes(this, true, controlJugar);
+            //pant1.setVisible(true); 
             
             btnSeleccionarArmas.setEnabled(false);
         } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Debe agregarle armas o habilidades a los personajes", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al cargar imagen de alguna arma", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSeleccionarArmasActionPerformed
 
     private void btnSubirNivelA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirNivelA2ActionPerformed
         String armas2 = arma2.getSelectedItem().toString();
+        String imagenAnterior = controlJugar.obtenerImagenArma(armas2);
+        
         controlJugar.SubirNivelArma(armas2);
         try{
             // Obtener imagenes y setear
             String imagen2 = controlJugar.obtenerImagenArma(armas2);
-            if(imagen2 != ""){
-                fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+            fotoarma2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+            if(imagen2 != imagenAnterior){
                 jTextArea1.setText(jTextArea1.getText() + armas2 + " subio de nivel!" + "\n");
             }
+            else{
+                btnSubirNivelA2.setEnabled(false);
+            }
         } catch(Error e){
-            
+            JOptionPane.showMessageDialog(null, "No se pudo subir de nivel. El arma no tiene mas apariencias", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSubirNivelA2ActionPerformed
 
     private void btnSubirNivelP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirNivelP2ActionPerformed
         String enemigo = personaje2.getSelectedItem().toString();
+        String imagenAnterior = controlJugar.obtenerImagenPersonaje(enemigo);
         controlJugar.SubirNivelPersonaje(enemigo);
         
         try{
             // Obtener imagenes y setear
             String imagen2 = controlJugar.obtenerImagenPersonaje(enemigo);
-            if(imagen2 != ""){
-                System.out.println(imagen2);
-                fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+            fotopersonaje2.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen2))); 
+            if(imagen2 != imagenAnterior){
                 jTextArea1.setText(jTextArea1.getText() + enemigo + " subio de nivel!" + "\n");
             }
+            else{
+                btnSubirNivelP2.setEnabled(false);
+            }
         } catch(Error e){
-            
+            JOptionPane.showMessageDialog(null, "No se pudo subir de nivel. El personaje no tiene mas apariencias", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSubirNivelP2ActionPerformed
 
     private void btnSubirNivelP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirNivelP1ActionPerformed
         String atacante = personaje1.getSelectedItem().toString();
+        String imagenAnterior = controlJugar.obtenerImagenPersonaje(atacante);
         controlJugar.SubirNivelPersonaje(atacante);
         try{
             // Obtener imagenes y setear
             String imagen1 = controlJugar.obtenerImagenPersonaje(atacante);
-            if(imagen1 != ""){
-                System.out.println(imagen1);
-                fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+            fotopersonaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+            if(imagenAnterior != imagen1){
                 jTextArea1.setText(jTextArea1.getText() + atacante + " subio de nivel!" + "\n");
             }
+            else{
+                btnSubirNivelP1.setEnabled(false);
+            }
         } catch(Error e){
-            
+            JOptionPane.showMessageDialog(null, "No se pudo subir de nivel. El personaje no tiene mas apariencias", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSubirNivelP1ActionPerformed
 
     private void btnSubirNivelA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirNivelA1ActionPerformed
         String armas1 = arma1.getSelectedItem().toString();
+        String imagenAnterior = controlJugar.obtenerImagenArma(armas1);
         controlJugar.SubirNivelArma(armas1);
         try{
             // Obtener imagenes y setear
             String imagen1 = controlJugar.obtenerImagenArma(armas1);
-            if(imagen1 != ""){
-                fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+            fotoarma1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagen1))); 
+            if(imagenAnterior != imagen1){
                 jTextArea1.setText(jTextArea1.getText() + armas1 + " subio de nivel!" + "\n");
             }
+            else{
+                btnSubirNivelA1.setEnabled(false);
+            }
         } catch(Error e){
-            
+            JOptionPane.showMessageDialog(null, "No se pudo subir de nivel. El arma no tiene mas apariencias", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSubirNivelA1ActionPerformed
 
     private void btnSeleccionarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarJugadoresActionPerformed
         String jugador1V = jugador1.getSelectedItem().toString();
-        
-        // Cargar Nombres de Personajes
-        ArrayList<String> nombresPersonajes = controlJugar.getNombresPersonajesJugador(jugador1V);
-        if(nombresPersonajes != null){
-            for(int i = 0; i < nombresPersonajes.size(); i++){
-                personaje1.addItem(nombresPersonajes.get(i));
-            }   
-        }
-        else{
-        }
-        
         String jugador2V = jugador2.getSelectedItem().toString();
         
-        // Cargar Nombres de Personajes
-        ArrayList<String> nombresPersonajes2 = controlJugar.getNombresPersonajesJugador(jugador2V);
-        if(nombresPersonajes2 != null){
-            for(int i = 0; i < nombresPersonajes2.size(); i++){
-                personaje2.addItem(nombresPersonajes2.get(i));
-            }   
+        if(jugador1V == jugador2V){
+            JOptionPane.showMessageDialog(null, "Los jugadores deben ser distintos", "Error!", JOptionPane.ERROR_MESSAGE);
         }
         else{
+            // Cargar Nombres de Personajes
+            ArrayList<String> nombresPersonajes = controlJugar.getNombresPersonajesJugador(jugador1V);
+            if(nombresPersonajes != null){
+                for(int i = 0; i < nombresPersonajes.size(); i++){
+                    personaje1.addItem(nombresPersonajes.get(i));
+                }   
+
+                // Cargar Nombres de Personajes
+                ArrayList<String> nombresPersonajes2 = controlJugar.getNombresPersonajesJugador(jugador2V);
+                if(nombresPersonajes2 != null){
+                    for(int i = 0; i < nombresPersonajes2.size(); i++){
+                        personaje2.addItem(nombresPersonajes2.get(i));
+                    }   
+                    
+                    personaje1.setEnabled(true);
+                    personaje2.setEnabled(true);
+                    btnSeleccionarPersonaje1.setEnabled(true);
+                    btnSeleccionarJugadores.setEnabled(false);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "El jugador 2 no tiene personajes", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "El jugador 1 no tiene personajes", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
+
         }
-        
-        personaje1.setEnabled(true);
-        personaje2.setEnabled(true);
-        btnSeleccionarPersonaje1.setEnabled(true);
-        btnSeleccionarJugadores.setEnabled(false);
     }//GEN-LAST:event_btnSeleccionarJugadoresActionPerformed
 
     private void jugador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugador2ActionPerformed
