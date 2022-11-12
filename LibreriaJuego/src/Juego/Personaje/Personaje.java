@@ -101,10 +101,22 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
                 if(enemigo.getVida() > 0){
                     if(this.damage > 0){
                         enemigo.setVida(enemigo.getVida() - this.damage );
-                        ataque += (this.nombre + " realizo un ataque a " + this.getNombre() + "y le infliguio un total de: " +
-                                this.damage + "\n");
+                        ataque += this.nombre + " realizo un ataque a " + enemigo.getNombre() 
+                                + "y le infliguio un total de: " + this.damage;
+                        ataque += "\n------------------VIDAS------------------\n> Vida " 
+                              + this.nombre + ": " + this.vida;
+                        ataque += "\n> Vida " + enemigo.getNombre() + ": " + enemigo.getVida();
+                        ataque += "\n-----------------------------------------\n";
+                        
                     }else{
-                        ataque += "El personaje no puede atacar o no dispone un arma\n";
+                        this.setVida(vida - this.damage);
+                        enemigo.setVida(enemigo.getVida() - this.golpesxtiempo );
+                        ataque += this.nombre + " aumento su vida. Su vida actual ahora es: " + this.vida +
+                              "\n" + this.nombre + "ataco a " + enemigo.getNombre() +
+                               "y le infliguio un total de: " + this.golpesxtiempo;
+                        ataque += "\n- > VIDAS < -\n Vida " + this.nombre + ": " + this.vida;
+                        ataque += "\n Vida " + enemigo.getNombre() + ": " + enemigo.getVida() + "\n";
+  
                     }
                     
                 }
