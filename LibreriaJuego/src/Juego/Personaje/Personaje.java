@@ -15,24 +15,24 @@ import java.util.ArrayList;
  */
 public class Personaje implements iPersonaje, iPrototype<Personaje>{
     
-    private String nombre;
-    private int vida = 5;
-    private int golpesxtiempo = 1;
-    private int nivel = 1; //para mostrar las imagenes se resta un nivel
-    private int campos = 1;
-    private int nivelAparicion = 1;
-    private int costo = 1;
-    private int reach = 1; // Alcance del ataque
-    private int damage = 1;
-    private int range = 1; // Area de influecia
-    private ArrayList<Personaje> enemigos = null;
-    private String nombreCategoria;
-    private ArrayList <String> apariencias;
-    private ArrayList <Arma> armas;
+    protected String nombre;
+    protected int vida = 5;
+    protected int golpesxtiempo = 1;
+    protected int nivel = 1; //para mostrar las imagenes se resta un nivel
+    protected int campos = 1;
+    protected int nivelAparicion = 1;
+    protected int costo = 1;
+    protected int reach = 1; // Alcance del ataque
+    protected int damage = 1;
+    protected int range = 1; // Area de influecia
+    protected ArrayList<Personaje> enemigos = null;
+    protected String nombreCategoria;
+    protected ArrayList <String> apariencias;
+    protected ArrayList <Arma> armas;
     //private Arma armaActual = null;
-    private ArrayList <Arma> hechizos;
+    protected ArrayList <Arma> hechizos;
     //private Arma hechizoActual = null;
-    private String apariencia;
+    protected String apariencia;
 
     public Personaje(){
         if(apariencias != null){
@@ -61,6 +61,16 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         this.nivelAparicion = nivelAparicion;
         this.costo = costo;
         this.damage = damage;
+    }
+    public Personaje(String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo, ArrayList <String> apariencias) {
+        this.nombre = nombre;
+        this.vida = vida;
+        this.golpesxtiempo = golpesxtiempo;
+        this.campos = campos;
+        this.nivelAparicion = nivelAparicion;
+        this.costo = costo;
+        this.damage = damage;
+        this.apariencias = apariencias;
     }
 
     public Personaje(String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo, int damage, int range, int reach) {
