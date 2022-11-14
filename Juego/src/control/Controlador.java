@@ -852,7 +852,7 @@ public class Controlador {
         
         //setea el enemigo que se va a atacar
         ArrayList<Personaje> enemigos2 = new ArrayList<Personaje>();
-        enemigos.add(enemigos2.get(indexEnemigo));
+        enemigos2.add(enemigos.get(indexEnemigo));
         personajes.get(indexPersonaje).setEnemigos(enemigos2); 
         
         // Setear la info del arma al personaje para que ataque con eso
