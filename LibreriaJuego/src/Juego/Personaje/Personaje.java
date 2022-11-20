@@ -7,13 +7,14 @@ package Juego.Personaje;
 
 import Juego.Armas.Arma;
 import Juego.Prototype.iPrototype;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author fabri
  */
-public class Personaje implements iPersonaje, iPrototype<Personaje>{
+public class Personaje implements iPersonaje, iPrototype<Personaje>,Serializable{
     
     protected String nombre;
     protected int vida = 5;
@@ -62,6 +63,17 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>{
         this.costo = costo;
         this.damage = damage;
     }
+    
+    public Personaje(String nombre, int vida, int damage, int nivel, int campos, int nivelAparicion, int costo, int range) {
+        this.nombre = nombre;
+        this.vida = vida;
+        this.campos = campos;
+        this.nivelAparicion = nivelAparicion;
+        this.costo = costo;
+        this.damage = damage;
+        this.range = range;
+    }
+    
     public Personaje(String nombre, int vida, int golpesxtiempo, int nivel, int campos, int nivelAparicion, int costo, ArrayList <String> apariencias) {
         this.nombre = nombre;
         this.vida = vida;
