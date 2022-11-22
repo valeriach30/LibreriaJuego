@@ -20,7 +20,9 @@ public class Arma implements iPrototype<Arma> {
     private int range; // Area de influencia
     private int level;
     private ArrayList<String> images;
-
+    private ArrayList<Integer> danhos;
+    private boolean available;
+    
     public Arma(){
     }
     
@@ -123,7 +125,9 @@ public class Arma implements iPrototype<Arma> {
         private int range;
         private int level;
         private ArrayList<String> imagenes;
-
+        private ArrayList<Integer> danhos;
+        private boolean available;
+        
         public ArmaBuilder() {
 
         }
@@ -166,5 +170,21 @@ public class Arma implements iPrototype<Arma> {
             return new Arma(name, reach, damage, level, range, imagenes);
         }
 
+        public ArrayList<Integer> getDanhos() {
+            return danhos;
+        }
+
+        public void setDanhos(ArrayList<Integer> danhos) {
+            this.danhos = danhos;
+        }
+
+        public boolean isAvailable() {
+            return available;
+        }
+
+        public void setAvailable(boolean available) {
+            this.available = available;
+        }
+        
     }
 }
