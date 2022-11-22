@@ -220,7 +220,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>,Serializable
             texto += "\n> Apariencias: " + apariencias.toString() + "\n";
         }
         if(armas != null){
-            texto += "\n> Armas: " + armas.toString().toString() + "\n";
+            texto += "\n> Armas: " + armas.toString() + "\n";
         }
         if(hechizos != null){
             texto += "\n> Habilidades: "+ hechizos.toString()+ "\n";
@@ -376,7 +376,7 @@ public class Personaje implements iPersonaje, iPrototype<Personaje>,Serializable
     public void setHechizos(ArrayList<Arma> hechizos) {
         this.hechizos = hechizos;
     } 
-    // </editor-fold>
+    
     
     public static class PersonajeBuilder { //Builder de personaje
         private String nombre;

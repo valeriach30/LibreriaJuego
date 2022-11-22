@@ -174,16 +174,18 @@ public class Arma implements iPrototype<Arma> {
             return danhos;
         }
 
-        public void setDanhos(ArrayList<Integer> danhos) {
+        public ArmaBuilder setDanhos(ArrayList<Integer> danhos) {
             this.danhos = danhos;
+            return this;
         }
 
         public boolean isAvailable() {
             return available;
         }
 
-        public void setAvailable(boolean available) {
+        public ArmaBuilder setAvailable(boolean available) {
             this.available = available;
+            return this;
         }
         
     }
