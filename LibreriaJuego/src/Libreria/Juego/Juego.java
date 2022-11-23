@@ -22,6 +22,7 @@ public class Juego {
     ArrayList<Personaje> personajes;
     ArrayList<Categoria> categorias;
     ArrayList<SubCategoria> subcategorias;
+    Jugador owner;
     
     public Juego(){
         this.habilidades  = new ArrayList<Arma>();
@@ -79,6 +80,14 @@ public class Juego {
 
     public void setSubcategorias(ArrayList<SubCategoria> subcategorias) {
         this.subcategorias = subcategorias;
+    }
+
+    public Jugador getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Jugador owner) {
+        this.owner = owner;
     }
 
     
