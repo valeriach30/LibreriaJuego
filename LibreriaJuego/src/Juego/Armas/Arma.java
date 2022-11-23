@@ -6,13 +6,14 @@
 package Juego.Armas;
 
 import Juego.Prototype.iPrototype;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ray
  */
-public class Arma implements iPrototype<Arma> {
+public class Arma implements iPrototype<Arma>, Serializable {
 
     private String name;
     private int reach; // Alcance del ataque
@@ -114,6 +115,22 @@ public class Arma implements iPrototype<Arma> {
             texto += "\nApariencias: " + images.toString();
         }
         return texto;
+    }
+
+    public ArrayList<Integer> getDanhos() {
+        return danhos;
+    }
+
+    public void setDanhos(ArrayList<Integer> danhos) {
+        this.danhos = danhos;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     
