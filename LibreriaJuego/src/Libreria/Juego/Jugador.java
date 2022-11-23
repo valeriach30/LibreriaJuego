@@ -7,13 +7,14 @@ package Libreria.Juego;
 
 import Juego.Armas.Arma;
 import Juego.Personaje.Personaje;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ray
  */
-public class Jugador {
+public class Jugador implements Serializable{
     String nombre;
     String usuario;
     String contra;
@@ -96,6 +97,11 @@ public class Jugador {
 
     public void setNivelActual(int nivelActual) {
         this.nivelActual = nivelActual;
+    }
+
+    @Override
+    public String toString() {
+        return "Jugador{" + "nombre=" + nombre + ", usuario=" + usuario + ", contra=" + contra + ", edad=" + edad + ", nivelActual=" + nivelActual + ", personajes=" + personajes + '}';
     }
     
     
