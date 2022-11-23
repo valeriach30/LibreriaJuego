@@ -114,6 +114,8 @@ public class Arma implements iPrototype<Arma>, Serializable {
         if(images != null){
             texto += "\nApariencias: " + images.toString();
         }
+        if(danhos!= null)
+            texto += danhos.toString();
         return texto;
     }
 
