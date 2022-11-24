@@ -20,6 +20,7 @@ public class Jugador implements Serializable{
     String contra;
     int edad;
     int nivelActual = 1;
+    boolean activo;
     ArrayList<Personaje> personajes;
 
     public Jugador(){
@@ -97,6 +98,14 @@ public class Jugador implements Serializable{
 
     public void setNivelActual(int nivelActual) {
         this.nivelActual = nivelActual;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     @Override
