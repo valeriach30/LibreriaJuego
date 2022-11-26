@@ -110,7 +110,7 @@ public class Arma implements iPrototype<Arma>, Serializable {
     @Override
     public String toString() {
         String texto = "\n" + "-" + name + "\nAlcance:" + reach + "\nDaño: " + damage +
-        "\nRango: " + range + "\nNivel: "+ level;
+        "\nRango: " + range + "\nNivel: "+ level + "\nDisponible: " + available;
         if(images != null){
             texto += "\nApariencias: " + images.toString();
         }
